@@ -1,0 +1,1151 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Java学习笔记(2)——数据类型, 我没有三颗心脏的博客">
+    <meta name="description" content="
+终于要写点干货了，其实思考了很久下面一篇文章要写什么，主要的纠结点在于，既想要分享那些精美的知识，又怕这些知识不太好嚼。后来想想还是对初学者不太好友算了..一来这系列文章叫做学习笔记，我的。另外写得足够有料，才能发挥笔记的作用，不然索然无">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Java学习笔记(2)——数据类型 | 我没有三颗心脏的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">我没有三颗心脏的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">我没有三颗心脏的博客</div>
+        <div class="logo-desc">
+            
+            分享知识&amp;技术&amp;思考&amp;成长
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/wmyskxz/" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/wmyskxz/" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Java学习笔记(2)——数据类型
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/原创/" target="_blank">
+                                <span class="chip bg-color">原创</span>
+                            </a>
+                        
+                            <a href="/tags/Java/" target="_blank">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Java基础/" class="post-category" target="_blank">
+                                Java基础
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2017-09-19
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        4.4k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        15 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>终于要写点干货了，其实思考了很久下面一篇文章要写什么，主要的纠结点在于，既想要分享那些精美的知识，又怕这些知识不太好嚼。后来想想还是对初学者不太好友算了..一来这系列文章叫做学习笔记，我的。另外写得足够有料，才能发挥笔记的作用，不然索然无味的，连收藏、喜欢的意义也没有了。</p>
+</blockquote>
+<h1 id="写在文章之前"><a href="#写在文章之前" class="headerlink" title="写在文章之前"></a>写在文章之前</h1><p>终于写点干货了，想先简单谈谈自己的一些看法。对于我自己而言，我比较厌烦那些繁琐的无聊的知识点，反而更在乎一些实际应用的东西。但了解一些底层的东西是非常有意义的，它有助于我们理解程序。</p>
+<blockquote>
+<p>每一点知识的积累，终会有用武之地。也许，它会使您在面试过程中正确地回答一道面试题；也许，它会让您更加清楚Java底层的实现方式；也许，它能让您在学业上感到更加充实…（以上摘自梁勇著的Java深入解析_前言）</p>
+</blockquote>
+<h1 id="Java中的数据类型"><a href="#Java中的数据类型" class="headerlink" title="Java中的数据类型"></a>Java中的数据类型</h1><p>Java是一种强类型的语言。这意味着必须为每一个变量都声明一种类型。</p>
+<p>在Java中，你可以把数据类型分为两部分，一部分<strong>是基本类型（primitive type）</strong>：4种整形、2种浮点类型、1种用于表示Unicode编码的字符单元的字符类型char和1种用于表示真值的boolean类型。</p>
+<p>另外一部分是<strong>引用类型（reference type）</strong>，如String和List。每个基本类型都有一个对应的引用类型，称作装箱基本类型（boxed primitive）。装箱基本类中对应于int、double、boolean的是Integer、Double和Boolean。</p>
+<h2 id="Java中的特例"><a href="#Java中的特例" class="headerlink" title="Java中的特例"></a>Java中的特例</h2><p>Java是一种完全面向对象的语言，从理论上来说，在Java中应该不存在对象以外的事务，即所有的类型都是对象。然而，在Java8中的8种基本数据类型不是对象，之所以这样设计，是因为相对于对象来说，基本数据在使用上更加方便，并且在效率上也高于对象类型。所以这就需要去了解一下Java中创建对象的过程。</p>
+<h2 id="创建对象的过程"><a href="#创建对象的过程" class="headerlink" title="创建对象的过程"></a>创建对象的过程</h2><blockquote>
+<p>当程序运行时，对象是怎么进行安排放置的呢？特别是内存是怎样分配的呢？</p>
+</blockquote>
+<p>Java大体上会把内存分为四块区域：堆、栈、静态区、常量区。</p>
+<ul>
+<li><strong>堆</strong> ： 位于RAM中，用于存放所有的java对象。</li>
+<li><strong>栈</strong> ： 位于RAM中，引用就存在于栈中。</li>
+<li><strong>静态区</strong>: 位于RAM中，被static修饰符修饰的变量会被放在这里</li>
+<li><strong>常量区</strong>：位于ROM中， 很明显，放常量的。（其实常量通常直接存放在程序代码的内部，因为这样非常安全，因为它们永远都不会被改变）</li>
+</ul>
+<p>所以当我们创建对象，例如实例化一个Person类：</p>
+<pre class=" language-java"><code class="language-java">Person p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>首先，会在堆中开辟一块空间存放这个新来的Person对象。然后，会创建一个引用p，存放在栈中，这个引用p指向Person对象（事实上是，p的值就是Person对象的内存地址）。</p>
+<p>这样，我们通过访问p，然后得到了Person的内存地址，进而找到了Person对象。</p>
+<p>然后又有了这样一句代码：</p>
+<pre class=" language-java"><code class="language-java">Person p2 <span class="token operator">=</span> p<span class="token punctuation">;</span></code></pre>
+<p>这句代码的含义是：</p>
+<p>创建了一个新的引用p2，保存在栈中，引用的地址也指向Person的地址。这个时候，你通过p2来改变Person对象的状态，也会改变p的结果。因为它们指向同一个对象。（String除外，之后会专门讲String）</p>
+<p>此时，内存中是这样的：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4047674-3a3740af2c4def76?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="内存的状态"></p>
+<p>有一个很通俗的方式来讲解引用和对象。大家对于快捷方式应该不会陌生吧？我们桌面的图标大部分都是快捷方式。它并不是我们安装在电脑上的应用的可执行文件（不是.exe文件)，那么为什么点击它可以打开应用程序呢？是因为快捷方式连接了文件，这就像是引用和对象的关系了。</p>
+<p>我们不直接对文件进行操作，而是通过快捷方式来进行操作。快捷方式不能独立存在，同样，引用也不能独立存在（你可以只创建一个引用，但是当你要使用它的时候必须得给它赋值，否则它将毫无用处）。</p>
+<p>一个文件可以有多个快捷方式，同样一个对象也可以有多个引用。而一个引用只能同时对应一个对象。</p>
+<blockquote>
+<p>在java里，“=”不能被看成是一个赋值语句，它不是在把一个对象赋给另外一个对象，它的执行过程实质上是将右边对象的地址传给了左边的引用，使得左边的引用指向了右边的对象。java表面上看起来没有指针，但它的引用其实质就是一个指针。在java里，“=”语句不应该被翻译成赋值语句，因为它所执行的确实不是一个简单的赋值过程，而是一个传地址的过程，被译成赋值语句会造成很多误解，译得不准确。</p>
+</blockquote>
+<h2 id="特例：基本数据类型"><a href="#特例：基本数据类型" class="headerlink" title="特例：基本数据类型"></a>特例：基本数据类型</h2><p>为什么要有特例呢？是因为new将对象存储在“堆”里，一是用new创建一个对象——特别是小的，简单的变量<strong>（Java中数据定长，为了可移植性）</strong>往往不是很明智而且有效的方法，二是因为“堆”空间本来就有限，如果频繁的操作会导致不可想象的错误，并且别忘了<a href="http://www.jianshu.com/p/e0ba0863f2f1" target="_blank" rel="noopener">第一篇文章</a>里面提到的，Java的设计初衷是什么。</p>
+<p>所以针对这些类型，Java采取了与C和C++相同的方法，也就是说，不用new来创建变量，二是创建一个并非是引用的“自动”变量。这个变量直接存储“值”并置于常量区中，因此更加高效。</p>
+<p>先来看一个例子：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span></code></pre>
+<p>我们需要知道的是，在常量区中，相同的常量只会存在一个。当执行第一句代码时。先查找常量区中有没有2，没有，则开辟一个空间存放2，然后在栈中存入一个变量i，让i指向2；</p>
+<p>执行第二句的时候，查找发现2已经存在了，所以就不开辟新空间了。直接在栈中保存一个新变量j，让j指向2；</p>
+<p>当然，java堆每一个基本数据类型都提供了对应的包装类。我们依旧可以用new操作符来创建我们想要的变量。</p>
+<pre class=" language-java"><code class="language-java">Integer i <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Integer j <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>但是，用new操作符创建的对象是不同的，也就是说，此时，i和j指向不同的内存地址。<strong>因为每次调用new操作符，都会在堆开辟新的空间。</strong></p>
+<h2 id="深入了解Integer"><a href="#深入了解Integer" class="headerlink" title="深入了解Integer"></a>深入了解Integer</h2><p>来看一个例子：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7896890-39d324cd6881b659.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一个例子"></p>
+<blockquote>
+<p>第一个返回true很好理解，就像上面讲的，a和b指向相同的地址。<br>第二个返回false是为什么呢？下面细说<br>第三个返回false是因为用了new关键字来开辟了新的空间，i和j两个对象分别指向堆区中的两块内存空间。</p>
+</blockquote>
+<p>我们可以跟踪一下Integer的源码，看看到底怎么回事。在IDEA中，你只需要按住Ctrl然后点击Integer，就会自动进入jar包中对应的类文件。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7896890-315606fedfecd838.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Integer类"></p>
+<p>跟踪到文件的700多行，你会看到这么一段，感兴趣可以仔细读一下，不用去读也没有关系，因为你只需要知道这是Java的一个缓存机制。Integer类的内部类缓存了-128到127的所有数字。（事实上，Integer类的缓存上限是可以通过修改系统来更改的。了解就行了，不必去深究。）</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7896890-15d2ec8f9bc63240.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="缓存机制"></p>
+<h3 id="为什么引入缓存机制"><a href="#为什么引入缓存机制" class="headerlink" title="为什么引入缓存机制"></a>为什么引入缓存机制</h3><p>这回到了为什么引入基础类型这个特例的问题上。我们看看Java语言规范是怎么规定的：</p>
+<blockquote>
+<p>If the value p being boxed is an integer literal of type int between -128 and 127 inclusive (<a href="https://link.zhihu.com/?target=https%3A//docs.oracle.com/javase/specs/jls/se8/html/jls-3.html%23jls-3.10.1" target="_blank" rel="noopener">§3.10.1**</a>), or the boolean literal true or false (<a href="https://link.zhihu.com/?target=https%3A//docs.oracle.com/javase/specs/jls/se8/html/jls-3.html%23jls-3.10.3" target="_blank" rel="noopener">§3.10.3**</a>), or a character literal between ‘\u0000’ and’\u007f’ inclusive (<a href="https://link.zhihu.com/?target=https%3A//docs.oracle.com/javase/specs/jls/se8/html/jls-3.html%23jls-3.10.4" target="_blank" rel="noopener">§3.10.4**</a>), then let a and b be the results of any two boxing conversions of p. It is always the case that a == b.</p>
+<p>Ideally, boxing a primitive value would always yield an identical reference. In practice, this may not be feasible using existing implementation techniques. The rule above is a pragmatic compromise, requiring that certain common values always be boxed into indistinguishable objects. The implementation may cache these, lazily or eagerly. <strong>For other values, the rule disallows any assumptions about the identity of the boxed values on the programmer’s part.</strong> This allows (but does not require) sharing of some or all of these references. Notice that integer literals of type long are allowed, but not required, to be shared.</p>
+<p>This ensures that in most common cases, the behavior will be the desired one, without imposing an undue performance penalty, especially on small devices. Less memory-limited implementations might, for example, cache all char and short values, as well as int and long values in the range of -32K to +32K.</p>
+</blockquote>
+<p>事实上，不光是Integer这么特别，还包括boolean还有char类型。并且文章的最后提到了<strong>为了实现更少内存的可能。</strong></p>
+<h2 id="另一个特例：String"><a href="#另一个特例：String" class="headerlink" title="另一个特例：String"></a>另一个特例：String</h2><p>String是一个特殊的类，因为它被final修饰符所修饰，是一个不可改变的类。当然，看过java源码后你会发现，基本类型的各个包装类也被final所修饰。这里以String为例。</p>
+<p>我们来看这样一个例子：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4047674-1cb11559760bbad3?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="例子"></p>
+<blockquote>
+<p> 执行第一句 ： 常量区开辟空间存放“abc”，s1存放在栈中指向“abc”<br>执行第二句，s2 也指向 “abc”，<br>执行第三句，因为“abc”已经存在，所以直接指向它。<br>所以三个变量指向同一块内存地址，结果都为true。<br>当s1内容改变的时候。这个时候，常量区开辟新的空间存放“bcd”，s1指向“bcd”，而s2和s3指向“abc”所以只有s2和s3相等。</p>
+</blockquote>
+<p>这种情况下，s1,s2,s3都是字符串常量，类似于基本数据类型。（如果执行的是s1 = “abc”,那么结果会都是true）</p>
+<p>我们再看一个例子：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4047674-530e77c58db5a82c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="例子2"></p>
+<blockquote>
+<p>执行第一行代码： 在堆里分配空间存放String对象，在常量区开辟空间存放常量“abc”，String对象指向常量，s1指向该对象。<br>执行第二行代码：s2指向上一步new出来的string对象。<br>执行第三行代码： 在堆里分配新的空间存放String对象，新对象指向常量“abc”，s3指向该对象。<br>到这里，很明显，s1和s2指向的是同一个对象</p>
+<p>接着就很诡异了，我们让s1 依旧= “abc”,但是结果s1和s2指向的地址不同了。</p>
+</blockquote>
+<p>怎么回事呢？这就是String类的特殊之处了，new出来的String不再是上面的字符串常量，而是字符串对象。</p>
+<p>由于String类是不可改变的，所以String对象也是不可改变的，我们每次给String赋值都相当于执行了一次new String()，然后让变量指向这个新对象，而不是在原来的对象上修改。</p>
+<p>当然，java还提供了StringBuffer类，这个是可以在原对象上做修改的。如果你需要修改原对象，那么请使用StringBuffer类。</p>
+<h2 id="引发的问题：值传递还是引用传递？"><a href="#引发的问题：值传递还是引用传递？" class="headerlink" title="引发的问题：值传递还是引用传递？"></a>引发的问题：值传递还是引用传递？</h2><p>java是值传递还是引用传递的呢？毫无疑问，java是值传递的。那么什么又叫值传递和引用传递呢？</p>
+<p>我们先来看一个例子：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4047674-cabe50a835eca720?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="例子"></p>
+<p>这是一个很经典的例子，我们希望调用了swap函数以后，a和b的值可以互换，但是事实上并没有。为什么会这样呢？</p>
+<p>这就是因为java是值传递的。<strong>也就是说，我们在调用一个需要传递参数的函数时，传递给函数的参数并不是我们传进去的参数本身，而是它的副本。</strong>说起来比较拗口，但是其实原理很简单。我们可以这样理解：</p>
+<p>一个有形参的函数，当别的函数调用它的时候，必须要传递数据。比如swap函数，别的函数要调用swap就必须传两个整数过来。</p>
+<p>这个时候，有一个函数按耐不住寂寞，扔了两个整数过来，但是，swap函数有洁癖，它不喜欢用别人的东西，于是它把传过来的参数复制了一份，然后对复制的数据修修改改，而别人传过来的参数动根本没动。</p>
+<p>所以，当swap函数执行完毕之后，交换了的数据只是swap自己复制的那一份，而原来的数据没变。</p>
+<blockquote>
+<p>也可以理解为别的函数把数据传递给了swap函数的形参，最后改变的只是形参而实参没变，所以不会起到任何效果。</p>
+</blockquote>
+<p>我们再来看一个复杂一点的例子(Person类添加了get，set方法)：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4047674-12da05026aed184b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="例子"></p>
+<blockquote>
+<p>可以看到，我们把p1传进去，它并没有被替换成新的对象。因为change函数操作的不是p1这个引用本身，而是这个引用的一个副本。</p>
+<p>你依然可以理解为，主函数将p1复制了一份然后变成了chagne函数的形参，最终指向新Person对象的是那个副本引用，而实参p1并没有改变。</p>
+</blockquote>
+<p>再来看一个例子：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4047674-27ea492babe95e92?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="例子2"></p>
+<blockquote>
+<p>这次为什么就改变了呢？分析一下。<br>首先，new了一个Person对象，暂且叫他小明吧。然后p1指向小明。<br>小明10岁了，随着时间的推移，小明的年龄要变了，调用了一下changgeAge方法，把小明的引用传了进去。<br>传递的过程中，changgeAge也有洁癖，于是复制了一份小明的引用，这个副本也指向小明。<br>然后changgeAge通过自己的副本引用，改变了小明的年龄。<br>由于是小明这个对象被改变了，所以所有小明的引用调用方法得到的年龄都会改变<br>所以就变了。</p>
+</blockquote>
+<p>最后简单的总结一下。</p>
+<p>java的传值过程，其实传的是副本，不管是变量还是引用。所以，不要期待把变量传递给一个函数来改变变量本身。</p>
+<h2 id="“-”是怎么连接字符串的？"><a href="#“-”是怎么连接字符串的？" class="headerlink" title="“+”是怎么连接字符串的？"></a>“+”是怎么连接字符串的？</h2><blockquote>
+<p>先抛个砖：对Java程序员来说，使用运算符“+”来连接字符串是非常普遍的，当“+”两边的操作数是String类型时（如果只有一个操作数是String类型，则系统也会将另外一个操作数转换成String类型），就会执行字符串连接的运算。但是，运算符“+”是怎样连接String对象的呢？编译器又是如何实现的呢?</p>
+<p>之后我再来补这个内容，先发表啦。</p>
+</blockquote>
+<h2 id="浮点类型"><a href="#浮点类型" class="headerlink" title="浮点类型"></a>浮点类型</h2><blockquote>
+<p>浮点类型用于表示有小数部分的数值。在Java中有两种浮点类型，一个是4字节的float，一个是8字节的double。我们平时用来编写程序用来表示增长率、物品重量等方面也非常有用。不过，在使用浮点类型时，也需要留意一些问题。</p>
+</blockquote>
+<h3 id="浮点类型只是近似的存储"><a href="#浮点类型只是近似的存储" class="headerlink" title="浮点类型只是近似的存储"></a>浮点类型只是近似的存储</h3><p>请问一个问题：0.1+0.2等于多少？请不要慌着报答案，我没有开玩笑的意思，看一下Java给出的答案你就知道了：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7896890-3d58b0edc9c4c1c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java的答案"><br>结果似乎有些令人惊讶，这么简单的算术竟然也会算错。</p>
+<p>其实，这并不是计算错误，这只是浮点数类型存储的问题。计算机使用二进制来存储数据，而二进制无法准确的表示分数 1/10 ，就像使用十进制时，无法准确地表示 1/3 一样。</p>
+<h3 id="数量级差很大的浮点运算"><a href="#数量级差很大的浮点运算" class="headerlink" title="数量级差很大的浮点运算"></a>数量级差很大的浮点运算</h3><p>当浮点数值的数量级相差很大的时候，运算又会有什么问题呢？</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7896890-8234cf550c99320e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="数量级很大的浮点运算"></p>
+<p>又发生了预期外的结果。从输出结果来看，f3竟然和f4是相等的，也就是意味着对f3+1并没有改变f3的值。</p>
+<p>这同样是因为浮点数的存储造成的，<strong>二进制所能表示的两个相邻的浮点值之间存在一定的空隙。</strong>浮点值越大，这个间隙也会越大。当浮点值大道一定程度的时，如果对浮点值的改变很小（例如上面的30000000+1），就不足以使浮点值发生改变。就好比蒸发掉大海中的一滴水，大海还是大海，几乎不存在变化。</p>
+<blockquote>
+<p><strong>如果想要准确的存储，就去使用BigDecimal吧，有必要了解的可以去自行百度，这里就不做过多介绍了，已经是Java封装好的类库了</strong></p>
+</blockquote>
+<h3 id="抛出一个有趣的问题"><a href="#抛出一个有趣的问题" class="headerlink" title="抛出一个有趣的问题"></a>抛出一个有趣的问题</h3><blockquote>
+<p>我们知道，在Java中，long类型占用了8个字节，float类型占用了4个字节。</p>
+</blockquote>
+<p>照理来说，long类型的容量应该比float大许多，然而事实正好相反，float反而拥有比8字节long类型更大的取值范围。这同样是因为浮点数的存储格式造成的。有兴趣的可以去自行百度了解。</p>
+<blockquote>
+<p>参考资料：<br><a href="http://www.jianshu.com/p/39753aad9a38" target="_blank" rel="noopener">http://www.jianshu.com/p/39753aad9a38</a> ，原文作者:CleverFan<br>《Java深入解析》——梁勇著<br>《Effective Java》——第二版<br>《Java核心技术 卷I》——第九版<br>《Java编程思想》——第四版</p>
+</blockquote>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <style>
+    .foot-copyright-note {
+        padding: 15px;
+        border-radius: 4px;
+        border: 1px solid transparent;
+        margin-bottom: 20px;
+        background-color: #f5f5f5;
+    }
+</style>
+
+
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <!--            <div class="center-align">-->
+            <!--                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">-->
+            <!--                    <img alt=""-->
+            <!--                         style="border-width:0"-->
+            <!--                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>-->
+            <!--                </a>-->
+            <!--            </div>-->
+            <!--            <br/>-->
+            <div class="foot-copyright-note">
+                <i class="fa fa-lightbulb-o"></i> 本文由
+                <a xmlns:cc="http://creativecommons.org/ns#" href="/2017/09/19/java-xue-xi-bi-ji-2-shu-ju-lei-xing/"
+                   property="cc:attributionName"
+                   rel="cc:attributionURL">
+                    wmyskxz
+                </a> 创作， 采用
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    知识共享署名 4.0 国际许可协议
+                </a>进行许可。
+                可自由转载、引用，但需要注明作者且注明文章出处。如需转载至微信公众号，请关注「wmyskxz」公众号后台留言。
+                也欢迎想要交流的朋友加入QQ群：「3382693」。
+            </div>
+        
+    </div>
+
+    <script async defer>
+        document.addEventListener("copy", function (e) {
+            let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+            M.toast({html: toastHTML})
+        });
+
+        function navToReprintStatement() {
+            $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+        }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'a9f57bed080703426741',
+        clientSecret: '03fe7aec06a7794dedfcc123b6475f0231f6a0ce',
+        repo: 'wmyskxz.github.io',
+        owner: 'wmyskxz',
+        admin: "wmyskxz",
+        id: '2017-09-19T20-46-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2017/09/19/java-xue-xi-bi-ji-2-shu-ju-lei-xing/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Java学习笔记(2)——数据类型">
+                        
+                        <span class="card-title">Java学习笔记(2)——数据类型</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+终于要写点干货了，其实思考了很久下面一篇文章要写什么，主要的纠结点在于，既想要分享那些精美的知识，又怕这些知识不太好嚼。后来想想还是对初学者不太好友算了..一来这系列文章叫做学习笔记，我的。另外写得足够有料，才能发挥笔记的作用，不然索然无
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java基础/" class="post-category" target="_blank">
+                                    Java基础
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/原创/" target="_blank">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2017/09/18/java-xue-xi-bi-ji-1-da-jian-hao-suo-xu-yao-de-huan-jing/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Java学习笔记(1)——搭建好所需要的环境">
+                        
+                        <span class="card-title">Java学习笔记(1)——搭建好所需要的环境</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+前言：后来仔细思考了一下，从零开始学习Java的系列标题略长（实际改过来的也不短），并且不能正确反映写文的目的，所以决定从这一篇开始改为Java学习笔记。之前的一篇文章在一觉醒来以后也觉得有些不太好还有一些需要添加的地方，所以后来这一个系
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java基础/" class="post-category" target="_blank">
+                                    Java基础
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/原创/" target="_blank">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 我没有三颗心脏的博客<br />'
+            + '作者: 我没有三颗心脏<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="http://www.wmyskxz/" target="_blank">我没有三颗心脏</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">9.2k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/wmyskxz" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+       data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wmyskxz@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
+       data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=939419061" class="tooltipped"
+       data-tooltip="QQ联系我: 939419061" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="#" class="tooltipped" data-tooltip="微信公众号: wmyskxz" data-position="top"
+       data-delay="50" title="微信公众号: wmyskxz">
+        <i class="fa fa-wechat"></i>
+    </a>
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142668321-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-142668321-1');
+</script>
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

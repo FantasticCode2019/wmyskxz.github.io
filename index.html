@@ -90,7 +90,7 @@
             
             <i class="fa fa-user-circle-o"></i>
             
-            <span>关于我</span>
+            <span>关于</span>
         </a>
     </li>
     
@@ -160,14 +160,14 @@
                 
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
-                关于我
+                关于
             </a>
         </li>
         
         
         <li><div class="divider"></div></li>
         <li>
-            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+            <a href="https://github.com/wmyskxz/" class="waves-effect waves-light" target="_blank">
                 <i class="fa fa-github-square fa-fw"></i>Fork Me
             </a>
         </li>
@@ -223,7 +223,7 @@
     }
 </style>
 
-<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+<a href="https://github.com/wmyskxz/" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
    data-tooltip="Fork Me" data-position="left" data-delay="50">
     <svg viewBox="0 0 250 250" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -239,53 +239,10 @@
 </header>
 
 
-<style>
-    .carousel-control {
-        width: 45px;
-        height: 45px;
-        line-height: 55px;
-        border-radius: 45px;
-        background: transparent;
-        cursor: pointer;
-        z-index: 100;
-    }
 
-    #prev-cover {
-        position: absolute;
-        top: 48%;
-        left: 8px;
-    }
+<div class="center index-cover" data-indicators="true" style="margin-top: -64px;">
 
-    #next-cover {
-        position: absolute;
-        top: 48%;
-        right: 8px;;
-    }
-
-    #prev-cover i {
-        margin-right: 3px;
-    }
-
-    #next-cover i {
-        margin-left: 3px;
-    }
-
-    .carousel-control:hover {
-        background-color:rgba(0, 0, 0, .4);
-    }
-
-    .carousel-control i {
-        color: #fff;
-        font-size: 2.4rem;
-    }
-</style>
-
-
-
-<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
-    
-
-    <div class="carousel-item red white-text bg-cover about-cover">
+    <div class="white-text bg-cover about-cover">
         <div class="container">
             <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
@@ -304,10 +261,6 @@
         </div>
     </div>
 </div>
-<script>
-// 每天切换 banner 图.  Switch banner image every day.
-$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
-</script>
 
             <div class="cover-btns">
                 <a href="#indexCard" class="waves-effect waves-light btn">
@@ -321,79 +274,39 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 
             </div>
             <div class="cover-social-link">
-    <a href="https://github.com/wmyskxz" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/wmyskxz" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+       data-position="top" data-delay="50">
         <i class="fa fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:wmyskxz@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:wmyskxz@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
+       data-position="top" data-delay="50">
         <i class="fa fa-envelope-open"></i>
     </a>
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=939419061" class="tooltipped" data-tooltip="QQ联系我: 939419061" data-position="top" data-delay="50">
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=939419061" class="tooltipped"
+       data-tooltip="QQ联系我: 939419061" data-position="top" data-delay="50">
         <i class="fa fa-qq"></i>
     </a>
 
 
 
-    <a href="#" class="tooltipped" data-tooltip="微信公众号: wmyskxz" data-position="top" data-delay="50" title="微信公众号: wmyskxz">
+    <a href="#" class="tooltipped" data-tooltip="微信公众号: wmyskxz" data-position="top"
+       data-delay="50" title="微信公众号: wmyskxz">
         <i class="fa fa-wechat"></i>
     </a>
-
-
-
 
 
 </div>
         </div>
     </div>
-
-    
 </div>
 
-<script>
-$(function () {
-    let coverSlider = $('.carousel');
-    coverSlider.carousel({
-        duration: Number('120'),
-        fullWidth: true,
-        indicators: 'true' === 'true'
-    });
 
-    let carouselIntervalId;
-    
-    // Loop to call the next cover article picture.
-    let autoCarousel = function() {
-        carouselIntervalId = setInterval(function () {
-            coverSlider.carousel('next');
-        }, 5000);
-    };
-    autoCarousel();
-    
-
-    let restartPlay = function () {
-        
-        clearInterval(carouselIntervalId);
-        autoCarousel();
-        
-    };
-
-    
-    // prev and next cover post.
-    $('#prev-cover').click(function () {
-        coverSlider.carousel('prev');
-        restartPlay();
-    });
-    $('#next-cover').click(function () {
-        coverSlider.carousel('next');
-        restartPlay();
-    });
-    
-});
-</script>
 
 
 
@@ -413,7 +326,7 @@ $(function () {
     
     <div class="row">
         <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            不是每个人都应该像我这样去建造一座水晶大教堂，但是每个人都应该拥有自己的梦想，设计自己的梦想，追求自己的梦想，实现自己的梦想。梦想是生命的灵魂，是心灵的灯塔，是引导人走向成功的信仰。有了崇高的梦想，只要矢志不渝地追求，梦想就会成为现实，奋斗就会变成壮举，生命就会创造奇迹。——罗伯·舒乐
+            采用 Github Page + Hexo 搭建，使用 hexo-theme-matery 皮肤改造。初衷是记录自己在技术上的成长以及生活中的一些思考，欢迎关注个人公众号「wmyskxz」，也欢迎想要进行技术交流的童鞋加入QQ群：「3382693」。
         </div>
     </div>
 </div>
@@ -443,35 +356,159 @@ $(function () {
             
             <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2019/06/21/hello-world/">
+                    <a href="/2017/09/19/java-xue-xi-bi-ji-2-shu-ju-lei-xing/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Java学习笔记(2)——数据类型">
                             
-                            <span class="card-title">Hello World</span>
+                            <span class="card-title">Java学习笔记(2)——数据类型</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                                
+终于要写点干货了，其实思考了很久下面一篇文章要写什么，主要的纠结点在于，既想要分享那些精美的知识，又怕这些知识不太好嚼。后来想想还是对初学者不太好友算了..一来这系列文章叫做学习笔记，我的。另外写得足够有料，才能发挥笔记的作用，不然索然无
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-21
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-19
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fa fa-user fa-fw"></i>
-                                wmyskxz
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Java基础/" class="post-category" target="_blank">
+                                    Java基础
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/原创/" target="_blank">
+                            <span class="chip bg-color">原创</span>
+                        </a>
+                        
+                        <a href="/tags/Java/" target="_blank">
+                            <span class="chip bg-color">Java</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2017/09/18/java-xue-xi-bi-ji-1-da-jian-hao-suo-xu-yao-de-huan-jing/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Java学习笔记(1)——搭建好所需要的环境">
+                            
+                            <span class="card-title">Java学习笔记(1)——搭建好所需要的环境</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+前言：后来仔细思考了一下，从零开始学习Java的系列标题略长（实际改过来的也不短），并且不能正确反映写文的目的，所以决定从这一篇开始改为Java学习笔记。之前的一篇文章在一觉醒来以后也觉得有些不太好还有一些需要添加的地方，所以后来这一个系
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-18
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Java基础/" class="post-category" target="_blank">
+                                    Java基础
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/原创/" target="_blank">
+                            <span class="chip bg-color">原创</span>
+                        </a>
+                        
+                        <a href="/tags/Java/" target="_blank">
+                            <span class="chip bg-color">Java</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2017/09/17/java-xue-xi-bi-ji-0-liao-jie-java/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Java学习笔记(0)——了解Java">
+                            
+                            <span class="card-title">Java学习笔记(0)——了解Java</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+前言：
+这里是一些关于写文的原因，目的和其他的有的没的，跟Java没有一点关系，如果是想要学习干货的童鞋可以直接跳过。
+
+系列文章最开始的名字是：从零开始学习Java，一来是觉得太长了（改了之后也不短），另外一个一觉醒来觉得好像这个名字不
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-17
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Java基础/" class="post-category" target="_blank">
+                                    Java基础
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/原创/" target="_blank">
+                            <span class="chip bg-color">原创</span>
+                        </a>
+                        
+                        <a href="/tags/Java/" target="_blank">
+                            <span class="chip bg-color">Java</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -480,9 +517,6 @@ $(function () {
     </article>
 
 </main>
-
-
-
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -492,7 +526,7 @@ $(function () {
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">73</span>
+                <span class="white-color">9.2k</span>
             
 
             
@@ -513,30 +547,31 @@ $(function () {
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/wmyskxz" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/wmyskxz" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+       data-position="top" data-delay="50">
         <i class="fa fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:wmyskxz@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:wmyskxz@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
+       data-position="top" data-delay="50">
         <i class="fa fa-envelope-open"></i>
     </a>
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=939419061" class="tooltipped" data-tooltip="QQ联系我: 939419061" data-position="top" data-delay="50">
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=939419061" class="tooltipped"
+       data-tooltip="QQ联系我: 939419061" data-position="top" data-delay="50">
         <i class="fa fa-qq"></i>
     </a>
 
 
 
-    <a href="#" class="tooltipped" data-tooltip="微信公众号: wmyskxz" data-position="top" data-delay="50" title="微信公众号: wmyskxz">
+    <a href="#" class="tooltipped" data-tooltip="微信公众号: wmyskxz" data-position="top"
+       data-delay="50" title="微信公众号: wmyskxz">
         <i class="fa fa-wechat"></i>
     </a>
-
-
-
 
 
 </div>
@@ -581,7 +616,7 @@ $(function () {
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 
-<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142668321-1"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
@@ -589,7 +624,7 @@ $(function () {
     }
 
     gtag('js', new Date());
-    gtag('config', '');
+    gtag('config', 'UA-142668321-1');
 </script>
 
 
