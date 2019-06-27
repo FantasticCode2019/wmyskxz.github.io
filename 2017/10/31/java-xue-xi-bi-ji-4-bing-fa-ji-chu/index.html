@@ -4,9 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Java学习笔记(2)——数据类型, 我没有三颗心脏的博客">
-    <meta name="description" content="
-终于要写点干货了，其实思考了很久下面一篇文章要写什么，主要的纠结点在于，既想要分享那些精美的知识，又怕这些知识不太好嚼。后来想想还是对初学者不太好友算了..一来这系列文章叫做学习笔记，我的。另外写得足够有料，才能发挥笔记的作用，不然索然无">
+    <meta name="keywords" content="Java学习笔记(4)——并发基础, 我没有三颗心脏的博客">
+    <meta name="description" content="前言当我们使用计算机时，可以同时做许多事情，例如一边打游戏一边听音乐。这是因为操作系统支持并发任务，从而使得这些工作得以同时进行。
+
+那么提出一个问题：如果我们要实现一个程序能一边听音乐一边玩游戏怎么实现呢？我们使用了循环来模拟过程，因为播">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Java学习笔记(2)——数据类型 | 我没有三颗心脏的博客</title>
+    <title>Java学习笔记(4)——并发基础 | 我没有三颗心脏的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -243,13 +244,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Java学习笔记(2)——数据类型
+                        Java学习笔记(4)——并发基础
                     </div>
                 </div>
             </div>
@@ -388,14 +389,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2017-09-19
+                    2017-10-31
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        4.4k
+                        4.5k
                     </div>
                     
 
@@ -418,133 +419,120 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>终于要写点干货了，其实思考了很久下面一篇文章要写什么，主要的纠结点在于，既想要分享那些精美的知识，又怕这些知识不太好嚼。后来想想还是对初学者不太好友算了..一来这系列文章叫做学习笔记，我的。另外写得足够有料，才能发挥笔记的作用，不然索然无味的，连收藏、喜欢的意义也没有了。</p>
-</blockquote>
-<h1 id="写在文章之前"><a href="#写在文章之前" class="headerlink" title="写在文章之前"></a>写在文章之前</h1><p>终于写点干货了，想先简单谈谈自己的一些看法。对于我自己而言，我比较厌烦那些繁琐的无聊的知识点，反而更在乎一些实际应用的东西。但了解一些底层的东西是非常有意义的，它有助于我们理解程序。</p>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>当我们使用计算机时，可以同时做许多事情，例如一边打游戏一边听音乐。这是因为操作系统支持并发任务，从而使得这些工作得以同时进行。</p>
 <blockquote>
-<p>每一点知识的积累，终会有用武之地。也许，它会使您在面试过程中正确地回答一道面试题；也许，它会让您更加清楚Java底层的实现方式；也许，它能让您在学业上感到更加充实…（以上摘自梁勇著的Java深入解析_前言）</p>
+<p><strong>那么提出一个问题：</strong>如果我们要实现一个程序能一边听音乐一边玩游戏怎么实现呢？<br><img src="http://upload-images.jianshu.io/upload_images/7896890-b6c28e4f108ec11d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="提出的问题"><br>我们使用了循环来模拟过程，因为播放音乐和打游戏都是连续的，但是结果却不尽人意，因为函数体总是要执行完之后才能返回。那么到底怎么解决这个问题？下面来说。</p>
 </blockquote>
-<h1 id="Java中的数据类型"><a href="#Java中的数据类型" class="headerlink" title="Java中的数据类型"></a>Java中的数据类型</h1><p>Java是一种强类型的语言。这意味着必须为每一个变量都声明一种类型。</p>
-<p>在Java中，你可以把数据类型分为两部分，一部分<strong>是基本类型（primitive type）</strong>：4种整形、2种浮点类型、1种用于表示Unicode编码的字符单元的字符类型char和1种用于表示真值的boolean类型。</p>
-<p>另外一部分是<strong>引用类型（reference type）</strong>，如String和List。每个基本类型都有一个对应的引用类型，称作装箱基本类型（boxed primitive）。装箱基本类中对应于int、double、boolean的是Integer、Double和Boolean。</p>
-<h2 id="Java中的特例"><a href="#Java中的特例" class="headerlink" title="Java中的特例"></a>Java中的特例</h2><p>Java是一种完全面向对象的语言，从理论上来说，在Java中应该不存在对象以外的事务，即所有的类型都是对象。然而，在Java8中的8种基本数据类型不是对象，之所以这样设计，是因为相对于对象来说，基本数据在使用上更加方便，并且在效率上也高于对象类型。所以这就需要去了解一下Java中创建对象的过程。</p>
-<h2 id="创建对象的过程"><a href="#创建对象的过程" class="headerlink" title="创建对象的过程"></a>创建对象的过程</h2><blockquote>
-<p>当程序运行时，对象是怎么进行安排放置的呢？特别是内存是怎样分配的呢？</p>
+<h1 id="并行与并发"><a href="#并行与并发" class="headerlink" title="并行与并发"></a>并行与并发</h1><p>并行性和并发性是既相似又有区别的两个概念。</p>
+<p><strong>并行性是指两个或多个事件在同一时刻发生。而并发性是指连个或多个事件在同一时间间隔内发生。</strong>在多道程序环境下，并发性是指在一段时间内宏观上有多个程序在同时运行，但在单处理机环境下（一个处理器），每一时刻却仅能有一道程序执行，故微观上这些程序只能是分时地交替执行。例如，在1秒钟时间内，0-15ms程序A运行；15-30ms程序B运行；30-45ms程序C运行；45-60ms程序D运行，<strong>因此可以说，在1秒钟时间间隔内，宏观上有四道程序在同时运行，但微观上，程序A、B、C、D是分时地交替执行的。</strong></p>
+<p>如果在计算机系统中有多个处理机，这些可以并发执行的程序就可以被分配到多个处理机上，实现并发执行，即利用每个处理机爱处理一个可并发执行的程序。这样，多个程序便可以同时执行。<strong>以此就能提高系统中的资源利用率，增加系统的吞吐量。</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7896890-1fce0d8c98910442.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="并发和并行"></p>
+<h2 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h2><p><strong>进程是指一个内存中运行的应用程序。</strong>一个应用程序可以同时启动多个进程，那么上面的问题就有了解决的思路：<strong>我们启动两个进程，一个用来打游戏，一个用来播放音乐。</strong>这当然是一种解决方案，但是想象一下，如果一个应用程序需要执行的任务非常多，<em>例如LOL游戏吧，光是需要播放的音乐就有非常多，人物本身的语音，技能的音效，游戏的背景音乐，塔攻击的声音等等等，还不用说游戏本身，就光播放音乐就需要创建许多许多的进程，</em>而进程本身是一种非常消耗资源的东西，这样的设计显然是不合理的。更何况大多数的操作系统都不需要一个进程访问其他进程的内存空间，<strong>也就是说，进程之间的通信很不方便，此时我们就得引入“线程”这门技术，来解决这个问题。</strong></p>
+<p><strong>线程是指进程中的一个执行任务（控制单元），一个进程可以同时并发运行多个线程。</strong>打开我们的任务管理器，在【查看】里面点击【选择列】，有一个线程数的勾选项，找到并勾选，可以看到：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7896890-072d37a7ca6863d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="任务管理器"></p>
+<h2 id="进程和线程的区别："><a href="#进程和线程的区别：" class="headerlink" title="进程和线程的区别："></a>进程和线程的区别：</h2><p><strong>进程：</strong>有独立的内存空间，进程中的数据存放空间（堆空间和栈空间）是独立的，至少有一个线程。</p>
+<p><strong>线程：</strong>堆空间是共享的，栈空间是独立的，线程消耗的资源也比进程小，相互之间可以影响的，又称为轻型进程或进程元。</p>
+<p>因为一个进程中的多个线程是并发运行的，那么从微观角度上考虑也是有先后顺序的，那么<strong>哪个线程执行完全取决于CPU调度器(JVM来调度)</strong>，程序员是控制不了的。我们可以把多线程并发性看作是多个线程在瞬间抢CPU资源，谁抢到资源谁就运行，这也造就了<strong>多线程的随机性。</strong>下面我们将看到更生动的例子。</p>
+<p><strong>Java程序的进程(Java的一个程序运行在系统中)里至少包含主线程和垃圾回收线程(后台线程)：</strong></p>
+<blockquote>
+<p>你可以简单的这样认为，但实际上有四个线程（了解就好）：<br>[1] main——main线程，用户程序入口<br>[2] Reference Handler——清除Reference的线程<br>[3] Finalizer——调用对象finalize方法的线程<br>[4] Signal Dispatcher——分发处理发送给JVM信号的线程     </p>
 </blockquote>
-<p>Java大体上会把内存分为四块区域：堆、栈、静态区、常量区。</p>
+<h2 id="多线程的优势："><a href="#多线程的优势：" class="headerlink" title="多线程的优势："></a>多线程的优势：</h2><p>尽管面临很多挑战，多线程有一些优点使得它一直被使用。这些优点是：</p>
 <ul>
-<li><strong>堆</strong> ： 位于RAM中，用于存放所有的java对象。</li>
-<li><strong>栈</strong> ： 位于RAM中，引用就存在于栈中。</li>
-<li><strong>静态区</strong>: 位于RAM中，被static修饰符修饰的变量会被放在这里</li>
-<li><strong>常量区</strong>：位于ROM中， 很明显，放常量的。（其实常量通常直接存放在程序代码的内部，因为这样非常安全，因为它们永远都不会被改变）</li>
+<li><strong>资源利用率更好</strong></li>
+<li><strong>程序设计在某些情况下更简单</strong></li>
+<li><strong>程序响应更快</strong></li>
 </ul>
-<p>所以当我们创建对象，例如实例化一个Person类：</p>
-<pre class=" language-java"><code class="language-java">Person p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p>首先，会在堆中开辟一块空间存放这个新来的Person对象。然后，会创建一个引用p，存放在栈中，这个引用p指向Person对象（事实上是，p的值就是Person对象的内存地址）。</p>
-<p>这样，我们通过访问p，然后得到了Person的内存地址，进而找到了Person对象。</p>
-<p>然后又有了这样一句代码：</p>
-<pre class=" language-java"><code class="language-java">Person p2 <span class="token operator">=</span> p<span class="token punctuation">;</span></code></pre>
-<p>这句代码的含义是：</p>
-<p>创建了一个新的引用p2，保存在栈中，引用的地址也指向Person的地址。这个时候，你通过p2来改变Person对象的状态，也会改变p的结果。因为它们指向同一个对象。（String除外，之后会专门讲String）</p>
-<p>此时，内存中是这样的：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4047674-3a3740af2c4def76?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="内存的状态"></p>
-<p>有一个很通俗的方式来讲解引用和对象。大家对于快捷方式应该不会陌生吧？我们桌面的图标大部分都是快捷方式。它并不是我们安装在电脑上的应用的可执行文件（不是.exe文件)，那么为什么点击它可以打开应用程序呢？是因为快捷方式连接了文件，这就像是引用和对象的关系了。</p>
-<p>我们不直接对文件进行操作，而是通过快捷方式来进行操作。快捷方式不能独立存在，同样，引用也不能独立存在（你可以只创建一个引用，但是当你要使用它的时候必须得给它赋值，否则它将毫无用处）。</p>
-<p>一个文件可以有多个快捷方式，同样一个对象也可以有多个引用。而一个引用只能同时对应一个对象。</p>
+<h3 id="（1）资源利用率更好"><a href="#（1）资源利用率更好" class="headerlink" title="（1）资源利用率更好"></a>（1）资源利用率更好</h3><p>想象一下，一个应用程序需要从本地文件系统中读取和处理文件的情景。比方说，从磁盘读取一个文件需要5秒，处理一个文件需要2秒。处理两个文件则需要：</p>
+<pre class=" language-java"><code class="language-java"><span class="token number">1</span><span class="token operator">|</span> <span class="token number">5</span>秒读取文件A
+<span class="token number">2</span><span class="token operator">|</span> <span class="token number">2</span>秒处理文件A
+<span class="token number">3</span><span class="token operator">|</span> <span class="token number">5</span>秒读取文件B
+<span class="token number">4</span><span class="token operator">|</span> <span class="token number">2</span>秒处理文件B
+<span class="token number">5</span><span class="token operator">|</span> <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+<span class="token number">6</span><span class="token operator">|</span> 总共需要<span class="token number">14</span>秒</code></pre>
+<p>从磁盘中读取文件的时候，大部分的CPU时间用于等待磁盘去读取数据。在这段时间里，CPU非常的空闲。它可以做一些别的事情。通过改变操作的顺序，就能够更好的使用CPU资源。看下面的顺序：</p>
+<pre class=" language-java"><code class="language-java"><span class="token number">1</span><span class="token operator">|</span> <span class="token number">5</span>秒读取文件A
+<span class="token number">2</span><span class="token operator">|</span> <span class="token number">5</span>秒读取文件B <span class="token operator">+</span> <span class="token number">2</span>秒处理文件A
+<span class="token number">3</span><span class="token operator">|</span> <span class="token number">2</span>秒处理文件B
+<span class="token number">4</span><span class="token operator">|</span> <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+<span class="token number">5</span><span class="token operator">|</span> 总共需要<span class="token number">12</span>秒</code></pre>
+<p>CPU等待第一个文件被读取完。然后开始读取第二个文件。当第二文件在被读取的时候，CPU会去处理第一个文件。记住，在等待磁盘读取文件的时候，CPU大部分时间是空闲的。</p>
+<p><strong>总的说来，CPU能够在等待IO的时候做一些其他的事情。</strong>这个不一定就是磁盘IO。它也可以是网络的IO，或者用户输入。通常情况下，网络和磁盘的IO比CPU和内存的IO慢的多。</p>
+<h3 id="（2）程序设计更简单"><a href="#（2）程序设计更简单" class="headerlink" title="（2）程序设计更简单"></a>（2）程序设计更简单</h3><p>在单线程应用程序中，如果你想编写程序手动处理上面所提到的读取和处理的顺序，你必须记录每个文件读取和处理的状态。相反，你可以启动两个线程，每个线程处理一个文件的读取和操作。线程会在等待磁盘读取文件的过程中被阻塞。在等待的时候，其他的线程能够使用CPU去处理已经读取完的文件。其结果就是，磁盘总是在繁忙地读取不同的文件到内存中。这会带来磁盘和CPU利用率的提升。而且每个线程只需要记录一个文件，因此这种方式也很容易编程实现。</p>
+<h3 id="（3）程序响应更快"><a href="#（3）程序响应更快" class="headerlink" title="（3）程序响应更快"></a>（3）程序响应更快</h3><p>有时我们会编写一些较为复杂的代码（这里的复杂不是说复杂的算法，而是复杂的业务逻辑），例如，一笔订单的创建，它包括插入订单数据、生成订单赶快找、发送邮件通知卖家和记录货品销售数量等。用户从单击“订购”按钮开始，就要等待这些操作全部完成才能看到订购成功的结果。但是这么多业务操作，如何能够让其更快地完成呢？</p>
+<p>在上面的场景中，可以使用多线程技术，即将数据一致性不强的操作派发给其他线程处理（也可以使用消息队列），如生成订单快照、发送邮件等。<strong>这样做的好处是响应用户请求的线程能够尽可能快地处理完成，缩短了响应时间，提升了用户体验。</strong></p>
+<h4 id="多线程的还有一些优势也显而易见："><a href="#多线程的还有一些优势也显而易见：" class="headerlink" title="多线程的还有一些优势也显而易见："></a>多线程的还有一些优势也显而易见：</h4><blockquote>
+<ul>
+<li>①  进程之前不能共享内存，而线程之间共享内存(堆内存)则很简单。</li>
+<li>② 系统创建进程时需要为该进程重新分配系统资源,创建线程则代价小很多,因此实现多任务并发时,多线程效率更高.</li>
+<li>③ Java语言本身内置多线程功能的支持,而不是单纯第作为底层系统的调度方式,从而简化了多线程编程.</li>
+</ul>
+</blockquote>
+<h2 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h2><p>即使是单核处理器也支持多线程执行代码，CPU通过给每个线程分配CPU时间片来实现这个机制。时间片是CPU分配给各个线程的时间，因为时间片非常短，所以CPU通过不停地切换线程执行，让我们感觉多个线程是同时执行的，时间片一般是几十毫秒（ms）。</p>
+<p>CPU通过时间片分配算法来循环执行任务，当前任务执行一个时间片后会切换到下一个任务。但是，在切换前会保存上一个任务的状态，以便下次切换回这个任务的时候，可以再加载这个任务的状态。<strong>所以任务从保存到再加载的过程就是一次上下文切换。</strong></p>
 <blockquote>
-<p>在java里，“=”不能被看成是一个赋值语句，它不是在把一个对象赋给另外一个对象，它的执行过程实质上是将右边对象的地址传给了左边的引用，使得左边的引用指向了右边的对象。java表面上看起来没有指针，但它的引用其实质就是一个指针。在java里，“=”语句不应该被翻译成赋值语句，因为它所执行的确实不是一个简单的赋值过程，而是一个传地址的过程，被译成赋值语句会造成很多误解，译得不准确。</p>
+<p>这就像我们同时读两本书，当我们在读一本英文的技术书时，发现某个单词不认识，于是打开中英文字典，但是在放下英文技术书之前，大脑必须先记住这本书独到了多少页的多少行，等查完单词之后，能够继续读这本书。这样的切换是会影响读书效率的，同样上下文切换也会影响多线程的执行速度。</p>
 </blockquote>
-<h2 id="特例：基本数据类型"><a href="#特例：基本数据类型" class="headerlink" title="特例：基本数据类型"></a>特例：基本数据类型</h2><p>为什么要有特例呢？是因为new将对象存储在“堆”里，一是用new创建一个对象——特别是小的，简单的变量<strong>（Java中数据定长，为了可移植性）</strong>往往不是很明智而且有效的方法，二是因为“堆”空间本来就有限，如果频繁的操作会导致不可想象的错误，并且别忘了<a href="http://www.jianshu.com/p/e0ba0863f2f1" target="_blank" rel="noopener">第一篇文章</a>里面提到的，Java的设计初衷是什么。</p>
-<p>所以针对这些类型，Java采取了与C和C++相同的方法，也就是说，不用new来创建变量，二是创建一个并非是引用的“自动”变量。这个变量直接存储“值”并置于常量区中，因此更加高效。</p>
-<p>先来看一个例子：</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span></code></pre>
-<p>我们需要知道的是，在常量区中，相同的常量只会存在一个。当执行第一句代码时。先查找常量区中有没有2，没有，则开辟一个空间存放2，然后在栈中存入一个变量i，让i指向2；</p>
-<p>执行第二句的时候，查找发现2已经存在了，所以就不开辟新空间了。直接在栈中保存一个新变量j，让j指向2；</p>
-<p>当然，java堆每一个基本数据类型都提供了对应的包装类。我们依旧可以用new操作符来创建我们想要的变量。</p>
-<pre class=" language-java"><code class="language-java">Integer i <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-Integer j <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>但是，用new操作符创建的对象是不同的，也就是说，此时，i和j指向不同的内存地址。<strong>因为每次调用new操作符，都会在堆开辟新的空间。</strong></p>
-<h2 id="深入了解Integer"><a href="#深入了解Integer" class="headerlink" title="深入了解Integer"></a>深入了解Integer</h2><p>来看一个例子：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/7896890-39d324cd6881b659.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一个例子"></p>
+<h2 id="创建线程的两种方式"><a href="#创建线程的两种方式" class="headerlink" title="创建线程的两种方式"></a>创建线程的两种方式</h2><h3 id="继承Thead类："><a href="#继承Thead类：" class="headerlink" title="继承Thead类："></a>继承Thead类：</h3><p><img src="http://upload-images.jianshu.io/upload_images/7896890-a8667d8f1d94e5b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="继承Thread类"></p>
+<p>运行结果发现打游戏和播放音乐交替出现，说明已经成功了。</p>
+<h3 id="实现Runnable接口："><a href="#实现Runnable接口：" class="headerlink" title="实现Runnable接口："></a>实现Runnable接口：</h3><p><img src="http://upload-images.jianshu.io/upload_images/7896890-66383da0574a934f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="实现Runnable接口"><br>也能完成效果。</p>
+<p>以上就是传统的两种创建线程的方式，事实上还有第三种，我们后边再讲。</p>
+<h2 id="多线程一定快吗？"><a href="#多线程一定快吗？" class="headerlink" title="多线程一定快吗？"></a>多线程一定快吗？</h2><p>先来一段代码，通过并行和串行来分别执行累加操作，分析：下面的代码并发执行一定比串行执行快吗？</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7896890-5e780c2fde5128e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="多线程一定快吗？"></p>
+<p>以下是我测试的结果，可以看出，当不超过1百万的时候，并行是明显比串行要慢的，为什么并发执行的速度会比串行慢呢？这是因为线程有创建和上下文切换的开销。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7896890-833820aebe7e9445.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="测试结果"></p>
+<h2 id="继承Thread类还是实现Runnable接口？"><a href="#继承Thread类还是实现Runnable接口？" class="headerlink" title="继承Thread类还是实现Runnable接口？"></a>继承Thread类还是实现Runnable接口？</h2><h3 id="吃苹果比赛"><a href="#吃苹果比赛" class="headerlink" title="吃苹果比赛"></a>吃苹果比赛</h3><p>想象一个这样的例子：给出一共50个苹果，让三个同学一起来吃，并且给苹果编上号码，让他们吃的时候顺便要说出苹果的编号：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7896890-1bec6d919415871c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="吃苹果比赛"></p>
+<p>运行结果可以看到，使用继承方式实现，每一个线程都吃了50个苹果。<strong>这样的结果显而易见：是因为显式地创建了三个不同的Person对象，而每个对象在堆空间中有独立的区域来保存定义好的50个苹果。</strong></p>
+<p>而使用实现方式则满足要求，<strong>这是因为三个线程共享了同一个Apple对象，而对象中的num数量是一定的。</strong></p>
 <blockquote>
-<p>第一个返回true很好理解，就像上面讲的，a和b指向相同的地址。<br>第二个返回false是为什么呢？下面细说<br>第三个返回false是因为用了new关键字来开辟了新的空间，i和j两个对象分别指向堆区中的两块内存空间。</p>
+<p>所以可以简单总结出继承方式和实现方式的区别：<br><img src="http://upload-images.jianshu.io/upload_images/7896890-f0793fe663aa2754.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="两种方式的区别"></p>
 </blockquote>
-<p>我们可以跟踪一下Integer的源码，看看到底怎么回事。在IDEA中，你只需要按住Ctrl然后点击Integer，就会自动进入jar包中对应的类文件。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/7896890-315606fedfecd838.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Integer类"></p>
-<p>跟踪到文件的700多行，你会看到这么一段，感兴趣可以仔细读一下，不用去读也没有关系，因为你只需要知道这是Java的一个缓存机制。Integer类的内部类缓存了-128到127的所有数字。（事实上，Integer类的缓存上限是可以通过修改系统来更改的。了解就行了，不必去深究。）</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/7896890-15d2ec8f9bc63240.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="缓存机制"></p>
-<h3 id="为什么引入缓存机制"><a href="#为什么引入缓存机制" class="headerlink" title="为什么引入缓存机制"></a>为什么引入缓存机制</h3><p>这回到了为什么引入基础类型这个特例的问题上。我们看看Java语言规范是怎么规定的：</p>
+<p>对于这两种方式哪种好并没有一个确定的答案，它们都能满足要求。就我个人意见，我更倾向于实现Runnable接口这种方法。因为线程池可以有效的管理实现了Runnable接口的线程，如果线程池满了，新的线程就会排队等候执行，直到线程池空闲出来为止。而如果线程是通过实现Thread子类实现的，这将会复杂一些。</p>
+<p>有时我们要同时融合实现Runnable接口和Thread子类两种方式。<strong>例如，实现了Thread子类的实例可以执行多个实现了Runnable接口的线程。一个典型的应用就是线程池。</strong></p>
+<h3 id="常见的错误：调用run-方法而非start-方法"><a href="#常见的错误：调用run-方法而非start-方法" class="headerlink" title="常见的错误：调用run()方法而非start()方法"></a>常见的错误：调用run()方法而非start()方法</h3><p>创建并运行一个线程所犯的常见错误是调用线程的run()方法而非start()方法，如下所示：</p>
+<pre class=" language-java"><code class="language-java"><span class="token number">1</span><span class="token operator">|</span> Thread newThread <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token function">MyRunnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token number">2</span><span class="token operator">|</span> newThread<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//should be start();</span></code></pre>
+<p>起初你并不会感觉到有什么不妥，因为run()方法的确如你所愿的被调用了。但是，事实上,<strong>run()方法并非是由刚创建的新线程所执行的，而是被创建新线程的当前线程所执行了。</strong>也就是被执行上面两行代码的线程所执行的。想要让创建的新线程执行run()方法，必须调用新线程的start方法。</p>
+<h2 id="吃苹果比赛的问题：线程不安全问题"><a href="#吃苹果比赛的问题：线程不安全问题" class="headerlink" title="吃苹果比赛的问题：线程不安全问题"></a>吃苹果比赛的问题：线程不安全问题</h2><p>尽管，Java并不保证线程的顺序执行，具有随机性，但吃苹果比赛的案例运行多次也并没有发现什么太大的问题。这并不是因为程序没有问题，而只是问题出现的不够明显，为了让问题更加明显，我们使用Thread.sleep()方法（经常用来模拟网络延迟）来让线程休息10ms，让其他线程去抢资源。<strong>（注意：在程序中并不是使用Thread.sleep(10)之后,程序才出现问题,而是使用之后,问题更明显.）</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7896890-36d8665713e7af89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="吃苹果比赛中的问题"></p>
+<p><strong>为什么会出现这样的错误呢？</strong></p>
+<p>先来分析第一种错误：为什么会吃重复的苹果呢？就拿B和C都吃了编号为47的苹果为例吧：</p>
 <blockquote>
-<p>If the value p being boxed is an integer literal of type int between -128 and 127 inclusive (<a href="https://link.zhihu.com/?target=https%3A//docs.oracle.com/javase/specs/jls/se8/html/jls-3.html%23jls-3.10.1" target="_blank" rel="noopener">§3.10.1**</a>), or the boolean literal true or false (<a href="https://link.zhihu.com/?target=https%3A//docs.oracle.com/javase/specs/jls/se8/html/jls-3.html%23jls-3.10.3" target="_blank" rel="noopener">§3.10.3**</a>), or a character literal between ‘\u0000’ and’\u007f’ inclusive (<a href="https://link.zhihu.com/?target=https%3A//docs.oracle.com/javase/specs/jls/se8/html/jls-3.html%23jls-3.10.4" target="_blank" rel="noopener">§3.10.4**</a>), then let a and b be the results of any two boxing conversions of p. It is always the case that a == b.</p>
-<p>Ideally, boxing a primitive value would always yield an identical reference. In practice, this may not be feasible using existing implementation techniques. The rule above is a pragmatic compromise, requiring that certain common values always be boxed into indistinguishable objects. The implementation may cache these, lazily or eagerly. <strong>For other values, the rule disallows any assumptions about the identity of the boxed values on the programmer’s part.</strong> This allows (but does not require) sharing of some or all of these references. Notice that integer literals of type long are allowed, but not required, to be shared.</p>
-<p>This ensures that in most common cases, the behavior will be the desired one, without imposing an undue performance penalty, especially on small devices. Less memory-limited implementations might, for example, cache all char and short values, as well as int and long values in the range of -32K to +32K.</p>
+<ul>
+<li>① A线程拿到了编号为48的苹果，打印输出然后让num减1，睡眠10ms，此时num为47。</li>
+<li>② 这时B和C同时都拿到了编号为47的苹果，打印输出，在其中一个线程作出了减一操作的时候，A线程从睡眠中醒过来，拿到了编号为46的苹果，然后输出。在这期间并没有任何操作不允许B和C线程不能拿到同一个编号的苹果，之前没有明显的错误仅仅可能只是因为运行速度太快了。</li>
+</ul>
 </blockquote>
-<p>事实上，不光是Integer这么特别，还包括boolean还有char类型。并且文章的最后提到了<strong>为了实现更少内存的可能。</strong></p>
-<h2 id="另一个特例：String"><a href="#另一个特例：String" class="headerlink" title="另一个特例：String"></a>另一个特例：String</h2><p>String是一个特殊的类，因为它被final修饰符所修饰，是一个不可改变的类。当然，看过java源码后你会发现，基本类型的各个包装类也被final所修饰。这里以String为例。</p>
-<p>我们来看这样一个例子：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4047674-1cb11559760bbad3?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="例子"></p>
+<p>再来分析第二种错误：照理来说只应该存在1-50编号的苹果，可是0和-1是怎么出现的呢？</p>
 <blockquote>
-<p> 执行第一句 ： 常量区开辟空间存放“abc”，s1存放在栈中指向“abc”<br>执行第二句，s2 也指向 “abc”，<br>执行第三句，因为“abc”已经存在，所以直接指向它。<br>所以三个变量指向同一块内存地址，结果都为true。<br>当s1内容改变的时候。这个时候，常量区开辟新的空间存放“bcd”，s1指向“bcd”，而s2和s3指向“abc”所以只有s2和s3相等。</p>
+<ul>
+<li>① 当num=1的时候，A，B，C三个线程同时进入了try语句进行睡眠。</li>
+<li>② C线程先醒过来，输出了编号为1的苹果，然后让num减一，当C线程醒过来的时候发现num为0了。</li>
+<li>③ A线程醒过来一看，0都没有了，只有-1了。</li>
+</ul>
 </blockquote>
-<p>这种情况下，s1,s2,s3都是字符串常量，类似于基本数据类型。（如果执行的是s1 = “abc”,那么结果会都是true）</p>
-<p>我们再看一个例子：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4047674-530e77c58db5a82c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="例子2"></p>
+<p><strong>归根结底是因为没有任何操作来限制线程来获取相同的资源并对他们进行操作，这就造成了线程安全性问题。</strong></p>
 <blockquote>
-<p>执行第一行代码： 在堆里分配空间存放String对象，在常量区开辟空间存放常量“abc”，String对象指向常量，s1指向该对象。<br>执行第二行代码：s2指向上一步new出来的string对象。<br>执行第三行代码： 在堆里分配新的空间存放String对象，新对象指向常量“abc”，s3指向该对象。<br>到这里，很明显，s1和s2指向的是同一个对象</p>
-<p>接着就很诡异了，我们让s1 依旧= “abc”,但是结果s1和s2指向的地址不同了。</p>
+<p>如果我们把打印和减一的操作分成两个步骤，会更加明显：<br><img src="http://upload-images.jianshu.io/upload_images/7896890-70ac6aba006c7adf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="拆成两个步骤"><br>ABC三个线程同时打印了50的苹果，然后同时做出减一操作。</p>
 </blockquote>
-<p>怎么回事呢？这就是String类的特殊之处了，new出来的String不再是上面的字符串常量，而是字符串对象。</p>
-<p>由于String类是不可改变的，所以String对象也是不可改变的，我们每次给String赋值都相当于执行了一次new String()，然后让变量指向这个新对象，而不是在原来的对象上修改。</p>
-<p>当然，java还提供了StringBuffer类，这个是可以在原对象上做修改的。如果你需要修改原对象，那么请使用StringBuffer类。</p>
-<h2 id="引发的问题：值传递还是引用传递？"><a href="#引发的问题：值传递还是引用传递？" class="headerlink" title="引发的问题：值传递还是引用传递？"></a>引发的问题：值传递还是引用传递？</h2><p>java是值传递还是引用传递的呢？毫无疑问，java是值传递的。那么什么又叫值传递和引用传递呢？</p>
-<p>我们先来看一个例子：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4047674-cabe50a835eca720?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="例子"></p>
-<p>这是一个很经典的例子，我们希望调用了swap函数以后，a和b的值可以互换，但是事实上并没有。为什么会这样呢？</p>
-<p>这就是因为java是值传递的。<strong>也就是说，我们在调用一个需要传递参数的函数时，传递给函数的参数并不是我们传进去的参数本身，而是它的副本。</strong>说起来比较拗口，但是其实原理很简单。我们可以这样理解：</p>
-<p>一个有形参的函数，当别的函数调用它的时候，必须要传递数据。比如swap函数，别的函数要调用swap就必须传两个整数过来。</p>
-<p>这个时候，有一个函数按耐不住寂寞，扔了两个整数过来，但是，swap函数有洁癖，它不喜欢用别人的东西，于是它把传过来的参数复制了一份，然后对复制的数据修修改改，而别人传过来的参数动根本没动。</p>
-<p>所以，当swap函数执行完毕之后，交换了的数据只是swap自己复制的那一份，而原来的数据没变。</p>
+<p><strong>像这样的原子操作，是不允许分步骤进行的，必须保证同步进行，不然可能会引发不可设想的后果。</strong></p>
+<p>要解决上述多线程并发访问一个资源的安全性问题，就需要<strong>引入线程同步</strong>的概念。</p>
+<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><p>多个执行线程共享一个资源的情景，是最常见的并发编程情景之一。为了解决访问共享资源错误或数据不一致的问题，人们引入了临界区的概念：<strong>用以访问共享资源的代码块，这个代码块在同一时间内只允许一个线程执行。</strong></p>
+<p>为了帮助编程人员实现这个临界区，Java（以及大多数编程语言）提供了同步机制，当一个线程试图访问一个临界区时，它将使用一种同步机制来查看是不是已经有其他线程进入临界区。如果没有其他线程进入临界区，他就可以进入临界区。如果已经有线程进入了临界区，它就被同步机制挂起，直到进入的线程离开这个临界区。如果在等待进入临界区的线程不止一个，JVM会选择其中的一个，其余的将继续等待。</p>
+<h3 id="synchronized关键字"><a href="#synchronized关键字" class="headerlink" title="synchronized关键字"></a>synchronized关键字</h3><p>如果一个对象已用synchronized关键字声明，那么只有一个执行线程被允许访问它。使用<strong>synchronized</strong>的好处显而易见：保证了多线程并发访问时的同步操作，避免线程的安全性问题。但是坏处是：<strong>使用synchronized的方法/代码块的性能比不用要低一些。所以好的做法是：尽量减小synchronized的作用域。</strong></p>
 <blockquote>
-<p>也可以理解为别的函数把数据传递给了swap函数的形参，最后改变的只是形参而实参没变，所以不会起到任何效果。</p>
+<p>我们还是先来解决吃苹果的问题，考虑一下synchronized关键字应该加在哪里呢？<br><img src="http://upload-images.jianshu.io/upload_images/7896890-35c4ba08104cd881.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="synchronized应放在哪里？"><br>发现如果还再把synchronized关键字加在if里面的话，0和-1又会出来了。这其实是因为当ABC同是进入到if语句中，等待临界区释放的时，拿到1编号的线程已经又把num减一操作了，而此时最后一个等待临界区的进程拿到的就会是-1了。</p>
 </blockquote>
-<p>我们再来看一个复杂一点的例子(Person类添加了get，set方法)：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4047674-12da05026aed184b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="例子"></p>
+<h3 id="同步锁（Lock）"><a href="#同步锁（Lock）" class="headerlink" title="同步锁（Lock）"></a>同步锁（Lock）</h3><p>Lock机制提供了比synchronized代码块和synchronized方法更广泛的锁定操作,同步代码块/同步方法具有的功能Lock都有,除此之外更强大,更体现面向对象。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7896890-09f6539ee1859746.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="摘自JDK1.6中文版说明的代码"></p>
 <blockquote>
-<p>可以看到，我们把p1传进去，它并没有被替换成新的对象。因为change函数操作的不是p1这个引用本身，而是这个引用的一个副本。</p>
-<p>你依然可以理解为，主函数将p1复制了一份然后变成了chagne函数的形参，最终指向新Person对象的是那个副本引用，而实参p1并没有改变。</p>
-</blockquote>
-<p>再来看一个例子：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4047674-27ea492babe95e92?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="例子2"></p>
-<blockquote>
-<p>这次为什么就改变了呢？分析一下。<br>首先，new了一个Person对象，暂且叫他小明吧。然后p1指向小明。<br>小明10岁了，随着时间的推移，小明的年龄要变了，调用了一下changgeAge方法，把小明的引用传了进去。<br>传递的过程中，changgeAge也有洁癖，于是复制了一份小明的引用，这个副本也指向小明。<br>然后changgeAge通过自己的副本引用，改变了小明的年龄。<br>由于是小明这个对象被改变了，所以所有小明的引用调用方法得到的年龄都会改变<br>所以就变了。</p>
-</blockquote>
-<p>最后简单的总结一下。</p>
-<p>java的传值过程，其实传的是副本，不管是变量还是引用。所以，不要期待把变量传递给一个函数来改变变量本身。</p>
-<h2 id="“-”是怎么连接字符串的？"><a href="#“-”是怎么连接字符串的？" class="headerlink" title="“+”是怎么连接字符串的？"></a>“+”是怎么连接字符串的？</h2><blockquote>
-<p>先抛个砖：对Java程序员来说，使用运算符“+”来连接字符串是非常普遍的，当“+”两边的操作数是String类型时（如果只有一个操作数是String类型，则系统也会将另外一个操作数转换成String类型），就会执行字符串连接的运算。但是，运算符“+”是怎样连接String对象的呢？编译器又是如何实现的呢?</p>
-<p>之后我再来补这个内容，先发表啦。</p>
-</blockquote>
-<h2 id="浮点类型"><a href="#浮点类型" class="headerlink" title="浮点类型"></a>浮点类型</h2><blockquote>
-<p>浮点类型用于表示有小数部分的数值。在Java中有两种浮点类型，一个是4字节的float，一个是8字节的double。我们平时用来编写程序用来表示增长率、物品重量等方面也非常有用。不过，在使用浮点类型时，也需要留意一些问题。</p>
-</blockquote>
-<h3 id="浮点类型只是近似的存储"><a href="#浮点类型只是近似的存储" class="headerlink" title="浮点类型只是近似的存储"></a>浮点类型只是近似的存储</h3><p>请问一个问题：0.1+0.2等于多少？请不要慌着报答案，我没有开玩笑的意思，看一下Java给出的答案你就知道了：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/7896890-3d58b0edc9c4c1c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Java的答案"><br>结果似乎有些令人惊讶，这么简单的算术竟然也会算错。</p>
-<p>其实，这并不是计算错误，这只是浮点数类型存储的问题。计算机使用二进制来存储数据，而二进制无法准确的表示分数 1/10 ，就像使用十进制时，无法准确地表示 1/3 一样。</p>
-<h3 id="数量级差很大的浮点运算"><a href="#数量级差很大的浮点运算" class="headerlink" title="数量级差很大的浮点运算"></a>数量级差很大的浮点运算</h3><p>当浮点数值的数量级相差很大的时候，运算又会有什么问题呢？</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/7896890-8234cf550c99320e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="数量级很大的浮点运算"></p>
-<p>又发生了预期外的结果。从输出结果来看，f3竟然和f4是相等的，也就是意味着对f3+1并没有改变f3的值。</p>
-<p>这同样是因为浮点数的存储造成的，<strong>二进制所能表示的两个相邻的浮点值之间存在一定的空隙。</strong>浮点值越大，这个间隙也会越大。当浮点值大道一定程度的时，如果对浮点值的改变很小（例如上面的30000000+1），就不足以使浮点值发生改变。就好比蒸发掉大海中的一滴水，大海还是大海，几乎不存在变化。</p>
-<blockquote>
-<p><strong>如果想要准确的存储，就去使用BigDecimal吧，有必要了解的可以去自行百度，这里就不做过多介绍了，已经是Java封装好的类库了</strong></p>
-</blockquote>
-<h3 id="抛出一个有趣的问题"><a href="#抛出一个有趣的问题" class="headerlink" title="抛出一个有趣的问题"></a>抛出一个有趣的问题</h3><blockquote>
-<p>我们知道，在Java中，long类型占用了8个字节，float类型占用了4个字节。</p>
-</blockquote>
-<p>照理来说，long类型的容量应该比float大许多，然而事实正好相反，float反而拥有比8字节long类型更大的取值范围。这同样是因为浮点数的存储格式造成的。有兴趣的可以去自行百度了解。</p>
-<blockquote>
-<p>参考资料：<br><a href="http://www.jianshu.com/p/39753aad9a38" target="_blank" rel="noopener">http://www.jianshu.com/p/39753aad9a38</a> ，原文作者:CleverFan<br>《Java深入解析》——梁勇著<br>《Effective Java》——第二版<br>《Java核心技术 卷I》——第九版<br>《Java编程思想》——第四版</p>
+<p>参考资料：</p>
+<ul>
+<li><a href="http://study.163.com/course/courseMain.htm?courseId=1003108028" target="_blank" rel="noopener">http://study.163.com/course/courseMain.htm?courseId=1003108028</a> 《Java零基础入门教程》</li>
+<li>《Java并发编程的艺术》</li>
+<li>《Java 7并发编程实战手册》</li>
+</ul>
 </blockquote>
 
             </div>
@@ -714,7 +702,7 @@ Integer j <span class="token operator">=</span> <span class="token keyword">new<
             <!--            <br/>-->
             <div class="foot-copyright-note">
                 <i class="fa fa-lightbulb-o"></i> 本文由
-                <a xmlns:cc="http://creativecommons.org/ns#" href="/2017/09/19/java-xue-xi-bi-ji-2-shu-ju-lei-xing/"
+                <a xmlns:cc="http://creativecommons.org/ns#" href="/2017/10/31/java-xue-xi-bi-ji-4-bing-fa-ji-chu/"
                    property="cc:attributionName"
                    rel="cc:attributionURL">
                     wmyskxz
@@ -759,7 +747,7 @@ Integer j <span class="token operator">=</span> <span class="token keyword">new<
         repo: 'wmyskxz.github.io',
         owner: 'wmyskxz',
         admin: "wmyskxz",
-        id: '2017-09-19T20-46-00',
+        id: '2017-10-31T08-19-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -784,6 +772,56 @@ Integer j <span class="token operator">=</span> <span class="token keyword">new<
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2017/11/06/fan-yi-xian-cheng-he-jin-cheng-ji-chu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="【翻译】线程和进程基础">
+                        
+                        <span class="card-title">【翻译】线程和进程基础</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            前言
+所有的内容均来自：http://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html这是一篇很棒的介绍进程和线程的文章，本文属于自己感兴趣翻译
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/计算机基础/" class="post-category" target="_blank">
+                                    计算机基础
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/翻译/" target="_blank">
+                        <span class="chip bg-color">翻译</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2017/10/25/java-xue-xi-bi-ji-3-string-lei-xiang-jie/">
                     <div class="card-image">
                         
@@ -803,62 +841,8 @@ Integer j <span class="token operator">=</span> <span class="token keyword">new<
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-10-25
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Java基础/" class="post-category" target="_blank">
-                                    Java基础
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/原创/" target="_blank">
-                        <span class="chip bg-color">原创</span>
-                    </a>
-                    
-                    <a href="/tags/Java/" target="_blank">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2017/09/18/java-xue-xi-bi-ji-1-da-jian-hao-suo-xu-yao-de-huan-jing/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Java学习笔记(1)——搭建好所需要的环境">
-                        
-                        <span class="card-title">Java学习笔记(1)——搭建好所需要的环境</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-前言：后来仔细思考了一下，从零开始学习Java的系列标题略长（实际改过来的也不短），并且不能正确反映写文的目的，所以决定从这一篇开始改为Java学习笔记。之前的一篇文章在一觉醒来以后也觉得有些不太好还有一些需要添加的地方，所以后来这一个系
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-18
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-10-25
                             </span>
                         <span class="publish-author">
                             
