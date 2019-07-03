@@ -274,13 +274,13 @@
             
             <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2017/09/18/java-xue-xi-bi-ji-1-da-jian-hao-suo-xu-yao-de-huan-jing/">
+                    <a href="/2018/04/14/spring-mvc-ru-men-jiu-zhe-yi-pian/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Java学习笔记(1)——搭建好所需要的环境">
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Spring MVC【入门】就这一篇！">
                             
-                            <span class="card-title">Java学习笔记(1)——搭建好所需要的环境</span>
+                            <span class="card-title">Spring MVC【入门】就这一篇！</span>
                         </div>
                     </a>
 
@@ -288,19 +288,23 @@
                         <div class="summary block-with-text">
                             
                                 
-前言：后来仔细思考了一下，从零开始学习Java的系列标题略长（实际改过来的也不短），并且不能正确反映写文的目的，所以决定从这一篇开始改为Java学习笔记。之前的一篇文章在一觉醒来以后也觉得有些不太好还有一些需要添加的地方，所以后来这一个系
+MVC 设计概述在早期 Java Web 的开发中，统一把显示层、控制层、数据层的操作全部交给 JSP 或者 JavaBean 来进行处理，我们称之为 Model1：
+
+
+出现的弊端：
+JSP 和 Java Bean 之间严重耦合，Jav
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-18
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-14
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fa fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Java基础/" class="post-category" target="_blank">
-                                    Java基础
+                                <a href="/categories/Java-Web/" class="post-category" target="_blank">
+                                    Java Web
                                 </a>
                                 
                                 
@@ -315,8 +319,12 @@
                             <span class="chip bg-color">原创</span>
                         </a>
                         
-                        <a href="/tags/Java/" target="_blank">
-                            <span class="chip bg-color">Java</span>
+                        <a href="/tags/Java-Web/" target="_blank">
+                            <span class="chip bg-color">Java Web</span>
+                        </a>
+                        
+                        <a href="/tags/Spring-MVC/" target="_blank">
+                            <span class="chip bg-color">Spring MVC</span>
                         </a>
                         
                     </div>
@@ -326,13 +334,13 @@
             
             <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2017/09/17/java-xue-xi-bi-ji-0-liao-jie-java/">
+                    <a href="/2018/04/12/spring-xue-xi-5-spring-he-shu-ju-ku-bian-cheng/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Java学习笔记(0)——了解Java">
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Spring学习(5)——Spring和数据库编程">
                             
-                            <span class="card-title">Java学习笔记(0)——了解Java</span>
+                            <span class="card-title">Spring学习(5)——Spring和数据库编程</span>
                         </div>
                     </a>
 
@@ -340,22 +348,26 @@
                         <div class="summary block-with-text">
                             
                                 
-前言：
-这里是一些关于写文的原因，目的和其他的有的没的，跟Java没有一点关系，如果是想要学习干货的童鞋可以直接跳过。
+传统 JDBC 回顾JDBC 我们一定不陌生，刚开始学习的时候，我们写过很多很多重复的模板代码：
+public Student getOne(int id) {
 
-系列文章最开始的名字是：从零开始学习Java，一来是觉得太长了（改了之后也不短），另外一个一觉醒来觉得好像这个名字不
+    String sql = "SELECT id,name FROM
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-17
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-12
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fa fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Java基础/" class="post-category" target="_blank">
-                                    Java基础
+                                <a href="/categories/Java-Web/" class="post-category" target="_blank">
+                                    Java Web
+                                </a>
+                                
+                                <a href="/categories/Java-Web/Spring/" class="post-category" target="_blank">
+                                    Spring
                                 </a>
                                 
                                 
@@ -370,8 +382,256 @@
                             <span class="chip bg-color">原创</span>
                         </a>
                         
-                        <a href="/tags/Java/" target="_blank">
-                            <span class="chip bg-color">Java</span>
+                        <a href="/tags/Java-Web/" target="_blank">
+                            <span class="chip bg-color">Java Web</span>
+                        </a>
+                        
+                        <a href="/tags/Spring/" target="_blank">
+                            <span class="chip bg-color">Spring</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/04/12/spring-xue-xi-4-mian-xiang-qie-mian-bian-cheng-aop-mo-kuai/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Spring学习(4)——面向切面编程(AOP模块)">
+                            
+                            <span class="card-title">Spring学习(4)——面向切面编程(AOP模块)</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+Spring AOP 简介如果说 IoC 是 Spring 的核心，那么面向切面编程就是 Spring 最为重要的功能之一了，在数据库事务中切面编程被广泛使用。 
+AOP 即 Aspect Oriented Program 面向切面编程首
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-12
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Java-Web/" class="post-category" target="_blank">
+                                    Java Web
+                                </a>
+                                
+                                <a href="/categories/Java-Web/Spring/" class="post-category" target="_blank">
+                                    Spring
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/原创/" target="_blank">
+                            <span class="chip bg-color">原创</span>
+                        </a>
+                        
+                        <a href="/tags/Java-Web/" target="_blank">
+                            <span class="chip bg-color">Java Web</span>
+                        </a>
+                        
+                        <a href="/tags/Spring/" target="_blank">
+                            <span class="chip bg-color">Spring</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/04/12/spring-xue-xi-3-zhuang-pei-spring-bean-xiang-jie/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Spring学习(3)——装配Spring Bean详解">
+                            
+                            <span class="card-title">Spring学习(3)——装配Spring Bean详解</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+装配 Bean 的概述前面已经介绍了 Spring IoC 的理念和设计，这一篇文章将介绍的是如何将自己开发的 Bean 装配到 Spring IoC 容器中。
+大部分场景下，我们都会使用 ApplicationContext 的具体实现
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-12
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Java-Web/" class="post-category" target="_blank">
+                                    Java Web
+                                </a>
+                                
+                                <a href="/categories/Java-Web/Spring/" class="post-category" target="_blank">
+                                    Spring
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/原创/" target="_blank">
+                            <span class="chip bg-color">原创</span>
+                        </a>
+                        
+                        <a href="/tags/Java-Web/" target="_blank">
+                            <span class="chip bg-color">Java Web</span>
+                        </a>
+                        
+                        <a href="/tags/Spring/" target="_blank">
+                            <span class="chip bg-color">Spring</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/04/11/spring-xue-xi-2-spring-ioc-xiang-jie/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Spring学习(2)——Spring IoC详解">
+                            
+                            <span class="card-title">Spring学习(2)——Spring IoC详解</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+Spring IoC 概述IoC：Inverse of Control（控制反转）
+读作 “反转控制”，更好理解，不是什么技术，而是一种设计思想，就是将原本在程序中手动创建对象的控制权，交由Spring框架来管理。
+正控：若要使用某个对象
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Java-Web/" class="post-category" target="_blank">
+                                    Java Web
+                                </a>
+                                
+                                <a href="/categories/Java-Web/Spring/" class="post-category" target="_blank">
+                                    Spring
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/原创/" target="_blank">
+                            <span class="chip bg-color">原创</span>
+                        </a>
+                        
+                        <a href="/tags/Java-Web/" target="_blank">
+                            <span class="chip bg-color">Java Web</span>
+                        </a>
+                        
+                        <a href="/tags/Spring/" target="_blank">
+                            <span class="chip bg-color">Spring</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/04/10/spring-xue-xi-1-kuai-su-ru-men/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Spring学习(1)——快速入门">
+                            
+                            <span class="card-title">Spring学习(1)——快速入门</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+认识 Spring 框架Spring 框架是 Java 应用最广的框架，它的成功来源于理念，而不是技术本身，它的理念包括 IoC (Inversion of Control，控制反转) 和 AOP(Aspect Oriented Prog
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Java-Web/" class="post-category" target="_blank">
+                                    Java Web
+                                </a>
+                                
+                                <a href="/categories/Java-Web/Spring/" class="post-category" target="_blank">
+                                    Spring
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/原创/" target="_blank">
+                            <span class="chip bg-color">原创</span>
+                        </a>
+                        
+                        <a href="/tags/Java-Web/" target="_blank">
+                            <span class="chip bg-color">Java Web</span>
+                        </a>
+                        
+                        <a href="/tags/Spring/" target="_blank">
+                            <span class="chip bg-color">Spring</span>
                         </a>
                         
                     </div>
@@ -392,7 +652,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">255.4k</span>
+                <span class="white-color">394.8k</span>
             
 
             

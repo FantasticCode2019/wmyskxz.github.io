@@ -1,0 +1,1354 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Spring-Data-JPA尝鲜：快速搭建CRUD+分页后台实例, 我没有三颗心脏的博客">
+    <meta name="description" content="
+
+前言：由于之前没有接触过Hibernate框架，但是最近看一些博客深深被它的“效率”所吸引，所以这就来跟大家一起就着一个简单的例子来尝尝Spring全家桶里自带的JPA的鲜
+
+Spring-DATA-JPA 简介JPA(Java Per">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Spring-Data-JPA尝鲜：快速搭建CRUD+分页后台实例 | 我没有三颗心脏的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">我没有三颗心脏的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">我没有三颗心脏的博客</div>
+        <div class="logo-desc">
+            
+            分享知识&amp;技术&amp;思考&amp;成长
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/wmyskxz/" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/wmyskxz/" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Spring-Data-JPA尝鲜：快速搭建CRUD+分页后台实例
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/原创/" target="_blank">
+                                <span class="chip bg-color">原创</span>
+                            </a>
+                        
+                            <a href="/tags/Java-Web/" target="_blank">
+                                <span class="chip bg-color">Java Web</span>
+                            </a>
+                        
+                            <a href="/tags/项目/" target="_blank">
+                                <span class="chip bg-color">项目</span>
+                            </a>
+                        
+                            <a href="/tags/Spring/" target="_blank">
+                                <span class="chip bg-color">Spring</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Java-Web/" class="post-category" target="_blank">
+                                Java Web
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-01-05
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.9k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        12 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><img src="https://upload-images.jianshu.io/upload_images/7896890-abaf65a182488d22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<blockquote>
+<p><strong>前言：</strong>由于之前没有接触过Hibernate框架，但是最近看一些博客深深被它的<em>“效率”</em>所吸引，所以这就来跟大家一起就着一个简单的例子来尝尝Spring全家桶里自带的JPA的鲜</p>
+</blockquote>
+<h1 id="Spring-DATA-JPA-简介"><a href="#Spring-DATA-JPA-简介" class="headerlink" title="Spring-DATA-JPA 简介"></a>Spring-DATA-JPA 简介</h1><p>JPA(Java Persistence API)是Sun官方提出的Java持久化规范。它为Java开发人员提供了一种对象/关联映射工具来管理Java应用中的关系数据。他的出现主要是为了简化现有的持久化开发工作和整合ORM技术，结束现在Hibernate，TopLink，JDO等ORM框架各自为营的局面。值得注意的是，JPA是在充分吸收了现有Hibernate，TopLink，JDO等ORM框架的基础上发展而来的，具有易于使用，伸缩性强等优点。从目前的开发社区的反应上看，JPA受到了极大的支持和赞扬，其中就包括了Spring与EJB3.0的开发团队。</p>
+<blockquote>
+<p><strong>注意：</strong>JPA是一套规范，不是一套产品，那么像Hibernate,TopLink,JDO他们是一套产品，如果说这些产品实现了这个JPA规范，那么我们就可以叫他们为JPA的实现产品。</p>
+</blockquote>
+<p>Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范的基础上封装的一套JPA应用框架，可使开发者用极简的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功能，且易于扩展！学习并使用 Spring Data JPA 可以极大提高开发效率！（<em>spring data jpa让我们解脱了DAO层的操作，基本上所有CRUD都可以依赖于它来实现</em>）</p>
+<blockquote>
+<p>摘自：<a href="http://www.ityouknow.com/springboot/2016/08/20/spring-boo-jpa.html" target="_blank" rel="noopener">springboot(五)：spring data jpa的使用——纯洁的微笑</a></p>
+</blockquote>
+<h2 id="Hibernate-和-MyBatis-简单对比"><a href="#Hibernate-和-MyBatis-简单对比" class="headerlink" title="Hibernate 和 MyBatis 简单对比"></a>Hibernate 和 MyBatis 简单对比</h2><p>由于JPA底层干活的仍然是Hibernate框架，而我们之前学习的只有MyBatis相关的东西，所以在尝鲜之前还是有必要简单了解一下两者的区别：</p>
+<p><strong>Hibernate的优势：</strong></p>
+<ul>
+<li>Hibernate的DAO层开发比MyBatis简单，Mybatis需要维护SQL和结果映射。</li>
+<li>Hibernate对对象的维护和缓存要比MyBatis好，对增删改查的对象的维护要方便。</li>
+<li>Hibernate数据库移植性很好，MyBatis的数据库移植性不好，不同的数据库需要写不同SQL。</li>
+<li>Hibernate有更好的二级缓存机制，可以使用第三方缓存。MyBatis本身提供的缓存机制不佳。</li>
+</ul>
+<p><strong>MyBatis的优势：</strong></p>
+<ul>
+<li>MyBatis可以进行更为细致的SQL优化，可以减少查询字段。</li>
+<li>MyBatis容易掌握，而Hibernate门槛较高。</li>
+</ul>
+<p><strong>简单总结：</strong></p>
+<ul>
+<li><strong>MyBatis：</strong>小巧、方便、高效、简单、直接、半自动化</li>
+<li><strong>Hibernate：</strong>强大、方便、高效、复杂、间接、全自动化</li>
+</ul>
+<blockquote>
+<p>引用自：<a href="https://blog.csdn.net/jiuqiyuliang/article/details/45378065" target="_blank" rel="noopener">【持久化框架】Mybatis与Hibernate的详细对比——高亮</a></p>
+</blockquote>
+<h1 id="CRUD-分页后台实例"><a href="#CRUD-分页后台实例" class="headerlink" title="CRUD + 分页后台实例"></a>CRUD + 分页后台实例</h1><p>下面我们来快速搭建一个使用Spring-DATA-JPA的CRUD+分页后台实例，并且我们会直接使用到RESTful API（不熟悉的同学<a href>戳这里</a>）</p>
+<h2 id="第一步：新建SpringBoot项目"><a href="#第一步：新建SpringBoot项目" class="headerlink" title="第一步：新建SpringBoot项目"></a>第一步：新建SpringBoot项目</h2><p>打开IDEA新建一个SpringBoot项目，不熟悉SpringBoot的同学请右转：<a href="https://www.jianshu.com/p/70963ab49f8c" target="_blank" rel="noopener">【传送门】</a>，然后在pom.xml中添加以下依赖：</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!-- mysql--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>mysql<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mysql-connector-java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>5.1.21<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+<span class="token comment" spellcheck="true">&lt;!-- jpa--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-data-jpa<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
+<p>然后把application.properties弄成这个样子：</p>
+<pre class=" language-properties"><code class="language-properties"><span class="token comment" spellcheck="true">#数据库</span>
+<span class="token attr-name">spring.datasource.url</span><span class="token punctuation">=</span><span class="token attr-value">jdbc:mysql://127.0.0.1:3306/testdb?useUnicode=true&amp;characterEncoding=utf-8</span>
+<span class="token attr-name">spring.datasource.username</span><span class="token punctuation">=</span><span class="token attr-value">root</span>
+<span class="token attr-name">spring.datasource.password</span><span class="token punctuation">=</span><span class="token attr-value">123456</span>
+<span class="token attr-name">spring.datasource.driver-class-name</span><span class="token punctuation">=</span><span class="token attr-value">com.mysql.jdbc.Driver</span>
+<span class="token attr-name">spring.jpa.properties.hibernate.hbm2ddl.auto</span><span class="token punctuation">=</span><span class="token attr-value">update</span>
+<span class="token comment" spellcheck="true">#显示SQL语句</span>
+<span class="token attr-name">spring.jpa.show-sql</span><span class="token punctuation">=</span><span class="token attr-value">true</span>
+<span class="token comment" spellcheck="true">#不加下面这句则默认创建MyISAM引擎的数据库</span>
+<span class="token attr-name">spring.jpa.database-platform</span><span class="token punctuation">=</span><span class="token attr-value">org.hibernate.dialect.MySQL5InnoDBDialect</span>
+<span class="token comment" spellcheck="true">#自己重写的配置类，默认使用utf8编码</span>
+<span class="token attr-name">spring.jpa.properties.hibernate.dialect</span><span class="token punctuation">=</span><span class="token attr-value">com.wmyskxz.demo.config.MySQLConfig</span></code></pre>
+<p><code>spring.jpa.properties.hibernate.hbm2ddl.auto</code>是hibernate的配置属性，其主要作用是：自动创建、更新、验证数据库表结构。该参数的几种配置如下：</p>
+<ul>
+<li><strong>create：</strong>每次加载hibernate时都会删除上一次的生成的表，然后根据你的model类再重新来生成新表，哪怕两次没有任何改变也要这样执行，这就是导致数据库表数据丢失的一个重要原因。</li>
+<li><strong>create-drop：</strong>每次加载hibernate时根据model类生成表，但是sessionFactory一关闭,表就自动删除。</li>
+<li><strong>update：</strong>最常用的属性，第一次加载hibernate时根据model类会自动建立起表的结构（前提是先建立好数据库），以后加载hibernate时根据model类自动更新表结构，即使表结构改变了但表中的行仍然存在不会删除以前的行。要注意的是当部署到服务器后，表结构是不会被马上建立起来的，是要等应用第一次运行起来后才会。</li>
+<li><strong>validate：</strong>每次加载hibernate时，验证创建数据库表结构，只会和数据库中的表进行比较，不会创建新表，但是会插入新值。</li>
+</ul>
+<p>然后新建一个【config】包，创建一个【MySQLConfig】类（上面的<code>spring.jpa.properties.hibernate.dialect</code>属性就要配置这里的类全路径）：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>wmyskxz<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>hibernate<span class="token punctuation">.</span>dialect<span class="token punctuation">.</span>MySQL5InnoDBDialect<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MySQLConfig</span> <span class="token keyword">extends</span> <span class="token class-name">MySQL5InnoDBDialect</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">getTableTypeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"ENGINE=InnoDB DEFAULT CHARSET=utf8"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="第二步：创建好需要的数据库"><a href="#第二步：创建好需要的数据库" class="headerlink" title="第二步：创建好需要的数据库"></a>第二步：创建好需要的数据库</h2><p>打开SQL服务，建表语句也很简单啦：</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">database</span> testdb<span class="token punctuation">;</span></code></pre>
+<h2 id="第三步：创建实体类"><a href="#第三步：创建实体类" class="headerlink" title="第三步：创建实体类"></a>第三步：创建实体类</h2><p>实体类映射的实际上是数据库表的结构，在适当的包目录下（例如【entity】）下创建好实体类：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>wmyskxz<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>entity<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>Column<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>Entity<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>GeneratedValue<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>Id<span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Entity</span> <span class="token comment" spellcheck="true">// 表明这是个实体类</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Id</span> <span class="token comment" spellcheck="true">// 表明这个属性是主键</span>
+    <span class="token annotation punctuation">@GeneratedValue</span> <span class="token comment" spellcheck="true">// 自增长</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> id<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>nullable <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span> unique <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">// 不允许为空，属性唯一</span>
+    <span class="token keyword">private</span> String username<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>nullable <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// 不允许为空</span>
+    <span class="token keyword">private</span> String password<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// getter and setter</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="第四步：DAO层"><a href="#第四步：DAO层" class="headerlink" title="第四步：DAO层"></a>第四步：DAO层</h2><p>新建一个【repository】包，然后新建一个【UserRepository】接口，并继承JpaRepository类：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>wmyskxz<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>repository<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>wmyskxz<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>User<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>data<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>repository<span class="token punctuation">.</span>JpaRepository<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserRepository</span> <span class="token keyword">extends</span> <span class="token class-name">JpaRepository</span><span class="token operator">&lt;</span>User<span class="token punctuation">,</span> Long<span class="token operator">></span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre>
+<p>继承JpaRepository需要传入两个参数，一个是实体类User一个是主键的类型Long，而凡是继承了JpaRepository类的就会自动实现很多内置的方法，包括增删改查，以及使用默认支持的Pageable对象来进行分页，默认的方法大致如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">JpaRepository</span><span class="token operator">&lt;</span>T<span class="token punctuation">,</span> ID<span class="token operator">></span> <span class="token keyword">extends</span> <span class="token class-name">PagingAndSortingRepository</span><span class="token operator">&lt;</span>T<span class="token punctuation">,</span> ID<span class="token operator">></span><span class="token punctuation">,</span> QueryByExampleExecutor<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">{</span>
+    List<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    List<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">findAll</span><span class="token punctuation">(</span>Sort var1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    List<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">findAllById</span><span class="token punctuation">(</span>Iterable<span class="token operator">&lt;</span>ID<span class="token operator">></span> var1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&lt;</span>S <span class="token keyword">extends</span> <span class="token class-name">T</span><span class="token operator">></span> List<span class="token operator">&lt;</span>S<span class="token operator">></span> <span class="token function">saveAll</span><span class="token punctuation">(</span>Iterable<span class="token operator">&lt;</span>S<span class="token operator">></span> var1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&lt;</span>S <span class="token keyword">extends</span> <span class="token class-name">T</span><span class="token operator">></span> S <span class="token function">saveAndFlush</span><span class="token punctuation">(</span>S var1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">deleteInBatch</span><span class="token punctuation">(</span>Iterable<span class="token operator">&lt;</span>T<span class="token operator">></span> var1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">deleteAllInBatch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    T <span class="token function">getOne</span><span class="token punctuation">(</span>ID var1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&lt;</span>S <span class="token keyword">extends</span> <span class="token class-name">T</span><span class="token operator">></span> List<span class="token operator">&lt;</span>S<span class="token operator">></span> <span class="token function">findAll</span><span class="token punctuation">(</span>Example<span class="token operator">&lt;</span>S<span class="token operator">></span> var1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&lt;</span>S <span class="token keyword">extends</span> <span class="token class-name">T</span><span class="token operator">></span> List<span class="token operator">&lt;</span>S<span class="token operator">></span> <span class="token function">findAll</span><span class="token punctuation">(</span>Example<span class="token operator">&lt;</span>S<span class="token operator">></span> var1<span class="token punctuation">,</span> Sort var2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="第五步：Controller层"><a href="#第五步：Controller层" class="headerlink" title="第五步：Controller层"></a>第五步：Controller层</h2><p>新建【controller】包，新建一个【UserController】类，编写简单的增删改查代码：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>wmyskxz<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>controoler<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>wmyskxz<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>User<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>wmyskxz<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>repository<span class="token punctuation">.</span>UserRepository<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Autowired<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>data<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>PageRequest<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>data<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>Sort<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Optional<span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@RestController</span> <span class="token comment" spellcheck="true">// 表明这是一个Controller并返回JSON格式</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> UserRepository userRepository<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/getOne"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Optional<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">getOneUserById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span> <span class="token keyword">long</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> userRepository<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/all"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Iterable<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">getAllUsers</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"page"</span><span class="token punctuation">,</span> defaultValue <span class="token operator">=</span> <span class="token string">"0"</span><span class="token punctuation">)</span> <span class="token keyword">int</span> page<span class="token punctuation">,</span>
+                                      <span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"size"</span><span class="token punctuation">,</span> defaultValue <span class="token operator">=</span> <span class="token string">"5"</span><span class="token punctuation">)</span> <span class="token keyword">int</span> size<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        page <span class="token operator">=</span> page <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> page<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 如果page为负数则修改为0，防止在首页点击上一页发生错误</span>
+        Sort sort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sort</span><span class="token punctuation">(</span>Sort<span class="token punctuation">.</span>Direction<span class="token punctuation">.</span>DESC<span class="token punctuation">,</span> <span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 按id倒叙排列</span>
+        <span class="token keyword">return</span> userRepository<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">PageRequest</span><span class="token punctuation">(</span>page<span class="token punctuation">,</span> size<span class="token punctuation">,</span> sort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/add"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">addUser</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span> String username<span class="token punctuation">,</span>
+                          <span class="token annotation punctuation">@RequestParam</span> String password<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        User user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        user<span class="token punctuation">.</span><span class="token function">setUsername</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        user<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        userRepository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 注意这里是save</span>
+        <span class="token keyword">return</span> <span class="token string">"Saved"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@DeleteMapping</span><span class="token punctuation">(</span><span class="token string">"/delete"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">deleteUserById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span> <span class="token keyword">long</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        userRepository<span class="token punctuation">.</span><span class="token function">deleteById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">"Deleted"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@PutMapping</span><span class="token punctuation">(</span><span class="token string">"/update"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">updateUser</span><span class="token punctuation">(</span>User user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">//        User user = new User();</span>
+<span class="token comment" spellcheck="true">//        user.setId(id);</span>
+<span class="token comment" spellcheck="true">//        user.setUsername(username);</span>
+<span class="token comment" spellcheck="true">//        user.setPassword(password);</span>
+        userRepository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">"Updated"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>上面就直接使用<code>@Autowired</code>自动引入了继承了JpaRepository的UserRepository接口，我们使用它默认的方法已经足够完成我们的基础功能了，值得一提的是我们的<code>getAllUsers(...)</code>方法，它往<code>findAll()</code>方法里传入了一个Pageable对象，这是Spring Data库中定义的一个接口，是所有分页相关信息的一个抽象，通过该接口，我们可以得到和分页相关的所有信息（例如<code>pageNumber</code>、<code>pageSize</code>等），这样Jpa就能够通过Pageable参数来得到一个带分页信息的Sql语句。</p>
+<p>当然上面我们是通过自己创建了一个Pageable对象，Spring也支持直接获取Pageable对象，可以把上面的<code>getAllUsers(...)</code>方法改写成下面这样：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/all"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> Iterable<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">getAllUsers</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PageableDefault</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> sort <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"id"</span><span class="token punctuation">}</span><span class="token punctuation">,</span> direction <span class="token operator">=</span> Sort<span class="token punctuation">.</span>Direction<span class="token punctuation">.</span>DESC<span class="token punctuation">)</span> 
+                                              Pageable pageable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> userRepository<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span>pageable<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>默认从第0页开始，也可以自己传入一个page参数，跟上面的是一样的。</p>
+<h2 id="第六步：运行项目"><a href="#第六步：运行项目" class="headerlink" title="第六步：运行项目"></a>第六步：运行项目</h2><p>上面我们就快速搭建起来了一个基于Spring Boot和JPA的REST风格的后台增删改查实例，我们把项目跑起来，可以看到数据库自动创建了一些表：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7896890-79e9330ba3e65578.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>JPA帮我们创建的user表的创建SQL如下：</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token punctuation">`</span><span class="token keyword">user</span><span class="token punctuation">`</span> <span class="token punctuation">(</span>
+  <span class="token punctuation">`</span>id<span class="token punctuation">`</span> <span class="token keyword">bigint</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>password<span class="token punctuation">`</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>username<span class="token punctuation">`</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token punctuation">`</span>id<span class="token punctuation">`</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">UNIQUE</span> <span class="token keyword">KEY</span> <span class="token punctuation">`</span>UK_sb8bbouer5wak8vyiiy4pf2bx<span class="token punctuation">`</span> <span class="token punctuation">(</span><span class="token punctuation">`</span>username<span class="token punctuation">`</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8<span class="token punctuation">;</span></code></pre>
+<h3 id="使用REST测试工具测试"><a href="#使用REST测试工具测试" class="headerlink" title="使用REST测试工具测试"></a>使用REST测试工具测试</h3><p>完全符合我们的要求，然后我们使用一些REST的测试工具，来测试上面的功能是否都能正确运行，比如我这里使用的【Restlet Client】，在Chrome商店就可以下载到。</p>
+<h4 id="all地址测试："><a href="#all地址测试：" class="headerlink" title="/all地址测试："></a><code>/all</code>地址测试：</h4><p>首先先来测试一下<code>http://localhost:8080/all</code>地址，由于现在数据库还是空的，所以可以看到返回如下：</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"content"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"pageable"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"sort"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"sorted"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            <span class="token property">"unsorted"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            <span class="token property">"empty"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">"offset"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token property">"pageNumber"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token property">"pageSize"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        <span class="token property">"unpaged"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"paged"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"totalElements"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">"last"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"totalPages"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">"number"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">"size"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token property">"sort"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"sorted"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token property">"unsorted"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"empty"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"numberOfElements"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">"first"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"empty"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="添加用户测试："><a href="#添加用户测试：" class="headerlink" title="添加用户测试："></a>添加用户测试：</h4><p>然后我们使用<code>http://localhost:8080/add?username=wmyskxz&amp;password=123</code>地址，添加几个类似的用户信息：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7896890-06ab5a7e0112c432.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>可以看到返回正确的<code>Saved</code>信息：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7896890-bf225a31d9b65a11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h4 id="getOne地址测试："><a href="#getOne地址测试：" class="headerlink" title="/getOne地址测试："></a><code>/getOne</code>地址测试：</h4><p>我们就直接使用<code>http://localhost:8080/getOne?id=1</code>来获取刚才添加的用户，可以看到返回正确的数据：</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"wmyskxz"</span><span class="token punctuation">,</span>
+    <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"123"</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="修改用户测试："><a href="#修改用户测试：" class="headerlink" title="修改用户测试："></a>修改用户测试：</h4><p>然后我们使用<code>http://localhost:8080/update?id=1&amp;username=wmyskxz&amp;password=123456</code>来模拟进行用户密码的修改：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7896890-66a8b828bb42f1ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>可以看到正确的更新信息<code>Updated</code>，再次查询用户，也能看到正确的数据：</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"wmyskxz"</span><span class="token punctuation">,</span>
+    <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"123456"</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="分页测试："><a href="#分页测试：" class="headerlink" title="分页测试："></a>分页测试：</h4><p>我们使用添加功能为数据库添加5条以上的数据，然后进行一次查询<code>/all</code>，可以看到能够按照<code>id</code>倒叙排列后返回5条数据：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7896890-2305018edb7acb4a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="数据库的情况"></p>
+<p>返回的JSON数据如下：</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"content"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+            <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"wmyskxz8"</span><span class="token punctuation">,</span>
+            <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"123"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+            <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"wmyskxz7"</span><span class="token punctuation">,</span>
+            <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"123"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+            <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"wmyskxz6"</span><span class="token punctuation">,</span>
+            <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"123"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+            <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"wmyskxz5"</span><span class="token punctuation">,</span>
+            <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"123"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+            <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"wmyskxz4"</span><span class="token punctuation">,</span>
+            <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"123"</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"pageable"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"sort"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"sorted"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            <span class="token property">"unsorted"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            <span class="token property">"empty"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">"offset"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token property">"pageNumber"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token property">"pageSize"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        <span class="token property">"unpaged"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"paged"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"totalElements"</span><span class="token operator">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+    <span class="token property">"last"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"totalPages"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token property">"number"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">"size"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token property">"sort"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"sorted"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token property">"unsorted"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"empty"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"numberOfElements"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token property">"first"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"empty"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="删除用户测试："><a href="#删除用户测试：" class="headerlink" title="删除用户测试："></a>删除用户测试：</h4><p>使用地址<code>http://localhost:8080/delete?id=1</code>来删除ID为1的用户：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7896890-6da1d38e787828f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>能正确看到<code>Deleted</code>信息，并查看数据能够看到数据已经被删除了。</p>
+<hr>
+<p>以上，我们就快速搭建好了一个CRUD+分页的后台实例，还用了比较流行的RESTful风格，粗略的感受了一下JPA的方便，还是挺爽的..没有复杂的Mapper文件，不用自动生成实体，甚至不用管SQL，只需要专注在逻辑上就行了，其实简单使用的话以上的东西也能应付一些常见的场景了，后期再深入了解了解吧！</p>
+<p><strong>参考资料：</strong><br><a href="http://www.ityouknow.com/springboot/2016/08/20/spring-boo-jpa.html" target="_blank" rel="noopener">springboot(五)：spring data jpa的使用——纯洁的微笑</a><br><a href="http://www.ityouknow.com/springboot/2017/09/23/spring-boot-jpa-thymeleaf-curd.html" target="_blank" rel="noopener">springboot(十五)：springboot+jpa+thymeleaf增删改查示例——纯洁的微笑</a><br><a href="http://blog.didispace.com/springbootdata2/" target="_blank" rel="noopener">Spring Boot中使用Spring-data-jpa让数据访问更简单、更优雅——程序猿DD</a></p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <style>
+    .foot-copyright-note {
+        padding: 15px;
+        border-radius: 4px;
+        border: 1px solid transparent;
+        margin-bottom: 20px;
+        background-color: #f5f5f5;
+    }
+</style>
+
+
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <!--            <div class="center-align">-->
+            <!--                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">-->
+            <!--                    <img alt=""-->
+            <!--                         style="border-width:0"-->
+            <!--                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>-->
+            <!--                </a>-->
+            <!--            </div>-->
+            <!--            <br/>-->
+            <div class="foot-copyright-note">
+                <i class="fa fa-lightbulb-o"></i> 本文由
+                <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/01/05/spring-data-jpa-chang-xian-kuai-su-da-jian-crud-fen-ye-hou-tai-shi-li/"
+                   property="cc:attributionName"
+                   rel="cc:attributionURL">
+                    我没有三颗心脏
+                </a> 创作， 采用
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    知识共享署名 4.0 国际许可协议
+                </a>进行许可。
+                可自由转载、引用，但需要注明作者且注明文章出处。如需转载至微信公众号，请关注「wmyskxz」公众号后台留言。
+                也欢迎想要交流的朋友加入QQ群：「3382693」。
+            </div>
+        
+    </div>
+
+    <script async defer>
+        document.addEventListener("copy", function (e) {
+            let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+            M.toast({html: toastHTML})
+        });
+
+        function navToReprintStatement() {
+            $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+        }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'a9f57bed080703426741',
+        clientSecret: '03fe7aec06a7794dedfcc123b6475f0231f6a0ce',
+        repo: 'wmyskxz.github.io',
+        owner: 'wmyskxz',
+        admin: "wmyskxz",
+        id: '2019-01-05T07-11-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/01/06/shiro-an-quan-kuang-jia-kuai-su-ru-men-jiu-zhe-yi-pian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Shiro安全框架【快速入门】就这一篇！">
+                        
+                        <span class="card-title">Shiro安全框架【快速入门】就这一篇！</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+Shiro 简介照例又去官网扒了扒介绍：
+
+Apache Shiro™ is a powerful and easy-to-use Java security framework that performs authentication,
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java-Web/" class="post-category" target="_blank">
+                                    Java Web
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/原创/" target="_blank">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/Java-Web/" target="_blank">
+                        <span class="chip bg-color">Java Web</span>
+                    </a>
+                    
+                    <a href="/tags/Shiro/" target="_blank">
+                        <span class="chip bg-color">Shiro</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/01/02/thymeleaf-kuai-su-ru-men/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Thymeleaf【快速入门】">
+                        
+                        <span class="card-title">Thymeleaf【快速入门】</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+
+前言：突然发现自己给自己埋了一个大坑，毕设好难..每一个小点拎出来都能当一个小题目（手动摆手..），没办法自己选的含着泪也要把坑填完..先一点一点把需要补充的知识学完吧..
+
+Thymeleaf介绍稍微摘一摘【官网】上面的介绍吧（翻译是
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java-Web/" class="post-category" target="_blank">
+                                    Java Web
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/原创/" target="_blank">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/Java-Web/" target="_blank">
+                        <span class="chip bg-color">Java Web</span>
+                    </a>
+                    
+                    <a href="/tags/前端/" target="_blank">
+                        <span class="chip bg-color">前端</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 我没有三颗心脏的博客<br />'
+            + '作者: 我没有三颗心脏<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="http://www.wmyskxz/" target="_blank">我没有三颗心脏</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">394.8k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/wmyskxz" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+       data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wmyskxz@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
+       data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=939419061" class="tooltipped"
+       data-tooltip="QQ联系我: 939419061" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="#" class="tooltipped" data-tooltip="微信公众号: wmyskxz" data-position="top"
+       data-delay="50" title="微信公众号: wmyskxz">
+        <i class="fa fa-wechat"></i>
+    </a>
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142668321-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-142668321-1');
+</script>
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
