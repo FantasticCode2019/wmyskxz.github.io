@@ -426,7 +426,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://upload-images.jianshu.io/upload_images/7896890-34e6864b15c793ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+                <p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714074112.png" alt></p>
 <h2 id="认识-Spring-框架"><a href="#认识-Spring-框架" class="headerlink" title="认识 Spring 框架"></a>认识 Spring 框架</h2><p>Spring 框架是 Java 应用最广的框架，它的<strong>成功来源于理念，而不是技术本身</strong>，它的理念包括 <strong>IoC (Inversion of Control，控制反转)</strong> 和 <strong>AOP(Aspect Oriented Programming，面向切面编程)</strong>。</p>
 <h4 id="什么是-Spring："><a href="#什么是-Spring：" class="headerlink" title="什么是 Spring："></a>什么是 Spring：</h4><ol>
 <li>Spring 是一个<strong>轻量级的 DI / IoC 和 AOP 容器的开源框架</strong>，来源于 Rod Johnson 在其著作 <strong>《Expert one on one J2EE design and development》</strong> 中阐述的部分理念和原型衍生而来。</li>
@@ -461,7 +461,7 @@
 <h4 id="Spring-能帮我们做什么"><a href="#Spring-能帮我们做什么" class="headerlink" title="Spring 能帮我们做什么"></a>Spring 能帮我们做什么</h4><p><strong>①.Spring</strong> 能帮我们根据配置文件<strong>创建及组装对象之间的依赖关系</strong>。
 <strong>②.Spring 面向切面编程</strong>能帮助我们<strong>无耦合的实现日志记录，性能统计，安全控制。</strong><br><strong>③.Spring</strong> 能<strong>非常简单的帮我们管理数据库事务</strong>。
 <strong>④.Spring</strong> 还<strong>提供了与第三方数据访问框架（如Hibernate、JPA）无缝集成</strong>，而且自己也提供了一套<strong>JDBC访问模板</strong>来方便数据库访问。<br><strong>⑤.Spring</strong> 还提供与<strong>第三方Web（如Struts1/2、JSF）框架无缝集成</strong>，而且自己也提供了一套<strong>Spring MVC</strong>框架，来方便web层搭建。<br><strong>⑥.Spring</strong> 能<strong>方便的与Java EE（如Java Mail、任务调度）整合</strong>，与<strong>更多技术整合（比如缓存框架）</strong>。</p>
-<h4 id="Spring-的框架结构"><a href="#Spring-的框架结构" class="headerlink" title="Spring 的框架结构"></a>Spring 的框架结构</h4><p><img src="https://upload-images.jianshu.io/upload_images/7896890-a7c003d175bd41af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h4 id="Spring-的框架结构"><a href="#Spring-的框架结构" class="headerlink" title="Spring 的框架结构"></a>Spring 的框架结构</h4><p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714074121.png" alt></p>
 <ul>
 <li><strong>Data Access/Integration层</strong>包含有JDBC、ORM、OXM、JMS和Transaction模块。</li>
 <li><strong>Web层</strong>包含了Web、Web-Servlet、WebSocket、Web-Porlet模块。</li>
@@ -489,7 +489,7 @@
 <li>新建一个空的 Java 项目，命名为【spring】</li>
 <li>新建一个名为【lib】的目录，并添加进必要的 jar 包，导入项目</li>
 </ol>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-dada8347bc57dc1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="仅仅为一部分，下方还有一些包"></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714074133.png" alt></p>
 <ol start="3">
 <li>在 Packge【pojo】下新建一个【Source】类：</li>
 </ol>
@@ -542,13 +542,13 @@
 <ol start="6">
 <li>运行测试代码，可以正常拿到 xml 配置的 bean</li>
 </ol>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-f9923130c12739cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714074147.png" alt></p>
 <ul>
 <li><strong>总结：</strong></li>
 <li><strong>传统的方式：</strong><br>通过new 关键字主动创建一个对象</li>
 <li><strong>IOC方式：</strong><br>对象的生命周期由Spring来管理，直接从Spring那里去获取一个对象。 IOC是反转控制 (Inversion Of Control)的缩写，就像控制权从本来在自己手里，交给了Spring。 </li>
 </ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-bb752724e10e0df2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="获取对象方式的转变"></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714074200.png" alt></p>
 <blockquote>
 <p>参考地址：<a href="http://how2j.cn/k/spring/spring-ioc-di/87.html#nowhere" target="_blank" rel="noopener">这里</a></p>
 </blockquote>
@@ -623,7 +623,7 @@
 <ol start="4">
 <li>运行测试代码：</li>
 </ol>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-ce9088fbfe46301b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714074208.png" alt></p>
 <p><strong>总结：</strong> IoC 和 DI 其实是同一个概念的不同角度描述，DI 相对 IoC 而言，<strong>明确描述了“被注入对象依赖 IoC 容器配置依赖对象”</strong></p>
 <h4 id="IoC-如何实现的"><a href="#IoC-如何实现的" class="headerlink" title="IoC 如何实现的"></a>IoC 如何实现的</h4><p>最后我们简单说说IoC是如何实现的。想象一下如果我们自己来实现这个依赖注入的功能，我们怎么来做？ 无外乎：</p>
 <ol>
@@ -668,7 +668,7 @@
 <ol start="3">
 <li>在【TestSpring】中编写测试代码，运行：</li>
 </ol>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-c190e07d3a051a65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714074219.png" alt></p>
 <ol start="4">
 <li>在 Packge【aspect】下准备日志切面 【LoggerAspect】类：</li>
 </ol>
@@ -723,7 +723,7 @@
 <ol start="6">
 <li>再次运行 TestSpring 中的测试代码，代码并没有改变，但是在业务方法运行之前和运行之后，都分别输出了日志信息：</li>
 </ol>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-343746f0a4eb7ce0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714074227.png" alt></p>
 
             </div>
             <hr/>
