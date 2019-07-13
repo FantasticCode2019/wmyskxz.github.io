@@ -427,7 +427,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://upload-images.jianshu.io/upload_images/7896890-958b6a30c60032e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+                <p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713181450.png" alt></p>
 <blockquote>
 <ul>
 <li>前言： </li>
@@ -1185,10 +1185,10 @@ File Parent<span class="token operator">:</span>c<span class="token operator">:<
 <p><strong>什么是Fork/Join框架：</strong></p>
 <p>Java7提供的一个用于并行执行任务的框架，是一个把大任务分割成若干个小任务，最终汇总每个小任务结果后得到大任务结果的框架。</p>
 <p>Fork/Join的运行流程图如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-47e0d9433019fb97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713181513.png" alt></p>
 <p><strong>工作窃取算法：</strong></p>
 <p>工作窃取（work-stealing）算法是指某个线程从其他队列里窃取任务来执行。工作窃取的运行流程图如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-53555e4f93e990d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713181536.png" alt></p>
 <p>工作窃取算法的优点是充分利用线程进行并行计算，并减少了线程间的竞争，其缺点是在某些情况下还是存在竞争，比如双端队列里只有一个任务时。并且消耗了更多的系统资源，比如创建多个线程和多个双端队列。</p>
 <p><strong>Fork/Join框架使用示例：</strong></p>
 <p>让我们通过一个简单的需求来使用下 <code>Fork／Join</code> 框架，需求是：计算<code>1 + 2 + 3 + 4</code>的结果。</p>

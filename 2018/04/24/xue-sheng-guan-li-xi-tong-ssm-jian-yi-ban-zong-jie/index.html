@@ -439,7 +439,7 @@ Java基础知识
 <li>Java<br>基础知识</li>
 <li>前端：<br>HTML, CSS, JAVASCRIPT, JQUERY</li>
 <li>J2EE：<br>Tomcat, Servlet, JSP, Filter</li>
-<li>框架：<br><a href="https://www.jianshu.com/p/1af66a499f49" target="_blank" rel="noopener">Spring</a>, <a href="https://www.jianshu.com/p/91a2d0a1e45a" target="_blank" rel="noopener">Spring MVC</a>, <a href="https://www.jianshu.com/p/c77e3691867d" target="_blank" rel="noopener">MyBatis</a>, <a href="https://www.jianshu.com/p/412051d41d73" target="_blank" rel="noopener">Spring 与 MyBatis 整合</a>, <a href="https://www.jianshu.com/p/3098050b0d14" target="_blank" rel="noopener">SSM 整合</a></li>
+<li>框架：<br><a href="https://www.wmyskxz.com/2018/04/10/spring-xue-xi-1-kuai-su-ru-men/">Spring</a>, <a href="https://www.wmyskxz.com/2018/04/14/spring-mvc-ru-men-jiu-zhe-yi-pian/">Spring MVC</a>, <a href="https://www.wmyskxz.com/2018/04/15/mybatis-1-kuai-su-ru-men/">MyBatis</a>, <a href="https://www.wmyskxz.com/2018/04/18/mybatis-yu-spring-zheng-he/">Spring 与 MyBatis 整合</a>, <a href="https://www.wmyskxz.com/2018/04/23/idea-zheng-he-ssm-kuang-jia-xue-xi/">SSM 整合</a></li>
 <li>数据库：<br>MySQL</li>
 <li>开发工具：<br>IDEA, Maven</li>
 </ul>
@@ -473,41 +473,41 @@ birthday <span class="token keyword">date</span> <span class="token keyword">DEF
 <h4 id="③-原型设计"><a href="#③-原型设计" class="headerlink" title="③ 原型设计"></a>③ 原型设计</h4><p>就是设计界面，在商业项目中，这是很重要的一步，我们可以<strong>解除界面原型，低成本、高效率</strong>的与客户达成<strong>需求的一致性</strong>。</p>
 <p>这个项目一共就分为两个页面：</p>
 <ul>
-<li><p>主页面：<br><img src="https://upload-images.jianshu.io/upload_images/7896890-0169962ea353fcbd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="首页"></p>
+<li><p>主页面：<br><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714065513.png" alt></p>
 </li>
-<li><p>学生编辑页面：<br><img src="https://upload-images.jianshu.io/upload_images/7896890-2eac73f04dcf3ea4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="编辑页面"></p>
+<li><p>学生编辑页面：<br><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714065541.png" alt></p>
 </li>
 </ul>
 <h4 id="④-SSM-环境搭建"><a href="#④-SSM-环境搭建" class="headerlink" title="④ SSM 环境搭建"></a>④ SSM 环境搭建</h4><p>在真正开始编写代码之前，我们首先需要先来搭建好我们的 SSM 环境。</p>
 <h4 id="第一步：创建-Maven-webapp-项目"><a href="#第一步：创建-Maven-webapp-项目" class="headerlink" title="第一步：创建 Maven webapp 项目"></a>第一步：创建 Maven webapp 项目</h4><p>首先新建工程，选择 Maven 标签，然后勾选上【Create from archetype】选择 webapp：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-37bca8243a63a411.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714065911.png" alt></p>
 <p>点击下一步，填写上【GroupId】和【ArtifactId】：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-87095d22145798ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714065915.png" alt></p>
 <ul>
 <li>GroupId：项目组织唯一的标识符，实际对应 JAVA 的包的结构，也就是 main 目录下 java 的目录结构（包）</li>
 <li>AritifactId：项目的唯一标识符，实际对应项目的名称，就是项目根目录的名称</li>
 <li>实际上你可以乱填上试试，我就不乱填了</li>
 </ul>
 <p>然后是确认项目路径，这一步你可以看到 Maven 配置中的参数，不需要做改动，直接下一步就可以（<em>图中的路径是我配置的本地 Maven 仓库的地址</em>）：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-5ff7e5ec2ad03ebc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714065924.png" alt></p>
 <p>确认项目名称和路径，点击【Finish】即可：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-491970db6a349a5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714065931.png" alt></p>
 <p>等待一会儿，控制台就会有创建成功的提示信息，我们把【Enable Auto-Import】点上，这个提示会在每次 pom.xml 有改动时出现，自动导入，省掉麻烦：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-2ebc5e0cd0503ad7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714065937.png" alt></p>
 <h4 id="第二步：搭建项目目录结构"><a href="#第二步：搭建项目目录结构" class="headerlink" title="第二步：搭建项目目录结构"></a>第二步：搭建项目目录结构</h4><p>下面就是 Maven 风格的 webapp 的默认目录结构：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-4ac356da8a41ee5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714065943.png" alt></p>
 <ul>
 <li><strong>注意：</strong> webapp 是默认没有 java 源文件也没有 test 目录的。</li>
 </ul>
 <p>遵循 Maven 的统一项目结构，我们搭建出项目的完整目录结构如下图：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-51e8952802f0ec9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714065950.png" alt></p>
 <ul>
 <li>我们并没有使用 Log4j 来输出日志，而是使用 logback </li>
 <li><strong>提示：</strong>我们可以在 IDEA 中右键目录然后选择【Make Directory as】，让 IDEA 识别不同的目录作用</li>
 </ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-6ca8b5c413335048.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714065956.png" alt></p>
 <p>这里的目录建好之后还需要设置一下，让 IDEA 识别目录作用，选择【File】&gt;【Project Structure】：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-640537dba7ff226e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714070002.png" alt></p>
 <p>设置好之后点击 OK，即完成了项目目录的搭建。</p>
 <h4 id="第三步：配置文件内容"><a href="#第三步：配置文件内容" class="headerlink" title="第三步：配置文件内容"></a>第三步：配置文件内容</h4><p>在【pom.xml】文件中声明依赖的 jar 包 ：</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
@@ -1430,7 +1430,7 @@ birthday <span class="token keyword">date</span> <span class="token keyword">DEF
 <span class="token selector">table<span class="token class">.editTable</span> td </span><span class="token punctuation">{</span>
     <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">5</span>px<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<h4 id="项目的整体结构"><a href="#项目的整体结构" class="headerlink" title="项目的整体结构"></a>项目的整体结构</h4><p><img src="https://upload-images.jianshu.io/upload_images/7896890-3012fde670b3ff42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h4 id="项目的整体结构"><a href="#项目的整体结构" class="headerlink" title="项目的整体结构"></a>项目的整体结构</h4><p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714070020.png" alt></p>
 <h4 id="分页功能"><a href="#分页功能" class="headerlink" title="分页功能"></a>分页功能</h4><ul>
 <li>首先在 Packge【util】包下创建一个 Page 工具类：</li>
 </ul>
@@ -1540,7 +1540,7 @@ birthday <span class="token keyword">date</span> <span class="token keyword">DEF
 <li><strong>理解测试条件：</strong></li>
 <li>10 &lt;= 当前页*每一页显示的数目 - 当前页开始的数据编号 &lt;= 30</li>
 </ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-1f82d91e47a31c7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714070052.png" alt></p>
 <ul>
 <li>只要理解了这个判断条件，其他的就都好理解了</li>
 </ul>
@@ -1571,14 +1571,14 @@ birthday <span class="token keyword">date</span> <span class="token keyword">DEF
 <span class="token comment" spellcheck="true">// 共享 page 数据</span>
 request<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"page"</span><span class="token punctuation">,</span> page<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h4 id="Date-转换的问题"><a href="#Date-转换的问题" class="headerlink" title="Date 转换的问题"></a>Date 转换的问题</h4><p>最开始的时候，我们看到页面上显示的日期是这样的格式：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-6d4120db01b4df30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714070102.png" alt></p>
 <p>这显然是我们不希望看到的</p>
 <ul>
 <li>解决方案：在映射文件中设置日期显示的类型。</li>
 </ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-d70cfa9638709579.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714070111.png" alt></p>
 <p>重新部署文件，然后刷新页面，就能看到我们希望的效果啦：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-f99cbf278ce04c17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714070117.png" alt></p>
 <h4 id="项目总结"><a href="#项目总结" class="headerlink" title="项目总结"></a>项目总结</h4><ol>
 <li>由于之前的项目代码都有，所以在<strong>重构的时候，基本上没有花什么时间</strong>就完成了项目的搭建，能够体会到<strong>代码分离的重要性</strong>，这在很大程度上保证了我们的代码复用。</li>
 <li>相较于之前用 Servlet + JSP 来完成，很明显的感觉是<strong>DAO层的编写方便了很多，仅仅需要编写一个 xml 映射文件和一个 Dao 层接口就可以完成功能，</strong>而不用自己再去重复的去在每一个 CRUD 方法中去处理结果集，重复而且繁琐。</li>
@@ -1605,13 +1605,13 @@ request<span class="token punctuation">.</span><span class="token function">setA
 td<span class="token operator">></span><span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"/deleteStudent?id=${s.id}"</span> onclick<span class="token operator">=</span><span class="token string">"javascript:return del();"</span><span class="token operator">></span><span class="token operator">&lt;</span>span
         <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"glyphicon glyphicon-trash"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> <span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>td<span class="token operator">></span></code></pre>
 <p>当我们刷新页面后，点击删除就会弹出提示信息：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-944caee345a8b0a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714070127.png" alt></p>
 <h4 id="改进二：编辑页面自动勾选上性别"><a href="#改进二：编辑页面自动勾选上性别" class="headerlink" title="改进二：编辑页面自动勾选上性别"></a>改进二：编辑页面自动勾选上性别</h4><p>在当前的项目中，如果点击编辑按钮进入到编辑页面后，性别这个选项是空选的状态，这就很low：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-4e3152100e76f6f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714070138.png" alt></p>
 <p>这个也很简单，在 editStudent 页面增加一些判断就好了：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-90029a61673b0b1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714070145.png" alt></p>
 <p>用 <code>&lt;c:if&gt;</code> 标签来判断 sex 的值，然后根据对应的属性增加 checked 属性，这样就可以自动勾选上所对应的属性：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-814b777087dd85d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714070153.png" alt></p>
 <h4 id="改进三：空值判断"><a href="#改进三：空值判断" class="headerlink" title="改进三：空值判断"></a>改进三：空值判断</h4><p>我们允许设置为 null 的值仅仅为出生日期，其他的值均不允许出现空值，所以我们需要加入空值判断：</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">checkEmpty</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> value <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#"</span> <span class="token operator">+</span> id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1623,13 +1623,13 @@ td<span class="token operator">></span><span class="token operator">&lt;</span>a
     <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>然后再为 form 创建一个 id 属性值为 “addForm” 并添加进判断空值的方法：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-3a2a1bf8b9030c40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714070200.png" alt></p>
 <ul>
 <li><strong>注意：</strong> 这里需要写在 $(function(){}) 里面，等待文档加载完毕才能生效。</li>
 <li>这里并没有为 sex 属性判断空值，我们采用一个简单的<strong>为 sex 添加一个默认勾选项</strong>来省略空值的判断。</li>
 </ul>
 <p>同样的，我们也在编辑页面，采用同样的方法进行空值判断：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-f51f469bcaef903d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714070207.png" alt></p>
 <ul>
 <li>当进入编辑页面的时候已经有默认的勾选项了，所以 sex 值仍然不需要判空</li>
 <li>最后给出项目地址：<a href="https://github.com/wmyskxz/StudentManager-SSM" target="_blank" rel="noopener">https://github.com/wmyskxz/StudentManager-SSM</a></li>

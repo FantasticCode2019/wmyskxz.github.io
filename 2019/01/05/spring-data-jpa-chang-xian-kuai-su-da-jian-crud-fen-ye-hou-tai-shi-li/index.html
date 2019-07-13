@@ -429,7 +429,7 @@ Spring-DATA-JPA 简介JPA(Java Per">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://upload-images.jianshu.io/upload_images/7896890-abaf65a182488d22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+                <p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713162722.png" alt></p>
 <blockquote>
 <p><strong>前言：</strong>由于之前没有接触过Hibernate框架，但是最近看一些博客深深被它的<em>“效率”</em>所吸引，所以这就来跟大家一起就着一个简单的例子来尝尝Spring全家桶里自带的JPA的鲜</p>
 </blockquote>
@@ -617,7 +617,7 @@ Spring-DATA-JPA 简介JPA(Java Per">
 <span class="token punctuation">}</span></code></pre>
 <p>默认从第0页开始，也可以自己传入一个page参数，跟上面的是一样的。</p>
 <h2 id="第六步：运行项目"><a href="#第六步：运行项目" class="headerlink" title="第六步：运行项目"></a>第六步：运行项目</h2><p>上面我们就快速搭建起来了一个基于Spring Boot和JPA的REST风格的后台增删改查实例，我们把项目跑起来，可以看到数据库自动创建了一些表：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-79e9330ba3e65578.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713162732.png" alt></p>
 <p>JPA帮我们创建的user表的创建SQL如下：</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token punctuation">`</span><span class="token keyword">user</span><span class="token punctuation">`</span> <span class="token punctuation">(</span>
   <span class="token punctuation">`</span>id<span class="token punctuation">`</span> <span class="token keyword">bigint</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
@@ -658,9 +658,9 @@ Spring-DATA-JPA 简介JPA(Java Per">
     <span class="token property">"empty"</span><span class="token operator">:</span> <span class="token boolean">true</span>
 <span class="token punctuation">}</span></code></pre>
 <h4 id="添加用户测试："><a href="#添加用户测试：" class="headerlink" title="添加用户测试："></a>添加用户测试：</h4><p>然后我们使用<code>http://localhost:8080/add?username=wmyskxz&amp;password=123</code>地址，添加几个类似的用户信息：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-06ab5a7e0112c432.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713162743.png" alt></p>
 <p>可以看到返回正确的<code>Saved</code>信息：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-bf225a31d9b65a11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713162752.png" alt></p>
 <h4 id="getOne地址测试："><a href="#getOne地址测试：" class="headerlink" title="/getOne地址测试："></a><code>/getOne</code>地址测试：</h4><p>我们就直接使用<code>http://localhost:8080/getOne?id=1</code>来获取刚才添加的用户，可以看到返回正确的数据：</p>
 <pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
@@ -668,7 +668,7 @@ Spring-DATA-JPA 简介JPA(Java Per">
     <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"123"</span>
 <span class="token punctuation">}</span></code></pre>
 <h4 id="修改用户测试："><a href="#修改用户测试：" class="headerlink" title="修改用户测试："></a>修改用户测试：</h4><p>然后我们使用<code>http://localhost:8080/update?id=1&amp;username=wmyskxz&amp;password=123456</code>来模拟进行用户密码的修改：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-66a8b828bb42f1ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713162812.png" alt></p>
 <p>可以看到正确的更新信息<code>Updated</code>，再次查询用户，也能看到正确的数据：</p>
 <pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
@@ -676,7 +676,7 @@ Spring-DATA-JPA 简介JPA(Java Per">
     <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"123456"</span>
 <span class="token punctuation">}</span></code></pre>
 <h4 id="分页测试："><a href="#分页测试：" class="headerlink" title="分页测试："></a>分页测试：</h4><p>我们使用添加功能为数据库添加5条以上的数据，然后进行一次查询<code>/all</code>，可以看到能够按照<code>id</code>倒叙排列后返回5条数据：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-2305018edb7acb4a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="数据库的情况"></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713162819.png" alt></p>
 <p>返回的JSON数据如下：</p>
 <pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"content"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
@@ -733,7 +733,7 @@ Spring-DATA-JPA 简介JPA(Java Per">
     <span class="token property">"empty"</span><span class="token operator">:</span> <span class="token boolean">false</span>
 <span class="token punctuation">}</span></code></pre>
 <h4 id="删除用户测试："><a href="#删除用户测试：" class="headerlink" title="删除用户测试："></a>删除用户测试：</h4><p>使用地址<code>http://localhost:8080/delete?id=1</code>来删除ID为1的用户：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-6da1d38e787828f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713162830.png" alt></p>
 <p>能正确看到<code>Deleted</code>信息，并查看数据能够看到数据已经被删除了。</p>
 <hr>
 <p>以上，我们就快速搭建好了一个CRUD+分页的后台实例，还用了比较流行的RESTful风格，粗略的感受了一下JPA的方便，还是挺爽的..没有复杂的Mapper文件，不用自动生成实体，甚至不用管SQL，只需要专注在逻辑上就行了，其实简单使用的话以上的东西也能应付一些常见的场景了，后期再深入了解了解吧！</p>

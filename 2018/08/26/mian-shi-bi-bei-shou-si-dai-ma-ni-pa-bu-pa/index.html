@@ -423,13 +423,13 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://upload-images.jianshu.io/upload_images/7896890-2d09aea119299075.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+                <p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713164435.png" alt></p>
 <blockquote>
 <p><strong>前言</strong>：不管是远程的视频面试，还是现场的面试，都有可能会有手撕代码的环节，这也是很多童鞋包括我(虽然还没遇到过..)都很头疼的东西，可能是因为 IDE 自动提示功能用惯了或是其他一些原因，总之让我手写代码就是感觉很奇怪..但是我想的话，这应该侧重考察的是一些细节或者是习惯方面的一些东西，所以还是防患于未然吧，把一些可能手撕的代码给准备准备，分享分享，<strong>希望可以得到各位的指正，然后能有一些讨论</strong>，由于我字太丑就不上传自己默写的代码了，但还是希望各位潦草写一遍加深一下印象吧，以上；</p>
 </blockquote>
 <hr>
 <h1 id="Part-1-生产者-消费者问题"><a href="#Part-1-生产者-消费者问题" class="headerlink" title="Part 1.生产者-消费者问题"></a>Part 1.生产者-消费者问题</h1><p>这绝对是属于重点了，不管是考察对于该重要模型的理解还是考察代码能力，这都是一道很好的考题，所以很有必要的，我们先来回顾一下什么是生产者-消费者问题；</p>
-<h2 id="问题简单回顾"><a href="#问题简单回顾" class="headerlink" title="问题简单回顾"></a>问题简单回顾</h2><p><img src="https://upload-images.jianshu.io/upload_images/7896890-f3b7afe4955ca3bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="问题简单回顾"><a href="#问题简单回顾" class="headerlink" title="问题简单回顾"></a>问题简单回顾</h2><p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713164444.png" alt></p>
 <p><strong>生产者消费者问题</strong>（英语：Producer-consumer problem），也称<strong>有限缓冲问题</strong>（英语：Bounded-buffer problem），是一个<a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E7%BA%BF%E7%A8%8B" title="多线程" target="_blank" rel="noopener">多线程</a><a href="https://zh.wikipedia.org/wiki/%E5%90%8C%E6%AD%A5" title="同步" target="_blank" rel="noopener">同步</a>问题的经典案例。该问题描述了共享固定大小<a href="https://zh.wikipedia.org/wiki/%E7%BC%93%E5%86%B2%E5%8C%BA" title="缓冲区" target="_blank" rel="noopener">缓冲区</a>的两个线程——即所谓的“生产者”和“消费者”——在实际运行时会发生的问题。生产者的主要作用是生成一定量的数据放到缓冲区中，然后重复此过程。与此同时，消费者也在缓冲区消耗这些数据。<strong>该问题的关键就是要保证生产者不会在缓冲区满时加入数据，消费者也不会在缓冲区中空时消耗数据。</strong>(摘自维基百科：<a href="https://zh.wikipedia.org/wiki/%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98" target="_blank" rel="noopener">生产者消费者问题</a>)</p>
 <ul>
 <li><strong>注意：</strong> 生产者-消费者模式中的内存缓存区的主要功能是数据在多线程间的共享，此外，通过该缓冲区，可以缓解生产者和消费者的性能差；</li>

@@ -424,7 +424,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://upload-images.jianshu.io/upload_images/7896890-d2f3f8fbccb13196.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+                <p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071007.png" alt></p>
 <h2 id="编写日志输出环境配置文件"><a href="#编写日志输出环境配置文件" class="headerlink" title="编写日志输出环境配置文件"></a>编写日志输出环境配置文件</h2><p>在开发过程中，最重要的就是在控制台查看程序输出的日志信息，在这里我们选择使用 log4j 工具来输出：</p>
 <ul>
 <li><strong>准备工作：</strong> 将【MyBatis】文件夹下【lib】中的 log4j 开头的 jar 包都导入工程并添加依赖。<br>在【src】下新建一个文件 log4j.properties 资源:</li>
@@ -464,7 +464,7 @@
 <li>多对多查询</li>
 <li>延迟加载</li>
 </ul>
-<h4 id="一对一查询"><a href="#一对一查询" class="headerlink" title="一对一查询"></a>一对一查询</h4><p><img src="https://upload-images.jianshu.io/upload_images/7896890-4b4850aeb86a6a33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h4 id="一对一查询"><a href="#一对一查询" class="headerlink" title="一对一查询"></a>一对一查询</h4><p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071014.png" alt></p>
 <p>首先我们先来建立一个数据模型（删掉之前创建的 student 表）：</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">use</span> mybatis<span class="token punctuation">;</span>
 <span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> student <span class="token punctuation">(</span>
@@ -511,7 +511,7 @@
     <span class="token comment" spellcheck="true">/* getter and setter */</span>
 <span class="token punctuation">}</span></code></pre>
 <p>最终我们执行查询（上述的 SQL 语句）的结果如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-51bddef5b867c159.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071025.png" alt></p>
 <p>由于最终的查询的结果是由 resultType 指定的，也就是只能映射一个确定的 Java 包装类，上面的 Stuent 类只包含了学生的基本信息，并没有包含 Card 的信息，所以我们要创建一个最终映射类，以 Student 类为父类，然后追加 Card 的信息：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> pojo<span class="token punctuation">;</span>
 
@@ -546,7 +546,7 @@
     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>student<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>获得正确结果：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-73856bf17d608c32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071034.png" alt></p>
 <h4 id="2-使用-resultMap-实现"><a href="#2-使用-resultMap-实现" class="headerlink" title="2. 使用 resultMap 实现"></a>2. 使用 resultMap 实现</h4><p>使用 resultMap <strong>可以将数据字段映射到名称不一样的响应实体类属性上</strong>，重要的是，<strong>可以映射实体类中包裹的其他实体类。</strong></p>
 <p>首先我们来创建一个封装了 Card 号码和 Student 实体类的 StudentWithCard 类：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> pojo<span class="token punctuation">;</span>
@@ -602,8 +602,8 @@
     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>student<span class="token punctuation">.</span><span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>测试仍然能得到正确的结果：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-2841a7e78714cdf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h4 id="一对多查询"><a href="#一对多查询" class="headerlink" title="一对多查询"></a>一对多查询</h4><p><img src="https://upload-images.jianshu.io/upload_images/7896890-c47aa7a52319360c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071054.png" alt></p>
+<h4 id="一对多查询"><a href="#一对多查询" class="headerlink" title="一对多查询"></a>一对多查询</h4><p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071042.png" alt></p>
 <p>还是先来建立数据模型，删掉之前的：</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">use</span> mybatis<span class="token punctuation">;</span>
 <span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> student <span class="token punctuation">(</span>
@@ -634,7 +634,7 @@
   student<span class="token punctuation">,</span> class
 <span class="token keyword">WHERE</span> student<span class="token punctuation">.</span>student_id <span class="token operator">=</span> class<span class="token punctuation">.</span>student_id <span class="token operator">AND</span> class<span class="token punctuation">.</span>class_id <span class="token operator">=</span> <span class="token comment" spellcheck="true">#{value}</span></code></pre>
 <p>我们执行的结果如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-1fd27f6308dcebee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071059.png" alt></p>
 <p>我们再来创建对应的实体类：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token punctuation">{</span>
 
@@ -689,8 +689,8 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>运行测试结果，成功：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-3a821c4d67779e4a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h4 id="多对多查询"><a href="#多对多查询" class="headerlink" title="多对多查询"></a>多对多查询</h4><p><img src="https://upload-images.jianshu.io/upload_images/7896890-8c1df4b0ac1eabc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071120.png" alt></p>
+<h4 id="多对多查询"><a href="#多对多查询" class="headerlink" title="多对多查询"></a>多对多查询</h4><p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071109.png" alt></p>
 <p>建立数据模型：</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">use</span> mybatis<span class="token punctuation">;</span>
 <span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> students <span class="token punctuation">(</span>
@@ -730,7 +730,7 @@
 <span class="token operator">AND</span> ssc<span class="token punctuation">.</span>c_id <span class="token operator">=</span> <span class="token number">c</span><span class="token punctuation">.</span>course_id 
 <span class="token operator">AND</span> <span class="token number">c</span><span class="token punctuation">.</span>course_name <span class="token operator">=</span> <span class="token comment" spellcheck="true">#{value}</span></code></pre>
 <p>执行 SQL 结果如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-504feb6e433998ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071126.png" alt></p>
 <p>实体类雷同，就不再赘述，我们直接来配置映射文件【Student.xml】：</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resultMap</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Students<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>pojo.Student<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>id<span class="token punctuation">"</span></span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>student_id<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
@@ -747,7 +747,7 @@
     AND c.course_name = #{value}
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span></code></pre>
 <p>测试类也雷同，只需要修改一下调用的 id （改为findStudentsByCourseName）就好了，直接上测试结果：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-525304897c605007.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071132.png" alt></p>
 <p>相反也是一样的，重要的是 SQL 语句和映射。</p>
 <h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><ul>
 <li>自己写的 SQL 语句看着虽然没有很恶心（至少思路清晰），但感觉很烂！</li>
@@ -780,7 +780,7 @@
     SELECT * FROM orders
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span></code></pre>
 <p>上面的 SQL 语句查询所有的订单信息，而每个订单信息中会关联查询用户，但由于希望延迟加载用户信息，所以会在 id 为 “<code>OrdersUserLazyLoadingResultMap</code>“ 的 resultMap 对应的结果集配置中进行配置：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-4af82955c44e1641.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071151.png" alt></p>
 <p>最后配置延迟加载要执行的获取用户信息的 SQL：</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>findUserById<span class="token punctuation">"</span></span> <span class="token attr-name">parameterType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>int<span class="token punctuation">"</span></span> <span class="token attr-name">resultType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>user<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     select * from user where id = #{id}
@@ -864,7 +864,7 @@
     session<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>运行测试方法，看到正确的结果：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-fbfdfa158c934905.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071201.png" alt></p>
 <p>使用 Mapper 代理可以让开发更加简洁，使查询结构更加清晰，工程结构更加规范。</p>
 <hr>
 <h2 id="使用注解开发-MyBatis"><a href="#使用注解开发-MyBatis" class="headerlink" title="使用注解开发 MyBatis"></a>使用注解开发 MyBatis</h2><p>在上面的例子中，我们已经有了方便的 Mapper 代理对象，我们可以进一步省掉 XML 的配置信息，进而使用方便的注解来开发 MyBatis ，让我们实际来操练一下：</p>
@@ -897,12 +897,12 @@
 <li><strong>注意：</strong> 这次映射的并不是文件（使用 <code>resource</code> 属性），而是类（使用 <code>class</code> 属性）</li>
 </ul>
 <h4 id="第三步：运行测试代码"><a href="#第三步：运行测试代码" class="headerlink" title="第三步：运行测试代码"></a>第三步：运行测试代码</h4><p>上面的测试代码不用修改，直接运行，也能得到正确结果：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-7d08867bb19b0873.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071216.png" alt></p>
 <blockquote>
 <p>更多的注解：<a href="http://how2j.cn/k/mybatis/mybatis-annotation-crud/1093.html" target="_blank" rel="noopener">戳这里</a></p>
 </blockquote>
 <hr>
-<h2 id="MyBatis-缓存结构"><a href="#MyBatis-缓存结构" class="headerlink" title="MyBatis 缓存结构"></a>MyBatis 缓存结构</h2><p><img src="https://upload-images.jianshu.io/upload_images/7896890-6d8257b7b8b3b54c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="MyBatis-缓存结构"><a href="#MyBatis-缓存结构" class="headerlink" title="MyBatis 缓存结构"></a>MyBatis 缓存结构</h2><p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071225.png" alt></p>
 <p>在 Web 系统中，最重要的操作就是查询数据库中的数据。但是有些时候查询数据的频率非常高，这是很耗费数据库资源的，往往会导致数据库查询效率极低，影响客户的操作体验。于是我们可以将一些变动不大且访问频率高的数据，放置在一个缓存容器中，用户下一次查询时就从缓存容器中获取结果。</p>
 <ul>
 <li>MyBatis 拥有自己的缓存结构，可以用来缓解数据库压力，加快查询速度。</li>
@@ -913,7 +913,7 @@
 <ul>
 <li><strong>MyBatis 的一级缓存原理：</strong></li>
 </ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-873f2d782ccfe6f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071232.png" alt></p>
 <p>第一次发出一个查询 sql，sql 查询结果写入 sqlsession 的一级缓存中，缓存使用的数据结构是一个 map</p>
 <ul>
 <li>key：hashcode+sql+sql输入参数+输出参数（sql的唯一标识）</li>
@@ -939,7 +939,7 @@
 
 <span class="token punctuation">}</span></code></pre>
 <p>运行，可以看到第一次会去数据库中取数据，但是第二次就不会访问数据库了，而是直接从session中取出来：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-403e2f5a73c84437.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071240.png" alt></p>
 <ul>
 <li>我们再来测试一下在不同 session 里查询相同的 id 数据</li>
 </ul>
@@ -965,7 +965,7 @@
 
 <span class="token punctuation">}</span></code></pre>
 <p>这一次，另外打开一个 session , 取同样 id 的数据，就会发现需要执行 sql 语句，证实了一级缓存是在 session 里的：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-65629e1c1ae7c923.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071249.png" alt></p>
 <p>MyBatis 一级缓存值得注意的地方：</p>
 <ul>
 <li><strong>MyBatis 默认就是支持一级缓存的，并不需要我们配置.</strong></li>
@@ -977,14 +977,15 @@
 <ul>
 <li><strong>二级缓存原理：</strong></li>
 </ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-508291f937a141d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071256.png" alt></p>
 <p><strong>二级缓存的范围是 mapper 级别（mapper即同一个命名空间），mapper 以命名空间为单位创建缓存数据结构，结构是 map。</strong></p>
 <p>要开启二级缓存，需要进行两步操作。</p>
 <p><strong>第一步：</strong>在 MyBatis 的全局配置文件 mybatis-config.xml 中配置 setting 属性，设置名为 “<code>cacheEnable</code>” 的属性值为 “<code>true</code>” 即可：</p>
-<pre><code>&lt;settings&gt;
-    &lt;!-- 开启二级缓存 --&gt;
-    &lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot;/&gt;
-&lt;/settings&gt;</code></pre><ul>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>settings</span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!-- 开启二级缓存 --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>setting</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>cacheEnabled<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>settings</span><span class="token punctuation">></span></span></code></pre>
+<ul>
 <li><strong>注意：</strong> settings 配置的位置一定是在 properties 后面，typeAliases前面！</li>
 </ul>
 <p><strong>第二步：</strong>然后由于二级缓存是 Mapper 级别的，还要在需要开启二级缓存的具体 mapper.xml 文件中开启二级缓存，只需要在相应的 mapper.xml 中添加一个 cache 标签即可：</p>
@@ -992,7 +993,7 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cache</span> <span class="token punctuation">/></span></span></code></pre>
 <p>开启二级缓存之后，我们需要为查询结果映射的 POJO 类实现 <code>java.io.serializable</code> 接口，<strong>二级缓存可以将内存的数据写到磁盘，存在对象的序列化和反序列化</strong>，所以要实现java.io.serializable接口。</p>
 <h4 id="二级缓存示例"><a href="#二级缓存示例" class="headerlink" title="二级缓存示例"></a>二级缓存示例</h4><p>我们在同一个 SessionFactory 下查询 id = 1 的数据，只有第一次需要执行 SQL 语句，从后都是从缓存中取出来的：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-aa206c5d1e3716c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714071313.png" alt></p>
 <blockquote>
 <p>参考资料：<a href="http://how2j.cn/k/mybatis/mybatis-annotation-first-level-cache/1101.html" target="_blank" rel="noopener">how2j.cn-MyBatis教程</a>、<a href="https://mp.weixin.qq.com/s?__biz=MzI4Njg5MDA5NA==&mid=2247483937&idx=5&sn=4a049d7461b67c4135183db09ec97bcb&chksm=ebd74320dca0ca3691081597ac9db2447d51250d7aa819009231760977dd932b43a116fe44ba#rd" target="_blank" rel="noopener">Java3y-Mybatis【缓存、代理、逆向工程】</a></p>
 </blockquote>
@@ -1286,12 +1287,12 @@
                         <span class="chip bg-color">Java Web</span>
                     </a>
                     
-                    <a href="/tags/学习笔记/" target="_blank">
-                        <span class="chip bg-color">学习笔记</span>
-                    </a>
-                    
                     <a href="/tags/代码规范/" target="_blank">
                         <span class="chip bg-color">代码规范</span>
+                    </a>
+                    
+                    <a href="/tags/学习笔记/" target="_blank">
+                        <span class="chip bg-color">学习笔记</span>
                     </a>
                     
                 </div>

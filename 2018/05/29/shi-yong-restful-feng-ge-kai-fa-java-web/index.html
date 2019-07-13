@@ -418,7 +418,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://upload-images.jianshu.io/upload_images/7896890-0dfea1f13b593af6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+                <p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713174407.png" alt></p>
 <h2 id="什么是RESTful风格？"><a href="#什么是RESTful风格？" class="headerlink" title="什么是RESTful风格？"></a>什么是RESTful风格？</h2><p>REST是<strong>REpresentational State Transfer</strong>的缩写（一般中文翻译为表述性状态转移），REST 是一种体系结构，而 HTTP 是一种包含了 REST 架构属性的协议，为了便于理解，我们把它的首字母拆分成不同的几个部分：</p>
 <ul>
 <li><strong>表述性（REpresentational）：</strong> REST 资源实际上可以用各种形式来进行表述，包括 XML、JSON 甚至 HTML——最适合资源使用者的任意形式；</li>
@@ -457,12 +457,12 @@
 <p>但是使用了 RESTful 风格之后就会变成:</p>
 <pre class=" language-java"><code class="language-java"><span class="token operator">/</span>category</code></pre>
 <p>这就变成了<strong>使用同一个 URL</strong> ，通过<strong>约定不同的 HTTP 方法</strong>来实施不同的业务，这就是 RESTful 风格所做的事情了，为了有一个更加直观的理解，引用一下来自how2j.cn的图:</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-1273cfad7cda65ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713174416.png" alt></p>
 <h2 id="SpringBoot-中使用-RESTful"><a href="#SpringBoot-中使用-RESTful" class="headerlink" title="SpringBoot 中使用 RESTful"></a>SpringBoot 中使用 RESTful</h2><blockquote>
 <p>下面我使用 SpringBoot 结合文章：<a href="http://blog.didispace.com/springbootrestfulapi/" target="_blank" rel="noopener">http://blog.didispace.com/springbootrestfulapi/</a>  来实例演示如何在 SpringBoot 中使用 RESTful 风格的编程并如何做单元测试</p>
 </blockquote>
 <p><strong>RESTful API 具体设计如下：</strong></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-931dc1cbc4331360.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713174427.png" alt></p>
 <p>User实体定义：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span> 
 
@@ -709,7 +709,7 @@ MockHttpServletResponse:
 <li>随着时间推移，不断修改接口实现的时候都必须同步修改接口文档，而文档与代码又处于两个不同的媒介，除非有严格的管理机制，不然<strong>很容易导致不一致现象。</strong></li>
 </ol>
 <p>Swagger2的出现就是为了解决上述的这些问题，并且能够轻松的整合到我们的SpringBoot中去，它既可以减少我们创建文档的工作量，同时说明内容又可以整合到代码之中去，让维护文档和修改代码整合为一体，可以让我们在修改代码逻辑的同时方便的修改文档说明，这太酷了，另外<strong>Swagger2页提供了强大的页面测试功能来调试每个RESTful API</strong>，具体效果如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-c5e98d9ffb2e2521.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713174453.png" alt></p>
 <p>让我们赶紧来看看吧：</p>
 <h4 id="第一步：添加Swagger2依赖："><a href="#第一步：添加Swagger2依赖：" class="headerlink" title="第一步：添加Swagger2依赖："></a>第一步：添加Swagger2依赖：</h4><p>在 <code>pom.xml</code> 中加入Swagger2的依赖：</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
@@ -803,9 +803,9 @@ MockHttpServletResponse:
 
 <span class="token punctuation">}</span></code></pre>
 <p>完成上述代码添加之后，启动Spring Boot程序，访问：<a href="http://localhost:8080/swagger-ui.html，就能看到前文展示的RESTful" target="_blank" rel="noopener">http://localhost:8080/swagger-ui.html，就能看到前文展示的RESTful</a> API的页面，我们可以点开具体的API请求，POST类型的/users请求为例，可找到上述代码中我们配置的Notes信息以及参数user的描述信息，如下图所示：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-dc830a1e2bc8f3f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713174521.png" alt></p>
 <h4 id="API文档访问与调试"><a href="#API文档访问与调试" class="headerlink" title="API文档访问与调试"></a>API文档访问与调试</h4><p>在上图请求的页面中，我们可以看到一个Value的输入框，并且在右边的Model Schema中有示例的User对象模板，我们点击右边黄色的区域Value框中就会自动填好示例的模板数据，我们可以稍微修改修改，然后点击下方的 <code>“Try it out!”</code> 按钮，即可完成一次请求调用，这太酷了。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-954cff576c43fa21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713174536.png" alt></p>
 <h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p>对比之前用文档来记录RESTful API的方式，我们通过增加少量的配置内容，在原有代码的基础上侵入了忍受范围内的代码，就可以达到如此方便、直观的效果，可以说是使用Swagger2来对API文档进行管理，是个很不错的选择！</p>
 
             </div>

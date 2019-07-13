@@ -422,7 +422,7 @@ JSON 指的是 JavaScript 对象表示法（">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://upload-images.jianshu.io/upload_images/7896890-5194fe343100d42b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+                <p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713174556.png" alt></p>
 <blockquote>
 <p><strong>前言：</strong> 最近也是期末了，有好多好多文档和实验报告要交，所以都没啥时间写文，这段时间清闲了，来补一下之前学习时遗漏的一些知识树，话说就没人吐槽这个JSON图标好丑吗？</p>
 </blockquote>
@@ -565,7 +565,7 @@ JSON 指的是 JavaScript 对象表示法（">
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p>打开网页我们能正确看到如下效果：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-05b73c58e34507ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713174607.png" alt></p>
 <p>但通常情况中，我们拿到和上传的并不是一个真正的JSON对象，而是一串由JSON转换得来的字符串，我们同样在HTML中模拟解析一下：</p>
 <pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -592,7 +592,7 @@ JSON 指的是 JavaScript 对象表示法（">
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p>打开网页即可看到如下正确效果：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-7e3bece979f4e3e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713174648.png" alt></p>
 <h4 id="从前端发送JSON数据到后台"><a href="#从前端发送JSON数据到后台" class="headerlink" title="从前端发送JSON数据到后台"></a>从前端发送JSON数据到后台</h4><p>我们这里演示使用AJAX请求的方式来提交JSON数据到后台：</p>
 <pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -912,14 +912,14 @@ JSON转为简单Bean：名字为我没有三颗心脏<span class="token number">
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Category</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">,</span> <span class="token string">"我没有三颗心脏"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>我们在浏览器中访问地址：<code>localhost:8080/jsonCategory</code>，会得到以下JSON数据：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-710163cc6ad9ef68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713174712.png" alt></p>
 <p>我们也可以使用 <code>@RequestBody</code> 来获取一串JSON数据：</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@PutMapping</span><span class="token punctuation">(</span><span class="token string">"/category"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addCategory</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> Category category<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"springboot接受到浏览器以JSON格式提交的数据："</span> <span class="token operator">+</span> category<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> category<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>我们在前台使用的是上面用过的用于提交JSON数据的页面，运行能够成功得到结果：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-3bfba7d38db8eea3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713174754.png" alt></p>
 <ul>
 <li><strong>注意：</strong> Spring4 之后新加入了 <code>@RestController</code> 注解，是@ResponseBody和@Controller的组合注解，用于返回JSON数据。</li>
 </ul>

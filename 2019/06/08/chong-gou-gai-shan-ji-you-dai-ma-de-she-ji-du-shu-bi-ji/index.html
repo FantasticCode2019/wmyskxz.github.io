@@ -424,7 +424,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://upload-images.jianshu.io/upload_images/7896890-0fe8ed05d4e21444.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+                <p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713161411.png" alt></p>
 <blockquote>
 <p><strong>前言：</strong> 捧读像这一类的书对于自己来说总带着一些神圣感，感谢自己并没有被这么宏大的主题吓退，看完了这里分享输出一下自己的笔记。</p>
 </blockquote>
@@ -458,9 +458,9 @@
 <h3 id="4-提高编程速度"><a href="#4-提高编程速度" class="headerlink" title="4. 提高编程速度"></a>4. 提高编程速度</h3><p>听起来可能有些反直觉，因为重构可能会花大量的时间改善设计、提高阅读性、修改 BUG，难道不是在降低开发速度嘛？</p>
 <p>软件开发者交谈时的故事：一开始他们进展很快，但如今想要添加一个新功能需要的时间就要长得多。他们需要花越来越多的时间去考虑如何把新功能塞进现有的代码库，不断蹦出来的bug修复起来也越来越慢。代码库看起来就像补丁摞补丁，需要细致的考古工作才能弄明白整个系统是如何工作的。这份负担不断拖慢新增功能的速度，到最后程序员恨不得从头开始重写整个系统。</p>
 <p>下面这幅图可以描绘他们经历的困境。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-4638680f8060dd6c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713161419.png" alt></p>
 <p>但有些团队的境遇则截然不同。他们添加新功能的速度越来越快，因为他们能利用已有的功能，基于已有的功能快速构建新功能。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-cbcca66c5694733e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713161433.png" alt></p>
 <p><strong>两种团队的区别就在于软件的内部质量。</strong>需要添加新功能时，内部质量良好的软件让我可以很容易找到在哪里修改、如何修改。良好的模块划分使我只需要理解代码库的一小部分，就可以做出修改。如果代码很清晰，我引入 BUG 的可能性就会变小，即使引入了 BUG，调试也会容易得多。<strong>理想情况下，代码库会逐步演化成一个平台，在其上可以很容易地构造与其领域相关的新功能。</strong></p>
 <p>这种现象被作者称为<strong>“设计耐久性假说”</strong>：通过投入精力改善内部设计，我们增加了软件的耐久性，从而可以更长时间地保持开发的快速。目前还无法科学地证明这个理论，所以说它是一个“假说”。</p>
 <p>20年前，行业的陈规认为：良好的设计必须在开始编程之前完成，因为一旦开始编写代码，设计就只会逐渐腐败。重构改变了这个图景。现在我们可以改善已有代码的设计，因此我们可以<strong>先做一个设计，然后不断改善它，</strong>哪怕程序本身的功能也在不断发生着变化。由于预先做出良好的设计非常困难，想要既体面又快速地开发功能，重构必不可少。</p>
@@ -492,7 +492,7 @@
 <p>即便在这样的情况下，我仍然不愿让一支团队专门做重构。<strong>可以让整个团队达成共识，在未来几周时间里逐步解决这个问题，这经常是一个有效的策略。</strong>每当有人靠近“重构区”的代码，就把它朝想要改进的方向推动一点。这个策略的好处在于，重构不会破坏代码—每次小改动之后，整个系统仍然照常工作。例如，如果想替换掉一个正在使用的库，可以先引入一层新的抽象，使其兼容新旧两个库的接口。一旦调用方已经完全改为使用这层抽象，替换下面的库就会容易得多。（这个策略叫作Branch By Abstraction[mf-bba]。）</p>
 <h2 id="复审代码时重构"><a href="#复审代码时重构" class="headerlink" title="复审代码时重构"></a>复审代码时重构</h2><p>至于如何在代码复审的过程中加入重构，这要取决于复审的形式。在常见的pull request模式下，复审者独自浏览代码，代码的作者不在旁边，此时进行重构效果并不好。如果代码的原作者在旁边会好很多，因为作者能提供关于代码的上下文信息，并且充分认同复审者进行修改的意图。对我个人而言，与原作者肩并肩坐在一起，一边浏览代码一边重构，体验是最佳的。这种工作方式很自然地导向<strong>结对编程</strong>：在编程的过程中持续不断地进行代码复审。</p>
 <h1 id="三、坏代码长什么样？"><a href="#三、坏代码长什么样？" class="headerlink" title="三、坏代码长什么样？"></a>三、坏代码长什么样？</h1><hr>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-34365af51f860981.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190713161445.png" alt></p>
 <p>这让我想起之前在捧读《阿里巴巴 Java 开发手册》时学习的代码规范的问题（<a href="https://www.jianshu.com/p/dcf388fc3f1d" target="_blank" rel="noopener">传送门</a>）
 ，只不过当时学习的是好的代码应该长什么样，而现在讨论的事情是：坏的代码长什么样？</p>
 <p>其实大部分的情况应该作为程序员的我们都有一定的共识，所以我觉得简单列一下书中提到的情况就足以说明：</p>
