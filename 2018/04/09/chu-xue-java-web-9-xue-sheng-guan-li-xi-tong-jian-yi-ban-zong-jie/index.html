@@ -463,9 +463,9 @@ CREATE DATABASE student DEFAULT CHARACTER SET utf8;</code></pre>
 <h4 id="③-原型设计"><a href="#③-原型设计" class="headerlink" title="③ 原型设计"></a>③ 原型设计</h4><p>就是设计界面，在商业项目中，这是很重要的一步，我们可以<strong>解除界面原型，低成本、高效率</strong>的与客户达成<strong>需求的一致性</strong>。</p>
 <p>这个项目一共就分为两个页面：</p>
 <ul>
-<li><p>主页面：<br><img src="https://upload-images.jianshu.io/upload_images/7896890-0169962ea353fcbd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="首页"></p>
+<li><p>主页面：<br><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714074619.png" alt></p>
 </li>
-<li><p>学生编辑页面：<br><img src="https://upload-images.jianshu.io/upload_images/7896890-2eac73f04dcf3ea4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="编辑页面"></p>
+<li><p>学生编辑页面：<br><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714074626.png" alt></p>
 </li>
 </ul>
 <h4 id="④-实体类的设计"><a href="#④-实体类的设计" class="headerlink" title="④ 实体类的设计"></a>④ 实体类的设计</h4><p>实体类仅仅是对数据库中表的一一映射，同时可能还需要兼顾对业务能力的支持。</p>
@@ -702,7 +702,8 @@ CREATE DATABASE student DEFAULT CHARACTER SET utf8;</code></pre>
 </ul>
 <p>1.获取总数：<code>public int getTotal()</code><br>2.根据 id 获取：<code>public Student get(int id)</code></p>
 <h4 id="⑥-业务类介绍"><a href="#⑥-业务类介绍" class="headerlink" title="⑥ 业务类介绍"></a>⑥ 业务类介绍</h4><p>作为 J2EE Web 应用，一般都会按照如图所示的设计流程进行：<br>Servlet -&gt; Service（业务类） -&gt; DAO -&gt; database </p>
-<p>当浏览器提交请求到 Tomcat Web 服务器的时候，对应的 Servlet 的doGet/doPost 方法会被调用，接着在 Servlet 中调用 Service类，然后在 Service 类中调用DAO类，最后在 DAO 中访问数据库获取相应的数据。<br><img src="https://upload-images.jianshu.io/upload_images/7896890-7e224d06d164441a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>当浏览器提交请求到 Tomcat Web 服务器的时候，对应的 Servlet 的doGet/doPost 方法会被调用，接着在 Servlet 中调用 Service类，然后在 Service 类中调用DAO类，最后在 DAO 中访问数据库获取相应的数据。</p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714074637.png" alt></p>
 <p>单本项目没有使用 Service 这一层，原因是在对 DAO 类进行开发中，已经提供了很好的支持业务的方法，没有必要再包括上一层 Service 业务类。</p>
 <blockquote>
 <p>参考链接：<a href="http://how2j.cn/k/tmall-j2ee/tmall-j2ee-995/995.html" target="_blank" rel="noopener">这里</a></p>
@@ -1221,7 +1222,7 @@ public class DeleteServlet extends HttpServlet {
     <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">5</span>px<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <h4 id="——【4-项目细节】——"><a href="#——【4-项目细节】——" class="headerlink" title="——【4. 项目细节】——"></a>——【4. 项目细节】——</h4><ul>
-<li>项目的整理结构：<br><img src="https://upload-images.jianshu.io/upload_images/7896890-e95ffeefc9bfbeca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+<li>项目的整理结构：<br><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714074656.png" alt></li>
 </ul>
 <h4 id="分页功能"><a href="#分页功能" class="headerlink" title="分页功能"></a>分页功能</h4><ul>
 <li>首页在 Packge[util] 下创建一个 Page 工具类：</li>
@@ -1327,7 +1328,7 @@ public class DeleteServlet extends HttpServlet {
 <li>status.index 是从0开始遍历</li>
 <li><strong>要求：</strong>显示当前页码的前两个和后两个就可，例如当前页码为3的时候，就显示 1 2 3(当前页) 4 5 的页码</li>
 <li><strong>理解测试条件：</strong></li>
-<li>10 &lt;= 当前页*每一页显示的数目 - 当前页开始的数据编号 &lt;= 30<br><img src="https://upload-images.jianshu.io/upload_images/7896890-1f82d91e47a31c7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+<li>10 &lt;= 当前页*每一页显示的数目 - 当前页开始的数据编号 &lt;= 30<br><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714074711.png" alt></li>
 <li>只要理解了这个判断条件，其他的就都好理解了</li>
 </ul>
 <pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">c:</span>forEach</span> <span class="token attr-name">begin</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">end</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${page.totalPage-1}<span class="token punctuation">"</span></span> <span class="token attr-name">varStatus</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>status<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -1392,7 +1393,7 @@ req<span class="token punctuation">.</span><span class="token function">setAttri
 <li><p>代码重构<br>本项目仅仅完成的是一个学生表的增删改查，却有以下的五个 Servlet ：</p>
 </li>
 </ol>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-83b087dbf84970dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714074723.png" alt></p>
 <p>如果项目大起来，那可想而知，Servlet 有多臃肿，维护成本有多高</p>
 <ul>
 <li><strong>改进方法：</strong>用一个 StudentServlet 代替</li>

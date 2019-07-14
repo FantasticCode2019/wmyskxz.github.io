@@ -422,7 +422,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://upload-images.jianshu.io/upload_images/7896890-d8538c85f415d63e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+                <p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714080934.png" alt></p>
 <h2 id="为什么要学习-JSP"><a href="#为什么要学习-JSP" class="headerlink" title="为什么要学习 JSP"></a>为什么要学习 JSP</h2><h4 id="Servlet-的短板："><a href="#Servlet-的短板：" class="headerlink" title="Servlet 的短板："></a>Servlet 的短板：</h4><p>Servlet 的出现，是为了<strong>解决动态输出网页的问题。</strong></p>
 <p>虽然这样做目的能达到，但是存在一些<strong>缺陷：</strong></p>
 <ul>
@@ -443,7 +443,7 @@
 <li>Model——业务功能编写（例如算法实现）、数据库设计以及数据存取操作实现</li>
 </ul>
 <p>在JSP/Servlet开发的软件系统中，这三个部分的描述如下所示：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7896890-1471c8cf3ca17fc7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714080940.png" alt></p>
 <p>1.Web浏览器发送HTTP请求到服务端，被Controller(Servlet)获取并进行处理（例如参数解析、请求转发）<br>2.Controller(Servlet)调用核心业务逻辑——Model部分，获得结果<br>3.Controller(Servlet)将逻辑处理结果交给View（JSP），动态输出HTML内容<br>4.动态生成的HTML内容返回到浏览器显示</p>
 <p>MVC模式在Web开发中的好处是非常明显，它规避了JSP与Servlet各自的短板，Servlet只负责业务逻辑而不会通过out.append()动态生成HTML代码；JSP中也不会充斥着大量的业务代码。这大大提高了代码的可读性和可维护性。</p>
 <ul>
@@ -598,7 +598,7 @@
 </li>
 </ul>
 <p>1.从作用域中获取共享数据<br>2.从page,request,session,application作用域中<strong>按顺序搜索</strong><br>3.<strong>如果共享数据为null,就输出空字符串</strong>（这是EL最重要的特点）</p>
-<h4 id="使用EL表达式从指定的作用域中获取共享数据"><a href="#使用EL表达式从指定的作用域中获取共享数据" class="headerlink" title="使用EL表达式从指定的作用域中获取共享数据:"></a>使用EL表达式从指定的作用域中获取共享数据:</h4><p><img src="https://upload-images.jianshu.io/upload_images/7896890-fb4b68a07268b5a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h4 id="使用EL表达式从指定的作用域中获取共享数据"><a href="#使用EL表达式从指定的作用域中获取共享数据" class="headerlink" title="使用EL表达式从指定的作用域中获取共享数据:"></a>使用EL表达式从指定的作用域中获取共享数据:</h4><p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714080956.png" alt></p>
 <ul>
 <li><strong>使用EL表达式访问对象的属性的两种方式：</strong></li>
 </ul>
