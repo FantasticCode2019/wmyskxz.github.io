@@ -354,7 +354,7 @@ header .go-back i {
     background-position: center center;
     background-size: cover;
     transform: translate3d(0px, 0px, 0px);
-    background-image: url(https://blog-1259634016.cos.ap-chengdu.myqcloud.com/%E5%8D%9A%E5%AE%A2%E9%A6%96%E9%A1%B5%E9%A1%B6%E5%9B%BE.jpg);
+    background-image: url(/medias/banner/background-image.jpg);
 }
 
 .index-cover {
