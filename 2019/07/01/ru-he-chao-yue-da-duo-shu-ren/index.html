@@ -4,11 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Java学习笔记(3)——String类详解, 我没有三颗心脏的博客">
-    <meta name="description" content="前言
-因为没有成功地为IDEA配上反编译工具，所以自己下载了一个XJad工具，背景是白色的，所以忍着强迫症硬是把IDEA的主体也给换成白色了，感觉为了这篇文章付出了诸多啊….
+    <meta name="keywords" content="如何超越大多数人, 我没有三颗心脏的博客">
+    <meta name="description" content="
+本文转载自酷壳-COOLSHELL：https://coolshell.cn/articles/19464.html作者：左耳听风
 
-字符串简介《Thinging in Java》中有一句话：可以">
+
+当你看到这篇文章的标题，你一定对这篇文章产生了巨大的兴趣，因为你的潜意识在告诉你，这是一本人生的“武林">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Java学习笔记(3)——String类详解 | 我没有三颗心脏的博客</title>
+    <title>如何超越大多数人 | 我没有三颗心脏的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -245,13 +246,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Java学习笔记(3)——String类详解
+                        如何超越大多数人
                     </div>
                 </div>
             </div>
@@ -360,29 +361,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/原创/" target="_blank">
-                                <span class="chip bg-color">原创</span>
-                            </a>
-                        
-                            <a href="/tags/Java/" target="_blank">
-                                <span class="chip bg-color">Java</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Java基础/" class="post-category" target="_blank">
-                                Java基础
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -390,21 +374,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2017-10-25
+                    2019-07-01
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.3k
+                        5.2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        8 分
+                        17 分
                     </div>
                     
                 
@@ -420,103 +404,97 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>因为没有成功地为IDEA配上反编译工具，所以自己下载了一个XJad工具，背景是白色的，所以忍着强迫症硬是把IDEA的主体也给换成白色了，感觉为了这篇文章付出了诸多啊….</p>
+                <blockquote>
+<p>本文转载自酷壳-COOLSHELL：<a href="https://coolshell.cn/articles/19464.html" target="_blank" rel="noopener">https://coolshell.cn/articles/19464.html</a><br>作者：左耳听风</p>
 </blockquote>
-<h1 id="字符串简介"><a href="#字符串简介" class="headerlink" title="字符串简介"></a>字符串简介</h1><p>《Thinging in Java》中有一句话：<strong>可以证明，字符串操作是计算机程序设计中最常见的行为。</strong></p>
-<p>把多个字符按照一定的顺序排列起来，就叫字符串（就像羊肉串一样，串起来的），具体是怎么排列的，你可以跟进String的源代码去看一下，会发现它其实内部维护的是一个char类型的数组：</p>
-<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084659.png" alt></p>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 也就是说</span>
-String str <span class="token operator">=</span> <span class="token string">"ABCD"</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">// 定义一个字符串对象，其实等价于：</span>
-<span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> cr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token string">'A'</span><span class="token punctuation">,</span><span class="token string">'B'</span><span class="token punctuation">,</span><span class="token string">'C'</span><span class="token punctuation">,</span><span class="token string">'D'</span><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
-<h2 id="字符串的分类"><a href="#字符串的分类" class="headerlink" title="字符串的分类"></a>字符串的分类</h2><p>其实说起来会有些别扭，为什么字符串会有分类这种东西。了解的朋友可能会知道字符串的操作除了String，还有StringBuffer和StringBuilder（区别我们在下面来说）</p>
-<h2 id="不可变的字符串"><a href="#不可变的字符串" class="headerlink" title="不可变的字符串"></a>不可变的字符串</h2><p>String是一个奇葩。</p>
-<p><strong>String对象不可变，也就是说当对象创建完毕之后，该对象的内容（字符序列）是不允许改变的，如果内容改变则会创建一个新的String对象，返回到原地址中。</strong></p>
-<p>细心的朋友也许会发现，String类维护的char数组不仅被final所修饰，并且查看JDK源码你就会发现，<strong>String类中每一个看起来会修改String值得方法，实际上都是创建了一个全新的String对象，以包含修改后的字符串对象。</strong>而最初的String对象则丝毫未动。我们可以简单的来看一个实例（从替换操作中就能明显看出）：</p>
-<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084707.png" alt></p>
-<blockquote>
-<p>replace方法就是替换字符串中的内容，如果替换之后跟原来的字符串相同则返回this，如果不相同则new一个新的对象返回。这明显体现了内容改变则返回新对象而不是直接修改String对象的值。</p>
-</blockquote>
-<h2 id="表面的错觉"><a href="#表面的错觉" class="headerlink" title="表面的错觉"></a>表面的错觉</h2><p>关于String对象是否可变，有些操作确实会给人错觉，先来看一段程序：</p>
-<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084714.png" alt></p>
-<p>从结果来看，s1的值最初是“A”，经过赋值以后，变成了“C”,经过字符串连接运算并赋值以后，变成了“BC”。String对象的内容真的改变了吗？<strong>实际上，这只是错觉而已。</strong>有疑惑的朋友可以去看我的上一篇笔记，你就能知道：</p>
-<p><strong>String对象“A”，“B”，“C”在全程中都没有任何改变，改变的只是引用s1所指向的内容，也就是s1的值。</strong></p>
-<h2 id="String对象的创建"><a href="#String对象的创建" class="headerlink" title="String对象的创建"></a>String对象的创建</h2><p>有两种方式：</p>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 第一种：直接赋一个字面量</span>
-String str1 <span class="token operator">=</span> <span class="token string">"ABCD"</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 第二种：通过构造器创建</span>
-String str2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"ABCD"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>那么这两种方式有什么不同呢？这里可能会涉及到一个面试题：</p>
-<blockquote>
-<p>上述的两种方法分别创建了几个String对象？</p>
-</blockquote>
-<p>回答这个问题也特别简单，首先你需要直到JVM的内存模型是怎样的，在上一篇笔记中也有简单提到，这里需要补充的是：<strong>常量池（专门存储常量的地方，都指的是方法区中）分为编译常量池（不研究，存储字节码的相关信息）和运行常量池（存储常量数据）。</strong></p>
-<blockquote>
-<p>先来看一张结果图：<br><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084725.png" alt></p>
-</blockquote>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190721074614.jpg" alt></p>
+<p>当你看到这篇文章的标题，你一定对这篇文章产生了巨大的兴趣，因为你的潜意识在告诉你，这是一本人生的“武林秘籍”，而且还是左耳朵写的，一定有干货满满，只要读完，一定可以练就神功并找到超过大多数人的快车道和捷径……然而…… 当你看到我这样开篇时，你一定会觉得我马上就要有个转折，告诉你这是不可能的，一切都需要付出和努力……然而，你错了，这篇文章还真就是一篇“秘籍”，只要你把这些“秘籍”用起来，你就一定可以超过大多数人。而且，这篇文章只有我这个“人生导师”可以写得好。毕竟，我的生命过到了十六进制2B的年纪，踏入这个社会已超过20年，舍我其谁呢？！</p>
+<p>P.S. 这篇文章借鉴于《如何写出无法维护的代码》一文的风格……嘿嘿</p>
+<h1 id="相关技巧和最佳实践"><a href="#相关技巧和最佳实践" class="headerlink" title="相关技巧和最佳实践"></a>相关技巧和最佳实践</h1><p>要超过别人其实还是比较简单的，尤其在今天的中国，更是简单。因为，你只看看中国的互联网，你就会发现，他们基本上全部都是在消费大众，让大众变得更为地愚蠢和傻瓜。<strong>所以，在今天的中国，你基本上不用做什么，只需要不使用中国互联网，你就很自然地超过大多数人了。</strong>当然，如果你还想跟他们彻底拉开，甩他们几个身位，把别人打到底层，下面的这些“技巧”你要多多了解一下。</p>
+<p>在<strong>信息获取</strong>上，你要不断地向大众鼓吹下面的这些事：</p>
 <ul>
-<li>当执行第一句话的时候，会在常量池中添加一个新的ABCD字符，str1指向常量池的ABCD</li>
-<li>当执行第二句话的时候，因为有new操作符，所以会在堆空间新开辟一块空间用来存储新的String对象，因为此时常量池中已经有了ABCD字符，所以堆中的String对象指向常量池中的ABCD，而str2则指向堆空间中的String对象。</li>
+<li><p>让大家都用百度搜索引擎查找信息，订阅微信公众号或是到知乎上学习知识……要做到这一步，你就需要把“百度一下”挂在嘴边，然后要经常在群或朋友圈中转发微信公众号的文章，并且转发知乎里的各种“如何看待……”这样的文章，让他们爱上八卦，爱上转发，爱上碎片。</p>
+</li>
+<li><p>让大家到微博或是知识星球上粉一些大咖，密切关注他们的言论和动向……是的，告诉大家，大咖的任何想法一言一行都可以在微博、朋友圈或是知识星球上获得，让大家相信，你的成长和大咖的见闻和闲扯非常有关系，你跟牛人在一个圈子里你也会变牛。</p>
+</li>
+<li><p>把今日头条和抖音这样的APP推荐给大家……你只需要让你有朋友成功地安装这两个APP，他们就会花大量的时间在上面，而不能自拔，要让他们安装其实还是很容易的，你要不信你就装一个试玩一会看看（嘿嘿嘿）。</p>
+</li>
+<li><p>让大家热爱八卦，八卦并不一定是明星的八卦，还可以是你身边的人，比如，公司的同事，自己的同学，职场见闻，社会热点，争议话题，……这些东西总有一些东西会让人心态有很多微妙的变化，甚至花大量的时间去搜索和阅读大量的观点，以及花大量时间与人辩论争论，这个过程会让人上瘾，让人欲罢不能，然而这些事却和自己没有半毛钱关系。你要做的事就是转发其中一些SB或是很极端的观点，造成大家的一睦讨论后，就早早离场……</p>
+</li>
+<li><p>利用爱国主义，让大家觉得不用学英文，不要出国，不要翻墙，咱们已经是强国了……这点其实还是很容易做到的，因为学习是比较逆人性的，所以，只要你鼓吹那些英文无用论，出国活得更惨，国家和民族都变得很强大，就算自己过得很底层，也有大国人民的感觉。</p>
+</li>
 </ul>
-<blockquote>
-<p>所以结论：<br><strong>String str1 = “ABCD”;</strong><br>最多创建一个String对象,最少不创建String对象.如果常量池中,存在”ABCD”,那么str1直接引用,此时不创建String对象.否则,先在常量池先创建”ABCD”内存空间,再引用.<br><strong>String str2 = new String(“ABCD”);</strong><br>最多创建两个String对象，至少创建一个String对象。new关键字绝对会在堆空间创建一块新的内存区域，所以至少创建一个String对象。</p>
-</blockquote>
-<h2 id="String对象的空值"><a href="#String对象的空值" class="headerlink" title="String对象的空值"></a>String对象的空值</h2><p>一种是表示引用为空（null）的空值：</p>
-<pre class=" language-java"><code class="language-java">String str1 <span class="token operator">=</span> null<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 没有初始化，没有分配内存空间</span></code></pre>
-<p>另外一种表示内容为空的空值：</p>
-<pre class=" language-java"><code class="language-java">String str2 <span class="token operator">=</span> "<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 分配有内存空间，有内容。</span></code></pre>
-<blockquote>
-<p>所以当你需要判断字符串是否为空的时候，实际上应该这样：<br><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084733.png" alt></p>
-</blockquote>
-<h2 id="字符串的比较"><a href="#字符串的比较" class="headerlink" title="字符串的比较"></a>字符串的比较</h2><p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084741.png" alt></p>
-<p>从上图可以明显看出，<strong>使用“==”，只能比较引用的内存地址是否相同，而使用“equals”方法，则比较的是字符串的内容。</strong></p>
-<blockquote>
-<p>我们可以跟到String类的equals方法：<br><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084745.png" alt></p>
-</blockquote>
-<h3 id="“-”号是怎么来连接字符串的"><a href="#“-”号是怎么来连接字符串的" class="headerlink" title="“+”号是怎么来连接字符串的"></a>“+”号是怎么来连接字符串的</h3><p>先来直接看一个简单的例子，程序中创建了三个String对象，str是hello和wrold两个字符串连接赋值后的对象，程序的结果很明显，但我们关心的是，hello和world是怎样连接起来的呢？</p>
-<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084753.png" alt></p>
-<p>我们在XJad（Java反编译程序，把生成的class反编译成java）中打开刚刚生成的class文件会发现：</p>
-<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084800.png" alt></p>
-<p>编译器自动引入了一个<strong>java.lang.StringBuilder</strong>类。虽然我们在源代码中并没有使用StringBuilder类，但是编译器却自作主张地使用了它，因为它更高效。</p>
-<p>在这个例子中，编译器创建了一个<strong>StringBuilde</strong>对象，用以构造最终的<strong>String</strong>，并为每个字符串调用了一次<strong>StringBuilder</strong>的<strong>append()</strong>方法，总计两次。最后调用<strong>toString()</strong>生成结果。这是编译器自动优化的结果，包括自动生成的Tester()无参数默认的构造函数也是。</p>
-<p>现在，你也许会觉得可以随意使用<strong>String</strong>对象，反正编译器会为你自动地优化性能。可是在这之前，我们先要看看编译器究竟能给我们优化到什么程度（下面再详细介绍StringBuilder）。</p>
-<h3 id="可变的字符串"><a href="#可变的字符串" class="headerlink" title="可变的字符串"></a>可变的字符串</h3><p><strong>StringBuilder/StringBuffer：</strong>当对象创建完毕之后，该对象的内容可以发生改变，当内容发生改变的时候，对象保持不变。</p>
-<p>接着上面的问题，我们继续来看一个例子：</p>
-<blockquote>
-<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084807.png" alt><br>程序的结果显而易见，我们来看看反编译之后的代码：<br><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084816.png" alt><br>可以看到，对比两个对象，后者的循环部分的代码更简短、更简单，而且它只生成了一个<strong>StringBuilder</strong>对象。</p>
-</blockquote>
-<p><strong>结论是：如果字符串操作比较简单，那就可以信赖编译器，它会为你合理地构造最终的字符串结果。但如果你还使用循环，多次地改变字符串的内容，那就更适合StringBuilder对象。</strong></p>
-<p>但是如果你想要走捷径，例如<strong>append(a+”:”+c)，</strong>则编译器就会调入陷阱，从而为你另外创建一个<strong>StringBuilder</strong>对象处理括号内的字符串操作。</p>
-<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084825.png" alt></p>
-<h3 id="String对象的比较"><a href="#String对象的比较" class="headerlink" title="String对象的比较"></a>String对象的比较</h3><p><strong>StringBuilder</strong>是Java SE5引入的，在这之前Java用的是<strong>StringBuffer</strong>。后者线程安全（只需要了解，该对象方法中所有的方法都是用了<strong>synchronized</strong>修饰符），因此开销也会大。有没有用<strong>synchronized</strong>修饰符，就是这两者唯一的区别。我们可以简单地来比较一下这三个String对象在拼接字符串中的性能：</p>
-<blockquote>
-<p>创建好三个方法，分别测试三个类型的对象的拼接效率：<br><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084832.png" alt><br><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084838.png" alt></p>
-</blockquote>
-<h3 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h3><p>最后再有一个String的面试题：</p>
-<blockquote>
-<p><strong>说说下面的String对象，彼此之间是否相等？</strong><br><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084847.png" alt></p>
-</blockquote>
-<p>如果你自己写几个判断相等的语句，分别判断str1和另外五个是否相等，则会发现：<br><strong>str1和str2/str3相等，和另外几个都不相等。</strong>我们先来看一下反编译之后的代码：</p>
-<blockquote>
-<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084854.png" alt></p>
-</blockquote>
-<p>知识点（纯干货）：</p>
+<p>然后，在<strong>知识学习和技能训练</strong>上，让他们不得要领并产生幻觉</p>
 <ul>
-<li>单独使用””引号创建的字符串都是直接量,编译期就已经确定存储到常量池中；</li>
-<li>使用new String(“”)创建的对象会存储到堆内存中,是运行期才创建；</li>
-<li>使用只包含直接量的字符串连接符如”aa” + “bb”创建的也是直接量编译期就能确定,已经确定存储到常量池中(str2和str3)；</li>
-<li>使用包含String直接量(无final修饰符)的字符串表达式(如”aa” + s1)创建的对象是运行期才创建的,存储在堆中；</li>
-<li>通过变量/调用方法去连接字符串,都只能在运行时期才能确定变量的值和方法的返回值,不存在编译优化操作.</li>
+<li><p>让他们混淆认识和知识，以为开阔认知就是学习，让他们有学习和成长的幻觉……</p>
+</li>
+<li><p>培养他们要学会使用碎片时间学习。等他们习惯利用碎片时间吃快餐后，他们就会失去精读一本书的耐性……<br>不断地给他们各种各样“有价值的学习资料”，让他们抓不住重点，成为一个微信公众号或电子书“收藏家”……</p>
+</li>
+<li><p>让他们看一些枯燥无味的基础知识和硬核知识，这样让他们只会用“死记硬背”的方式来学习，甚至直接让他们失去信心，直接放弃……</p>
+</li>
+<li><p>玩具手枪是易用的，重武器是难以操控的，多给他们一些玩具，这样他们就会对玩具玩地得心应手，觉得玩玩具就是自己的专业……</p>
+</li>
+<li><p>让他们喜欢直接得到答案的工作和学习方式，成为一个伸手党，从此学习再也不思考……</p>
+</li>
+<li><p>告诉他们东西做出来就好了，不要追求做漂亮，做优雅，这样他们就会慢慢地变成劳动密集型……</p>
+</li>
+<li><p>让他们觉得自己已经很努力了，剩下的就是运气，并说服他们去‘及时行乐’，然后再也找不到高阶和高效率学习的感觉……</p>
+</li>
+<li><p>让他们觉得“读完书”、“读过书”就行了，不需要对书中的东西进行思考，进行总结，或是实践，只要囫囵吞枣尽快读完就等同于学好了……</p>
+</li>
 </ul>
-<h1 id="文章结尾"><a href="#文章结尾" class="headerlink" title="文章结尾"></a>文章结尾</h1><p>其实还想写关于正则表达的东西的，还是改天找时间另外研究研究写一篇像样的吧。关于String的操作，就简单给一下图吧，感兴趣也可以自己百度或者跟踪进源代码里面去看，这里就不细说了：</p>
-<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714084901.png" alt></p>
-<blockquote>
-<p>参考资料：</p>
+<p>最后，在<strong>认知和格局</strong>上，彻底打垮他们，让他们变成韭菜。</p>
 <ul>
-<li><a href="http://study.163.com/course/courseMain.htm?courseId=1003108028" target="_blank" rel="noopener">http://study.163.com/course/courseMain.htm?courseId=1003108028</a> 《Java零基础入门教程》</li>
-<li>《Thinking in Java》第四版</li>
+<li><p>让他们不要看到大的形势，只看到眼前的一亩三分地，做好一个井底之蛙。其实这很简单，比如，你不要让他们看到整个计算机互联网技术改变人类社会的趋势，你要多让他看到，从事这一行业的人有多苦逼，然后再说一下其它行业或职业有多好……</p>
+</li>
+<li><p>宣扬一夜暴富以及快速挣钱的案例，最好让他们进入“赌博类”或是“传销类”的地方，比如：股市、数字货币……要让他们相信各种财富神话，相信他们就是那个幸运儿，他们也可以成为巴菲特，可以成为马云……</p>
+</li>
+<li><p>告诉他们，一些看上去很难的事都是有捷径的，比如：21天就能学会机器学习，用区块链就能颠覆以及重构整个世界等等……</p>
+</li>
+<li><p>多跟他们讲一些小人物的励志的故事，这样让他们相信，不需要学习高级知识，不需要掌握高级技能，只需要用低等的知识和低级的技能，再加上持续不断拼命重复现有的工作，终有一天就会成功……</p>
+</li>
+<li><p>多让他们跟别人比较，人比人不会气死人，但是会让人变得浮躁，变得心急，变得焦虑，当一个人没有办法控制自己的情绪，没有办法让自己静下心来，人会失去耐性和坚持，开始好大喜欢功，开始装逼，开始歪门邪道剑走偏锋……</p>
+</li>
+<li><p>让他们到体制内的一些非常稳定的地方工作，这样他们拥有不思进取、怕承担责任、害怕犯错、喜欢偷懒、得过且过的素质……</p>
+</li>
+<li><p>让他们到体制外的那些喜欢拼命喜欢加班的地方工作，告诉他们爱拼才会赢，努力加班是一种福报，青春就是用来拼的，让他们喜欢上使蛮力的感觉……</p>
+</li>
+<li><p>告诉他们你的行业太累太辛苦，干不到30岁。让他们早点转行，不要耽误人生和青春……</p>
+</li>
+<li><p>当他们要做决定的时候，一定要让他们更多的关注自己会失去的东西，而不是会得到的东西。培养他们患得患失心态，让他们认识不到事物真正的价值，失去判断能力……（比如：让他们觉得跟对人拍领导的马屁忠于公司比自我的成长更有价值）</p>
+</li>
+<li><p>告诉他们，你现有的技能和知识不用更新，就能过好一辈子，新出来的东西没有生命力的……这样他们就会像我们再也不学习的父辈一样很快就会被时代所抛弃……</p>
+</li>
+<li><p>每个人都喜欢在一些自己做不到的事上找理由，这种能力不教就会，比如，事情太多没有时间，因为工作上没有用到，等等，你要做的就是帮他们为他们做不到的事找各种非常合理的理由，比如：没事的，一切都是最好的安排；你得不到的那个事没什么意思；你没有面好主要原因是那个面试官问的问题都是可以上网查得到的知识，而不没有问到你真正的能力上；这些东西学了不用很快会忘了，等有了环境再学也不迟……</p>
+</li>
 </ul>
-</blockquote>
+<p><strong>最后友情提示一下，上述的这些“最佳实践”你要小心，是所谓，贩毒的人从来不吸毒，开赌场的人从来不赌博！所以，你要小心别自己也掉进去了！这就是“欲练神功，必先自宫”的道理。</strong></p>
+<h1 id="相关原理和思维模型"><a href="#相关原理和思维模型" class="headerlink" title="相关原理和思维模型"></a>相关原理和思维模型</h1><p>对于上面的这些技巧还有很多很多，你自己也可以发明或是找到很多。所以，我来讲讲这其中的一些原理。</p>
+<p>一般来说，超过别人一般来说就是两个维度：</p>
+<ol>
+<li>在<strong>认知、知识和技能</strong>上。这是一个人赖以立足社会的能力（参看《程序员的荒谬之言还是至理名言？》和《21天教你学会C++》）</li>
+<li>在<strong>领导力</strong>上。所谓领导力就是你跑在别人前面，你得要有比别人更好的能力更高的标准（参看《技术人员发展之路》）</li>
+</ol>
+<p>首先，我们要明白，人的技能是从认识开始，然后通过学校、培训或是书本把“零碎的认知”转换成“系统的知识”，而有要把知识转换成技能，就需要训练和实践，这样才能完成从：认识 -&gt; 知识 -&gt; 技能 的转换。这个转换过程是需要耗费很多时间和精力的，而且其中还需要有强大的学习能力和动手能力，这条路径上有很多的“关卡”，每道关卡都会过滤掉一大部分人。比如：对于一些比较枯燥的硬核知识来说，90%的人基本上就倒下来，不是因为他们没有智商，而是他们没有耐心。</p>
+<h2 id="认知"><a href="#认知" class="headerlink" title="认知"></a>认知</h2><p>要在认知上超过别人，就要在下面几个方面上做足功夫：</p>
+<p><strong>1）信息渠道。</strong>试想如果别人的信息源没有你的好，那么，这些看不见信息源的人，只能接触得到二手信息甚至三手信息，只能获得被别人解读过的信息，这些信息被三传两递后必定会有错误和失真，甚至会被传递信息的中间人hack其中的信息（也就是“中间人攻击”），而这些找不出信息源的人，只能“被人喂养”，于是，他们最终会被困在信息的底层，永世不得翻身。（比如：学习C语言，放着原作者K&amp;R的不用，硬要用错误百出谭浩强的书，能有什么好呢？）</p>
+<p><strong>2）信息质量。</strong>信息质量主要表现在两个方面，一个是信息中的燥音，另一个是信息中的质量等级，我们都知道，在大数据处理中有一句名言，叫 garbage in garbage out，你天天看的都是垃圾，你的思想和认识也只有垃圾。所以，如果你的信息质量并不好的话，你的认知也不会好，而且你还要花大量的时间来进行有价值信息的挖掘和处理。</p>
+<p><strong>3）信息密度。</strong>优质的信息，密度一般都很大，因为这种信息会逼着你去干这么几件事，a）搜索并学习其关联的知识，b）沉思和反省，c）亲手去推理、验证和实践……一般来说，经验性的文章会比知识性的文章会更有这样的功效。比如，类似于像 Effiective C++/Java，设计模式，Unix编程艺术，算法导论等等这样的书就是属于这种密度很大的书，而像Netflix的官方blog和AWS CTO的blog等等地方也会经常有一些这样的文章。</p>
+<h2 id="知识"><a href="#知识" class="headerlink" title="知识"></a>知识</h2><p>要在知识上超过别人，你就需要在下面几个方面上做足功夫：</p>
+<p><strong>1）知识树（图）。</strong>任何知识，只在点上学习不够的，需要在面上学习，这叫系统地学习，这需要我们去总结并归纳知识树或知识图，一个知识面会有多个知识板块组成，一个板块又有各种知识点，一个知识点会导出另外的知识点，各种知识点又会交叉和依赖起来，学习就是要系统地学习整个知识树（图）。<strong>而我们都知道，对于一棵树来说，“根基”是非常重要的，所以，学好基础知识也是非常重要的，对于一个陌生的地方，有一份地图是非常重要的，没有地图的你只会乱窜，只会迷路、练路、走冤枉路！</strong></p>
+<p><strong>2）知识缘由。</strong>任何知识都是有缘由的，了解一个知识的来龙去脉和前世今生，会让你对这个知识有非常强的掌握，而不再只是靠记忆去学习。靠记忆去学习是一件非常糟糕的事。而对于一些操作性的知识（不需要了解由来的），我把其叫操作知识，就像一些函数库一样，这样的知识只要学会查文档就好了。<strong>能够知其然，知其所以然的人自然会比识知识到表皮的人段位要高很多。</strong>I </p>
+<p><strong>3）方法套路。</strong>学习不是为了找到答案，而是找到方法。就像数学一样，你学的是方法，是解题思路，是套路，会用方程式解题的和不会用方程式解题的在解题效率上不可比较，而在微积分面前，其它的解题方法都变成了渣渣。<strong>你可以看到，掌握高级方法的人比别人的优势有多大，学习的目的就是为了掌握更为高级的方法和解题思路。</strong></p>
+<h2 id="技能"><a href="#技能" class="headerlink" title="技能"></a>技能</h2><p>要在技能上超过别人，你就需要在下面几个方面做足功夫：</p>
+<p><strong>1）精益求精。</strong>如果你想拥有专业的技能，你要做不仅仅是拼命地重复一遍又一遍的训练，而是在每一次重复训练时你都要找到更好的方法，总结经验，让新的一遍能够更好，更漂亮，更有效率，否则，用相同的方法重复，那你只不过在搬砖罢了。</p>
+<p><strong>2）让自己犯错。</strong>犯错是有利于成长的，这是因为出错会让人反思，反思更好的方法，反思更完美的方案，总结教训，寻求更好更完美的过程，是技能升级的最好的方式。尤其是当你在出错后，被人鄙视，被人嘲笑后，你会有更大的动力提升自己，这样的动力才是进步的源动力。当然，千万不要同一个错误重复地犯！</p>
+<p><strong>3）找高手切磋。</strong>下过棋，打个球的人都知道，你要想提升自己的技艺，你必需找高手切磋，在和高手切磋的过程中你会感受到高手的技能和方法，有时候你会情不自禁地哇地一下，我靠，还可以这么玩！</p>
+<h2 id="领导力"><a href="#领导力" class="headerlink" title="领导力"></a>领导力</h2><p>最后一个是领导力，要有领导力或是影响力这个事并不容易，这跟你的野心有多大，好胜心有多强 ，你愿意付出多少很有关系，因为一个人的领导力跟他的标准很有关系，因为有领导力的人的标准比绝大多数人都要高。</p>
+<p><strong>1）识别自己的特长和天赋。</strong>首先，每个人DNA都可能或多或少都会有一些比大多数人NB的东西（当然，也可能没有），如果你有了，那么在你过去的人生中就一定会表现出来了，就是那种大家遇到这个事会来请教你的寻求你帮助的现象。那种，别人要非常努力，而你毫不费劲的事。一旦你有了这样的特长或天赋，那你就要大力地扩大你的领先优势，千万不要进到那些会限制你优势的地方。你是一条鱼，你就一定要把别人拉到水里来玩，绝对不要去陆地上跟别人拼，不断地在自己的特长和天赋上扩大自己的领先优势，彻底一骑绝尘。</p>
+<p><strong>2）识别自己的兴趣和事业。</strong>没有天赋也没有问题，还有兴趣点，都说兴趣是最好的老师，当年，Linus就是在学校里对minx着迷了，于是整出个Linux来，这就是兴趣驱动出的东西，一般来说，兴趣驱动的事总是会比那些被动驱动的更好。但是，这里我想说明一下什么叫“真∙兴趣”，真正的兴趣不是那种三天热度的东西，而是那种，你愿意为之付出一辈子的事，是那种无论有多大困难有多难受你都要死磕的事，这才是“真∙兴趣”，这也就是你的“野心”和“好胜心”所在，其实上升到了你的事业。相信我，绝大多数人只有职业而没有事业的。</p>
+<p><strong>3）建立高级的习惯和方法。</strong>没有天赋没有野心，也还是可以跟别人拼习惯拼方法的，只要你有一些比较好的习惯和方法，那么你一样可以超过大多数人。对此，在习惯上你要做到比较大多数人更自律，更有计划性，更有目标性，比如，每年学习一门新的语言或技术，并可以参与相关的顶级开源项目，每个月训练一个类算法，掌握一种算法，每周阅读一篇英文论文，并把阅读笔记整理出来……自律的是非常可怕的。除此之外，你还需要在方法上超过别人，你需要满世界的找各种高级的方法，其中包括，思考的方法，学习的方法、时间管理的方法、沟通的方法这类软实力的，还有，解决问题的方法（trouble shooting 和 problem solving），设计的方法，工程的方法，代码的方法等等硬实力的，一开始照猫画虎，时间长了就可能会自己发明或推导新的方法。</p>
+<p><strong>4）勤奋努力执着坚持。</strong>如果上面三件事你都没有也没有能力，那还有最后一件事了，那就是勤奋努力了，就是所谓的“一万小时定律”了（参看《21天教你学会C++》中的十年学编程一节），我见过很多不聪明的人，悟性也不够（比如我就是一个），别人学一个东西，一个月就好了，而我需要1年甚至更长，但是很多东西都是死的，只要肯花时间就有一天你会搞懂的，耐不住我坚持十年二十年，聪明的人发明个飞机飞过去了，笨一点的人愚公移山也过得去，因为更多的人是懒人，我不用拼过聪明人，我只用拼过那些懒人就好了。</p>
+<p>好了，就这么多，如果哪天你变得消极和不自信，你要来读读我的这篇文章，子曰：温故而知新。</p>
+<p>（全文完）</p>
 
             </div>
             <hr/>
@@ -685,10 +663,10 @@ String str2 <span class="token operator">=</span> <span class="token keyword">ne
             <!--            <br/>-->
             <div class="foot-copyright-note">
                 <i class="fa fa-lightbulb-o"></i> 本文由
-                <a xmlns:cc="http://creativecommons.org/ns#" href="/2017/10/25/java-xue-xi-bi-ji-3-string-lei-xiang-jie/"
+                <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/01/ru-he-chao-yue-da-duo-shu-ren/"
                    property="cc:attributionName"
                    rel="cc:attributionURL">
-                    wmyskxz
+                    我没有三颗心脏
                 </a> 创作， 采用
                 <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
                     知识共享署名 4.0 国际许可协议
@@ -730,7 +708,7 @@ String str2 <span class="token operator">=</span> <span class="token keyword">ne
         repo: 'wmyskxz.github.io',
         owner: 'wmyskxz',
         admin: "wmyskxz",
-        id: '2017-10-25T08-15-00',
+        id: '2019-07-01T07-32-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -755,33 +733,34 @@ String str2 <span class="token operator">=</span> <span class="token keyword">ne
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2017/10/31/java-xue-xi-bi-ji-4-bing-fa-ji-chu/">
+                <a href="/2019/07/09/spring-xi-lie-wen-zhang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Java学习笔记(4)——并发基础">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Spring 系列文章">
                         
-                        <span class="card-title">Java学习笔记(4)——并发基础</span>
+                        <span class="card-title">Spring 系列文章</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前言当我们使用计算机时，可以同时做许多事情，例如一边打游戏一边听音乐。这是因为操作系统支持并发任务，从而使得这些工作得以同时进行。
+                            Spring 框架基础
+Spring学习（1）——快速入门：https://www.wmyskxz.com/2018/04/10/spring-xue-xi-1-kuai-su-ru-men/
 
-那么提出一个问题：如果我们要实现一个程序能一边听音乐一边玩游戏怎么实现呢？我们使用了循环来模拟过程，因为播
+Spring学习（2）——Spring Io
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-10-31
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-09
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java基础/" class="post-category" target="_blank">
-                                    Java基础
+                            <a href="/categories/Java-Web/" class="post-category" target="_blank">
+                                    Java Web
                                 </a>
                             
                             
@@ -795,8 +774,8 @@ String str2 <span class="token operator">=</span> <span class="token keyword">ne
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/Java/" target="_blank">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/Spring/" target="_blank">
+                        <span class="chip bg-color">Spring</span>
                     </a>
                     
                 </div>
@@ -810,32 +789,33 @@ String str2 <span class="token operator">=</span> <span class="token keyword">ne
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/09/19/java-xue-xi-bi-ji-2-shu-ju-lei-xing/">
+                <a href="/2019/06/13/tu-xie-tui-jian-ling-yu-qu-dong-she-ji-xue-xi-shu-chu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Java学习笔记(2)——数据类型">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="【吐血推荐】领域驱动设计学习输出">
                         
-                        <span class="card-title">Java学习笔记(2)——数据类型</span>
+                        <span class="card-title">【吐血推荐】领域驱动设计学习输出</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-终于要写点干货了，其实思考了很久下面一篇文章要写什么，主要的纠结点在于，既想要分享那些精美的知识，又怕这些知识不太好嚼。后来想想还是对初学者不太好友算了..一来这系列文章叫做学习笔记，我的。另外写得足够有料，才能发挥笔记的作用，不然索然无
+一、Hello DDD
+刚开始接触学习「DDD - 领域驱动」的时候，我被各种新颖的概念所吸引：「领域」、「领域驱动」、「子域」、「聚合」、「聚合根」、「值对象」、「通用语言」…..总之一大堆有关的、无关的概念从我的脑海经过，其中不乏让我
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-19
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java基础/" class="post-category" target="_blank">
-                                    Java基础
+                            <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                                    学习笔记
                                 </a>
                             
                             
@@ -849,8 +829,8 @@ String str2 <span class="token operator">=</span> <span class="token keyword">ne
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/Java/" target="_blank">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/领域驱动设计/" target="_blank">
+                        <span class="chip bg-color">领域驱动设计</span>
                     </a>
                     
                 </div>
