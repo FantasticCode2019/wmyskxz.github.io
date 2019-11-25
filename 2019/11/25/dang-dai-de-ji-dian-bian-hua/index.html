@@ -4,10 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="初学Java Web(3)——第一个Servlet, 我没有三颗心脏的博客">
+    <meta name="keywords" content="当代的几点变化, 我没有三颗心脏的博客">
     <meta name="description" content="
 
-这学期 Java Web 课程的第一节课就简短复习了一下 Java 的一些基础知识，所以觉得 Java 的基础知识还是很重要的，但当我想要去写一篇 Java 回顾的文章的时候发现很难，因为坑实在太多了（一个头，两个大），只能另外找一些时">
+前言：以下所有观点均摘录 or 改编自参考资料，纯属观点分享…
+
+一、当我们说「当代」时，我们在说什么
+
+引用自：「当代」越来越让人看不懂，我们帮你找到了观察它的 15 个新角度 | 100个生活大问题 - https://www.qd">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>初学Java Web(3)——第一个Servlet | 我没有三颗心脏的博客</title>
+    <title>当代的几点变化 | 我没有三颗心脏的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -244,13 +248,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        初学Java Web(3)——第一个Servlet
+                        当代的几点变化
                     </div>
                 </div>
             </div>
@@ -361,12 +365,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/原创/" target="_blank">
-                                <span class="chip bg-color">原创</span>
-                            </a>
-                        
-                            <a href="/tags/Java-Web/" target="_blank">
-                                <span class="chip bg-color">Java Web</span>
+                            <a href="/tags/喜欢的三观/" target="_blank">
+                                <span class="chip bg-color">喜欢的三观</span>
                             </a>
                         
                     </div>
@@ -374,27 +374,36 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/喜欢的三观/" class="post-category" target="_blank">
+                                喜欢的三观
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-03-21
+                    2019-11-25
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        3k
+                        3.9k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        11 分
+                        13 分
                     </div>
                     
                 
@@ -410,155 +419,71 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714081242.png" alt></p>
+                <p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20191122161726.png" alt></p>
 <blockquote>
-<p>这学期 Java Web 课程的第一节课就简短复习了一下 Java 的一些基础知识，所以觉得 Java 的基础知识还是很重要的，但当我想要去写一篇 Java 回顾的文章的时候发现很难，因为坑实在太多了（一个头，两个大），只能另外找一些时间去写顺便巩固巩固自己的基础。</p>
+<p>前言：以下所有观点均摘录 or 改编自参考资料，纯属观点分享…</p>
 </blockquote>
-<h2 id="——【1-什么是-Servlet-】——"><a href="#——【1-什么是-Servlet-】——" class="headerlink" title="——【1. 什么是 Servlet 】——"></a>——【1. 什么是 Servlet 】——</h2><p>学习一个东西就要先去了解它是什么东西。</p>
-<p>Servlet 取自两个单词：Server、Applet （很符合 sun 公司的命名特点）， Java Servlet 的简称，<strong>其实质就是运行在 Web 应用服务器上的 Java 程序，</strong>与普通 Java 程序不同，它是位于 Web 服务器内部的服务器端的 Java 应用程序，可以对 Web 浏览器或其他 HTTP 客户端程序发送的请求进行处理。</p>
-<p>狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类，一般情况下，人们将Servlet理解为后者。Servlet运行于支持Java的应用服务器中。从原理上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。</p>
-<blockquote>
-<p>实际上，Servlet 就像是一个规范，想象一下我们的 USB 接口，它不仅约束了U盘的大小和形状，同样也约束了电脑的插槽，Servlet 也是如此，它不仅约束了服务器端如何实现规范，也约束着 Java Web 项目的结构，为什么这样说，我们下面再来讲，<strong>编写一个 Servlet 其实就是按照 Servlet 规范编写一个 Java 类。</strong></p>
-</blockquote>
-<h2 id="——【2-Servlet-与-Servlet-容器-】——"><a href="#——【2-Servlet-与-Servlet-容器-】——" class="headerlink" title="——【2. Servlet 与 Servlet 容器 】——"></a>——【2. Servlet 与 Servlet 容器 】——</h2><p>Servlet 对象与普通的 Java 对象不同，它可以处理 Web 浏览器或其他 HTTP 客户端程序发送的 HTTP 请求，但前提是把 Servlet 对象布置到 Servlet 容器中，也就是说，其运行需要 Servlet 容器的支持。</p>
-<p>Servlet 容器也叫做 Servlet 引擎，是 Web 服务器或应用程序服务器的一部分，用于在发送的请求和响应之上提供网络服务，解码基于 MIME 的请求，格式化基于 MIME 的响应。Servlet 没有 main 方法，不能独立运行，它必须被部署到 Servlet 容器中，由容器来实例化和调用 Servlet 的方法（如 doGet() 和 doPost() 方法），Servlet 容器在 Servlet 的生命周期内包容和管理 Servlet 。在 JSP 技术 推出后，管理和运行 Servlet / JSP 的容器也称为 Web 容器。</p>
-<p>有了 Servlet 之后，用户通过单击某个链接或者直接在浏览器的地址栏中输入 URL 来访问 Servlet ，Web 服务器接收到该请求后，并不是将请求直接交给 Servlet ，而是交给 Servlet 容器。Servlet 容器实例化 Servlet ，调用 Servlet 的一个特定方法对请求进行处理， 并产生一个响应。这个响应由 Servlet 容器返回给 Web 服务器，Web 服务器包装这个响应，以 HTTP 响应的形式发送给 Web 浏览器。</p>
-<h4 id="Servlet-容器能提供什么？"><a href="#Servlet-容器能提供什么？" class="headerlink" title="Servlet 容器能提供什么？"></a>Servlet 容器能提供什么？</h4><p>上面我们知道了需要由 Servlet 容器来管理和运行 Servlet ，但是为什么要这样做呢？使用 Servlet 容器的原因有：</p>
+<h1 id="一、当我们说「当代」时，我们在说什么"><a href="#一、当我们说「当代」时，我们在说什么" class="headerlink" title="一、当我们说「当代」时，我们在说什么"></a>一、当我们说「当代」时，我们在说什么</h1><hr>
+<ul>
+<li>引用自：「当代」越来越让人看不懂，我们帮你找到了观察它的 15 个新角度 | 100个生活大问题 - <a href="https://www.qdaily.com/articles/62748.html" target="_blank" rel="noopener">https://www.qdaily.com/articles/62748.html</a></li>
+</ul>
+<p>当代的意思似乎就是「目前所处的时代」，看上去是一个「早就存在于生活之中，无需费心理解」的词语，但如果稍稍在记忆里检索一下，你可能就会发现，在很长一段时间里，它其实是以「当代艺术」、「当代作家」这些相当严肃的面貌出现的，直到最近几年才开始进入我们的日常词库，而且内涵也变得有点不易形容：现在的「当代」，与其说是对一段时间的概括，不如说更接近于「真是一个纷繁复杂、一句两句解释不明白、说时迟那时快的时代」，换言之，「当代」其实也跟「硬核」「流量」一样成了一种<a href="http://www.qdaily.com/articles/59766.html" target="_blank" rel="noopener">景观</a>，一个带点<a href="http://www.qdaily.com/articles/59539.html" target="_blank" rel="noopener">调侃和解构</a>意味的 meme，<strong>它真正想说的其实是「喏，看这个世界，就是这样」。</strong></p>
+<p>好奇心研究所在 2018 年末的时候，曾经问过大家，「<a href="http://www.qdaily.com/mobs/2619.html" target="_blank" rel="noopener">今年有哪些小事让你有一个时代开始/结束的感觉？</a>」，得到最多赞同的回答包括「发现当红明星的年纪比自己还小」「再也不用带现金出门」「金庸先生去世」「开始习惯了视频会员付费制度」，它们刚好完整概括了人们对「当代」这个概念的几种典型印象：</p>
+<ul>
+<li><p>以全球化、<a href="http://www.qdaily.com/articles/23355.html" target="_blank" rel="noopener">碎片化</a>、<a href="http://www.qdaily.com/articles/54099.html" target="_blank" rel="noopener">城市化</a>等关键词为代表的生活方式（一个典型的例子就是咖啡厅、机场这种<a href="http://www.qdaily.com/articles/58362.html" target="_blank" rel="noopener">走遍全世界都长得差不多的「云空间」</a>）；</p>
+</li>
+<li><p>热爱科技、拥抱互联网却又震慑于科技的阴暗面、被手机和社交媒体所困的普通人；</p>
+</li>
+<li><p>以生动诠释各种小而又小的<a href="http://www.qdaily.com/articles/37103.html" target="_blank" rel="noopener">第一世界问题</a>为特色的时髦情绪（比如<a href="http://www.qdaily.com/articles/54106.html" target="_blank" rel="noopener">社恐</a>、<a href="http://www.qdaily.com/articles/54474.html" target="_blank" rel="noopener">FOMO</a>、<a href="http://www.qdaily.com/articles/59830.html" target="_blank" rel="noopener">坏消息疲劳</a>）；</p>
+</li>
+<li><p>以及，被名人、网红、商品、大公司所象征的「xx 时代」（共享时代、偶像时代、即时通讯时代，等等）。</p>
+</li>
+</ul>
+<p>这几个维度叠加在一起，共同组成了你眼前的美丽新世界，以及一种看不见摸不着、但总会令人若有所思的<strong>「时代感」</strong>。</p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20191125222543.png" alt></p>
+<p>但是话说回来，这个被冠以买买买、杠精遍地、网红经济、信息焦虑……之名的当代，究竟特别在何处？存身其中的我们，顶着<a href="http://www.qdaily.com/articles/62492.html" target="_blank" rel="noopener">千禧一代、Z 世代、数字游牧民族、飘一代</a>的荣誉称号，真的已经气质迥异到值得被划分得这么细致吗？</p>
+<p><strong>不，我们提出这个问题，并不是想否定「当代」的特殊性。</strong>从嬉皮士到 rapper、从电视到手机、从报纸到 Instagram，一代有一代的流行、象征、号召力，变化当然也是实实在在产生了的。我们只是提醒你，每一代人掌握话语权的时候，都会习惯性关注并强调自己的特立独行，习惯性认为「最好的时代已经过去了」「那帮年轻人怎么这样」，以及「我们这代人过得太不容易了」。</p>
+<p>从这个角度来讲，所谓的「新时代」其实也有点像一台复读机，它跟上个时代的差距，可能没有我们想得那么大：当你看到那些表象（<a href="http://www.qdaily.com/articles/58139.html" target="_blank" rel="noopener">对传统怀有叛逆</a>、<a href="http://www.qdaily.com/articles/58944.html" target="_blank" rel="noopener">总是在追忆过去</a>、<a href="http://www.qdaily.com/articles/52610.html" target="_blank" rel="noopener">对司空见惯的事物感到疲劳</a>）时，如果考虑藏在背后的人类理智和情感，就知道在多数情况下，它们并没有多么时髦新奇，有时甚至是反复出现、<a href="http://www.qdaily.com/articles/29390.html" target="_blank" rel="noopener">普遍存在的永恒体验</a>。</p>
+<p>英国科幻作家道格拉斯·亚当斯曾经提出过一个<strong>「科技三定律」，「任何在我出生时已经有的科技，都是稀松平常的，是世界自然秩序的一部分；任何在我 15-35 岁之间诞生的科技，都将会是改变世界的革命性产物；任何在我 35 岁以后诞生的科技，都是违反自然秩序的异端」。</strong>这段话可以在一定程度上解释「xx 时代」的说法为什么越来越密集而且越来越不值钱：在少数情况下，时间碰巧可以被一些叫做「里程碑/导火索/纪念日」的东西明确隔断，<strong>但更多时候，「时代」不过是一种「我想找到一个词来概括自己目力所及的一切」的快捷方式，是信息给我们制造的一张网，让我们每每生出「身处其中与有荣焉」的感觉。</strong></p>
+<h1 id="二、「当代」的几点变化"><a href="#二、「当代」的几点变化" class="headerlink" title="二、「当代」的几点变化"></a>二、「当代」的几点变化</h1><hr>
+<h2 id="所面对任务复杂度的改变"><a href="#所面对任务复杂度的改变" class="headerlink" title="所面对任务复杂度的改变"></a>所面对任务复杂度的改变</h2><p><strong>过去的社会，每个人面对的是一个任务系统。</strong>题目已经出好了，每个人各凭本事去答题，靠分数。在学校，你得做老师出的题，在单位，你得干领导布置的活儿。那每个人的刹车就是各种各样的条条框框，原则规矩。</p>
+<p><strong>但是现在不一样了，现在一个学生毕业面对的，往往不是一个确定的任务，而是一个目标，一个“事”，具体怎么达到这个目标，做成这个“事”，每个人有自己的定义。</strong>甚至这件事，在每一个地方都不一样。看起来好像更自由，但其实对人的约束力更大。为啥？因为完成一个别人定义的任务，还有讨价还价的可能，还有优良中差的等级，一道题答对一半还能给分。但是如果做一个事，达到一个目标，差一点都不行。这是一个更好的人格塑造系统和刹车系统。</p>
+<p>现在，人一到社会上，不管是做一个销售、还是搞一项科研、还是主办一个活动、还是搞一个产品、或者干脆去创业，你发现没有？没有任何一件事是完全一样的，达成目标，都需要根据一时一地的条件，做各种各样的创新。</p>
+<p>举个例子，您一路学霸，大学中文系高材生毕业。但是又能怎样呢？一旦到工作单位，你会发现，并没有抽象的中文写作能力这个事，世界上没有那么多作文大赛。你遇到的，都是类似于给某某产品写个文案，给某某公众号写个文章，给领导的某次演讲做个ppt，这样的事。在所有这些“事”面前，你需要的远远不止写作能力，你需要调动各个方面的潜能，学习全新的东西，才能把事做成。<strong>而且还有一点，在做事这个环境里，没有谁有确定的优势。</strong>领导和老板，写公司的公众号文章，还真不见得就比刚毕业的大学生强。</p>
+<h2 id="学习方式的改变"><a href="#学习方式的改变" class="headerlink" title="学习方式的改变"></a>学习方式的改变</h2><p><strong>在过去的手抄时代，我们记忆力越好越牛；印刷时代，知道得越多越牛；但到了现在的信息时代，学得越快越牛。</strong></p>
+<p>过去你要说自己有知识焦虑，社会已经给你准备了成熟的解决方案，说白了就是读书看报加上学。只要你勤于用功，肯于花钱，你的焦虑是能解决的。但是今天，这些解决方案本身就在出问题，为啥？因为社会的底层因素正在发生重大变动。</p>
+<ul>
+<li><strong>比如说，第一，人的时间在碎片化。</strong>现在我们不管在干什么，动不动就要去摸下手机，刷下微信什么的。当然，这赖不着人家微信，这是我们的社会协作关系极度复杂化的结果，我们有太多的事情要同步运行、分头照料，所以我们拿不出整块时间了。读书上学这种事可是要花整块时间的。一本书20万字，你怎么也得读个三四天吧？上个学几年，最短的短训班也得好几天吧？你越来越花不起这个时间。</li>
+<li><strong>第二，学习越来越是一个终身化的事情。</strong>过去有一个词叫“学业有成”。大学毕业基本上算学业有成吧，你要是留学回来我们叫“学成归国”。但是今天有学成这件事情吗？永远也成不了，新的知识像海浪一般涌来，你一辈子都要奋力前行，永远成不了。但是 20 多岁你就大学毕业了，整个社会没有为终身学习提供解决方案和服务，怎么办呢？</li>
+<li><strong>还有第三点，现在的学习越来越是跨界化的。</strong>这件事情要是几百年前，一点儿都不新鲜，那个时候的学者觉得自己上通天文，下晓地理，因为那个时候的知识总量少。可是，工业革命之后，人类的知识大爆炸，知识的负担太沉重。怎么办呢？两百年来我们找到了方法，叫分科治学。我们从中学的时候就文理分科，你学物理，他学化学，而且越分越细，分担人类的知识总量。每一个人都有一个知识的金字塔，你去往上爬吧，这辈子你爬一个塔就行了。但是今天，所有善于学习的人都明白一个道理，真正的创新的空间，恰恰在原来那些金字塔的中间地带。</li>
+</ul>
+<h2 id="对于退休认知的改变"><a href="#对于退休认知的改变" class="headerlink" title="对于退休认知的改变"></a>对于退休认知的改变</h2><p>这是正在发生的事情：</p>
+<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20191125222553.png" alt></p>
+<p>有一本书，叫《百岁人生》。这书就是提醒大家一件事，随着医疗技术的进步，我们这代人有很大概率能活到100多岁。您先别高兴，活得长虽然是好事，但是代价是什么呢？</p>
+<p><strong>最简单的一点，就是过去的三段式人生规划，没有用了。</strong></p>
+<p>所谓“三段式人生”，大概就是30岁之前，学习成家立业；30岁之后在社会和家庭中顶大梁；60岁之后退休回家，安度晚年等死。可是如果能活100岁，这个安排就出问题了。《百岁人生》里做了很多推导，比如人的伦理观会变化，过去相对不变的人是受尊重的，而未来敢于抛弃存量的人才是有道德的。再比如，人的婚姻选择会更加慎重，因为选一个人，要跟他在一起的时间实在太长了。还有，人的资产也会从金钱变成了信用和人脉，等等。</p>
+<p>过去，人受教育，掌握一门知识或者手艺，然后应用到退休问题不大。所以才有人提倡要干一行爱一行，进一个单位要忠诚于一个单位。</p>
+<p>可是你想过没有，现在产业迭代速度这么快，有的新兴行业从兴起到衰落，也许只有十几年的时间，你就是想为这个单位、这个行业奉献终生也做不到啊。我们如果能活100岁，一生要跨过的行业就可能有好几个。</p>
+<p><strong>所以我们必须有一种能力，就是不断扔掉存量，从零开始，创造一个新的生活阶段。</strong>60岁再去上个大学，65岁甚至70岁再去干一件全新的事，甚至创个业，未来这样的人会越来越常见。</p>
+<h2 id="对于感官的改变"><a href="#对于感官的改变" class="headerlink" title="对于感官的改变"></a>对于感官的改变</h2><ul>
+<li>以下摘录自《今日简史》P82</li>
+</ul>
+<p>人类有身体。在 20 世纪，科技让我们与身体的距离越来越远，逐渐失去了好好感受味觉和嗅觉的能力，一头扎进智能手机和计算机，对网络上发生的事比对大街上发生的事更感兴趣。今天，我要和在法国的姐姐说话比以前任何时候都容易，但要在早餐的时候和我的爱人说话却比较难，因为她总是不看着我，而是盯着智能手机。</p>
+<p>在远古时代，人类绝不可能如此的漫不经心。当时的采集者必须永远保持警觉、专心一意。走在森林里寻找蘑菇的时候，要注意地面是否有小小的凸起，还要注意草丛中是否发出了细微的声音，以免有蛇躲在那里。等到发现可食用的蘑菇，还要极其小心地试尝一下，以免吃到有毒的菌类。</p>
+<p><strong>但到了现代的富裕社会，人类不再需要如此敏锐的感官意识。</strong>我们可以边走在超市的走道里，一边发短信，一边在成百上千种食物中随意挑选。但不管我们挑了什么食物，最后都是坐在某个屏幕前一边狼吞虎咽，一边收着电子邮件或看着电视，全然不会注意食物究竟味道如何。</p>
+<p>扎克伯格说，脸谱网致力于“持续改进我们的工具，让人们能够分享自己的体验。”<strong>但我们真正需要的，可能是好好感受一下自己的体验。</strong>以”分享体验“为名，现代人对自己的理解常常从别人的观点出发，一发生什么有趣的事，脸谱网用户就会下意识地拿出智能手机，拍照、发帖、等着有人点赞。在这个过程中，他们几乎不会注意自己到底有何感受。事实上，他们的感受越来越来自网络上的响应。</p>
+<p><strong>人类一旦与身体、感官和真实环境越来越疏离，很可能就会感受孤单、迷失方向。</strong>很多权威评论人士把这种疏离感归咎于宗教和国家的凝聚力式微，但或许和你的身体失去联系才是最重要的原因。曾有几百年的时间，人类没有宗教，也没有国家，但还是过得开开心心，所以在 21 世纪应该也不成问题。然而一旦与身体失去联系，日子就肯定无法过得开心。只要你在自己的身体里感觉不自在，在这个世界上就不可能自在。</p>
+<p>就算到了今天，尽管我们可以在脸谱网上炫耀有许多好友，但是大多数人真正了解的人并不会超过 150 个。如果没有这些小团体的支持，人就会觉得寂寞，甚至被孤立。</p>
+<p><strong>于是，虽然整个地球连接得更加紧密，但每个人的生活却比过去更加孤独。</strong></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><hr>
 <ol>
-<li><strong>通信支持：</strong>利用容器提供的方法，你能轻松的让 Servlet 与 web 服务器对话，而不用自己建立 serversocket 、监听某个端口、创建流等。容器知道自己与 web 服务器之间的协议，所以你的 Servlet 不用担心 web 服务器（如Apache）和你自己的 web 代码之间的 API ，只需要考虑如何在 Servlet 中实现业务逻辑（如处理一个订单）。 </li>
-<li><strong>生命周期管理：</strong> Servlet 容器控制着 Servlet 的生与死，它负责加载类、实例化和初始化 Servlet ，调用 Servlet 方法，以及使 Servlet 实例被垃圾回收，有了 Servlet 容器，你不需要太多的考虑资源管理。 </li>
-<li><strong>多线程支持：</strong>容器会自动为它所接收的每个 Servlet 请求创建一个新的 java 线程。针对用户的请求，如果 Servlet  已经运行完相应的http服务方法，这个线程就会结束。这并不是说你不需要考虑线程安全性，其实你还会遇到同步问题，不过这样能使你少做很多工作。 </li>
-<li><strong>声明方式实现安全：</strong>利用 Servlet 容器，你可以使用 xml 部署描述文件来配置和修改安全性，而不必将其硬编码写到 Servlet 类代码中。 </li>
-<li><strong>JSP支持：</strong> Servlet容器负责将 jsp 代码翻译为真正的 java 代码。</li>
+<li>「当代」越来越让人看不懂，我们帮你找到了观察它的 15 个新角度 | 100个生活大问题 - <a href="https://www.qdaily.com/articles/62748.html" target="_blank" rel="noopener">https://www.qdaily.com/articles/62748.html</a></li>
+<li>《终身学习》 - 罗振宇</li>
+<li>逻辑思维系列课程摘选</li>
+<li>《洋葱阅读法》</li>
+<li>「Three Big Things: The Most Important Forces Shaping the World」 - <a href="https://www.collaborativefund.com/blog/three-big-things-the-most-important-forces-shaping-the-world/" target="_blank" rel="noopener">https://www.collaborativefund.com/blog/three-big-things-the-most-important-forces-shaping-the-world/</a></li>
+<li>《今日简史》</li>
 </ol>
-<h4 id="Servlet-生命周期"><a href="#Servlet-生命周期" class="headerlink" title="Servlet 生命周期"></a>Servlet 生命周期</h4><p>通常情况下，Servlet 容器也就是指 Web 容器，如 Tomcat、Jboss、Resin、Weblogic 等，它们对 Servlet 进行控制。当一个客户端发送 HTTP 请求时，由容器加载 Servlet 对其进行处理并做出响应。在 Web 容器中，Servlet 主要经历 4 个阶段，如下图：</p>
-<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714081250.png" alt></p>
-<p>Servlet 与 Web 容器的关系是非常密切的，在 Web 容器中 Servlet 主要经历了 4 个阶段，这 4 个阶段实质是 Servlet 的生命周期，由容器进行管理。</p>
-<p>（1）在 Web 容器启动或者客户机第一次请求服务时，容器将加载 Servlet 类并将其放入到 Servlet 实例池。</p>
-<p>（2）当 Servlet 实例化后，容器将调用 Servlet 对象的 init() 方法完成 Servlet 的初始化操作，主要是为了让 Servlet 在处理请求之前做一些初始化工作。</p>
-<p>（3）容器通过 Servlet 的 service() 方法处理客户端请求。在 Service() 方法中，Servlet 实例根据不同的 HTTP 请求类型作出不同处理，并在处理之后作出相应的响应。</p>
-<p>（4）在 Web 容器关闭时，容器调用 Servlet 对象的 destroy() 方法对资源进行释放。在调用此方法后，Servlet 对象将被垃圾回收器回收。</p>
-<h2 id="——【3-第一个-Servlet-】——"><a href="#——【3-第一个-Servlet-】——" class="headerlink" title="——【3. 第一个 Servlet 】——"></a>——【3. 第一个 Servlet 】——</h2><h4 id="①-搭建-Java-Web-项目"><a href="#①-搭建-Java-Web-项目" class="headerlink" title="① 搭建 Java Web 项目"></a>① 搭建 Java Web 项目</h4><ol>
-<li><p>创建 一个 Java 项目，并命名为 HelloServlet； <strong>（注意：这是普通的 Java 项目而不是动态 Web 项目）</strong></p>
-</li>
-<li><p>在项目的根目录下创建一个文件夹 webapp，表示 Web 项目的根；</p>
-</li>
-<li><p>在 webapp 中创建 WEB-INF 文件夹；</p>
-</li>
-<li><p>在 WEB-INF 文件夹中创建文件夹：classes,lib；</p>
-</li>
-<li><p>在 WEB-INF 文件中添加 Tomcat 根目录下 conf 文件夹中的 web.xml 文件；（只保留根元素，就像下面这样）</p>
-<pre class=" language-xml"><code class="language-xml"> <span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
- <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-app</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee<span class="token punctuation">"</span></span>
-   <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
-   <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee
-                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd<span class="token punctuation">"</span></span>
-   <span class="token attr-name">version</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>3.1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-
- <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-app</span><span class="token punctuation">></span></span>
-</code></pre>
-</li>
-<li><p>把当前项目的 classpath 路径改成 webapp/WEB-INF 下的 classes 中。</p>
-</li>
-</ol>
-<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714081259.png" alt></p>
-<h4 id="②-编写-Servlet"><a href="#②-编写-Servlet" class="headerlink" title="② 编写 Servlet"></a>② 编写 Servlet</h4><ol>
-<li>为该项目增加Servlet的支持.<br>   1.1. 把Tomcat根/lib中servlet-api.jar文件拷贝到项目下WEB-INF下的lib中<br>   1.2. 在项目中选择servlet-api.jar,鼠标右键,build path–&gt;add to build path</li>
-</ol>
-<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714081312.png" alt></p>
-<ol start="2">
-<li>开发Servlet程序:<br>  2.1:定义一个类HelloServlet,并让该类去实现javax.servlet.Servlet接口;<br>  2.2:实现Servlet接口中的init,service,destory等方法.</li>
-</ol>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>Servlet<span class="token punctuation">;</span>
-<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletConfig<span class="token punctuation">;</span>
-<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletException<span class="token punctuation">;</span>
-<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletRequest<span class="token punctuation">;</span>
-<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletResponse<span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloServlet</span> <span class="token keyword">implements</span> <span class="token class-name">Servlet</span><span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>ServletConfig config<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException <span class="token punctuation">{</span>
-    <span class="token punctuation">}</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> ServletConfig <span class="token function">getServletConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">service</span><span class="token punctuation">(</span>ServletRequest req<span class="token punctuation">,</span> ServletResponse res<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"测试一下！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// 先在这里写下测试代码</span>
-    <span class="token punctuation">}</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> String <span class="token function">getServletInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span></code></pre>
-<p><strong>注意:若生成方法中的参数是 arg0 或则 arg1 等格式的,原因是还没有关联源代码的问题:</strong> <a href="https://jingyan.baidu.com/article/0202781170ffa61bcc9ce5dd.html" target="_blank" rel="noopener">关联上 tomcat src 文件即可</a></p>
-<h4 id="③-配置-Servlet"><a href="#③-配置-Servlet" class="headerlink" title="③ 配置 Servlet"></a>③ 配置 Servlet</h4><p>上面编写好的 HelloServlet 类仅仅是一个普通的实现类而已，而现在我想要它运行在我自己的 Tomcat 服务器中，所以应该通知 Tomcat 服务器来管理我的 HelloServlet 类，具体的做法如下：</p>
-<ol>
-<li><p>找到项目根下的WEB-INF下的web.xml文件:</p>
-</li>
-<li><p>在根元素web-app中创建一个新的元素节点:servlet</p>
-</li>
-<li><p>在根元素web-app中创建一个新的元素节点:servlet-mapping（Servlet 的映射）</p>
-<pre class=" language-xml"><code class="language-xml"> <span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
- <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-app</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee<span class="token punctuation">"</span></span>
-   <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
-   <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee
-                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd<span class="token punctuation">"</span></span>
-   <span class="token attr-name">version</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>3.1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-
-</code></pre>
-</li>
-</ol>
-<pre><code>    &lt;servlet&gt;
-        &lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;
-        &lt;servlet-class&gt;lt.HelloServlet&lt;/servlet-class&gt;
-    &lt;/servlet&gt;
-
-    &lt;servlet-mapping&gt;
-        &lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;
-        &lt;url-pattern&gt;/hello&lt;/url-pattern&gt;
-    &lt;/servlet-mapping&gt;
-
-&lt;/web-app&gt;
-```
-&gt; web.xml 提供路径和servlet映射关系，这意思是把/hello这个路径，映射到 HelloServlet 这个类上，需要注意的是：**&lt; servlet&gt; 标签下的 &lt; servlet-name&gt;与 &lt; servlet-mapping&gt; 标签下的 &lt; servlet-name&gt; 必须一样**（因为标签被编辑器识别故&lt;后加了一个空格）</code></pre><ol start="4">
-<li><p>配置 Tomcat 服务器：</p>
-<p> 4.1. 修改默认端口为 80 端口：</p>
-<pre><code> 首先进入到 Tomcat 服务器的根路径下找到 conf 文件夹下的 server.xml 文件，默认是在第 70 行，找到 Connector 元素的 port 属性，修改为 80 ，重启 Tomcat 即可。
- ![](https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714081319.png)</code></pre><blockquote>
-<p>Tomcat 的默认端口为8080，而 HTTP 协议的默认端口是 80，配置 80 端口的好处在于，我们平时输入的类似于 <a href="http://baidu.com" target="_blank" rel="noopener">http://baidu.com</a> 其实是默认省略了写 80端口的，它其实等价于：<a href="http://baidu.com:80/" target="_blank" rel="noopener">http://baidu.com:80/</a> ，所以以后我们就不用再写冒号直接输入 locahost 就能进入到 Tomcat 的配置页面了。</p>
-</blockquote>
-<p>  4.2 部署 Java 项目（告诉 Tomcat 服务器来管理我们的项目）：</p>
-<pre><code> 这里直接引用 how2j.cn 的教程啦：
- ![](https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714081345.png)</code></pre></li>
-</ol>
-<p>所以加上<code>&lt;Context path=&quot;&quot; docBase=&quot;F:\\Projects\\JavaProject\\HelloServlet\\webapp&quot; /&gt;</code>这一句重启 Tomcat 服务器</p>
-<p>在浏览器中输入 localhost/hello，回车，即可在 Tomcat 服务器上看到相关信息，至此第一个 Servlet 就编写成功了</p>
-<p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714081353.png" alt></p>
-<h2 id="——【4-Servlet-请求过程】——"><a href="#——【4-Servlet-请求过程】——" class="headerlink" title="——【4. Servlet 请求过程】——"></a>——【4. Servlet 请求过程】——</h2><p>学习 Servlet 技术，就需要有一个 Servlet 运行环境，也就是需要有一个 Servlet 容器，如这里使用的<strong>【Tomcat】</strong>。</p>
-<p>Tomcat 服务器接受客户请求并做出响应的过程如下（以上面搭建的项目为例）：</p>
-<p>① 打开浏览器发起请求：<a href="http://localhost:80/hello/index.html" target="_blank" rel="noopener">http://localhost:80/hello/index.html</a> （假设有一个 index.html 文件）</p>
-<p>② 服务器接收到请求后处理请求：</p>
-<blockquote>
-<p>htpp：所使用的协议<br>localhost：ip地址，确定访问的主机<br>80：端口号<br>hello：上下文路径，确定访问项目的根路径<br>index.html：确定访问项目中的具体哪一个资源</p>
-</blockquote>
-<p>③ 根据 hello 去 tomcat/conf/server.xml 文件中找到相关配置文件，根据上下文路径找到项目的根路径：<br><code>&lt;Context path=&quot;&quot; docBase=&quot;F:\\Projects\\JavaProject\\HelloServlet\\webapp&quot; /&gt;</code><br>如果找不到根路径（因为这里默认上下文路径为空），返回 404</p>
-<p>④ 根据资源名称去项目中的 web.xml 文件中找到相关的配置，找到配置中的<code>&lt;url-pattern&gt;</code><br><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20190714081359.png" alt></p>
-<p>如果找不到 hello 的资源名称，则返回 404</p>
-<p>⑤ 根据资源名称找到 Servlet 的全限定名，如果找不到则在启动服务器的时候报错<br><code>java.lang.IllegalArgumentException: Servlet mapping specifies an unknown servlet name HelloServlet</code></p>
-<p>⑥ 根据找到的全限定名创建对象，在创建对象之前需要判断是否是第一次请求，使用 Tomcat 中使用 Servlet 实例缓存池来实现，若是第一次则调用对象的 init 方法。</p>
-<p>⑦ 创建 req,resp 对象，执行 service 方法；</p>
-<p>⑧ 使用 resp 对象给浏览器响应信息。</p>
-<blockquote>
-<p>发现一边学一边写起来太麻烦了，一方面是因为自己的水平，另一方面是觉得这样太费时间了，也要开始找实习了，所以时间有些宝贵，可能这不会作为一个连续的系列，反而是一些学习的分享和感悟，emmm….事实上，Servlet也还有好多东西，包括最新支持注解方式配置等….<br>参考资料：<br>《Java Web程序设计 慕课版——明日科技》<br>how2j.cn<br><a href="http://blog.csdn.net/lz233333/article/details/68065749" target="_blank" rel="noopener">理解Servlet和Servlet容器、Web服务器等概念</a></p>
-</blockquote>
 
             </div>
             <hr/>
@@ -727,7 +652,7 @@
             <!--            <br/>-->
             <div class="foot-copyright-note">
                 <i class="fa fa-lightbulb-o"></i> 本文由
-                <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/03/21/chu-xue-java-web-3-di-yi-ge-servlet/"
+                <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/11/25/dang-dai-de-ji-dian-bian-hua/"
                    property="cc:attributionName"
                    rel="cc:attributionURL">
                     我没有三颗心脏
@@ -772,7 +697,7 @@
         repo: 'wmyskxz.github.io',
         owner: 'wmyskxz',
         admin: "wmyskxz",
-        id: '2018-03-21T08-59-00',
+        id: '2019-11-25T22-14-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -793,17 +718,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2018/04/06/chu-xue-java-web-4-servlet-xue-xi-zong-jie/">
+                <a href="/2019/11/25/dang-dai-de-ji-dian-bian-hua/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="初学Java Web(4)——Servlet学习总结">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="当代的几点变化">
                         
-                        <span class="card-title">初学Java Web(4)——Servlet学习总结</span>
+                        <span class="card-title">当代的几点变化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -811,34 +737,35 @@
                         
                             
 
-经过一段时间的学习，对于Servlet有了新的不一样的见解，在这里做一下总结，将近来学习到的知识总结一下。
+前言：以下所有观点均摘录 or 改编自参考资料，纯属观点分享…
 
+一、当我们说「当代」时，我们在说什么
 
-Servlet 的请求流程
-浏览器发出请求：http://localhost:80/xxx1/xxx2 （80端口可以默认不
+引用自：「当代」越来越让人看不懂，我们帮你找到了观察它的 15 个新角度 | 100个生活大问题 - https://www.qd
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-25
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            我没有三颗心脏
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/喜欢的三观/" class="post-category" target="_blank">
+                                    喜欢的三观
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/原创/" target="_blank">
-                        <span class="chip bg-color">原创</span>
-                    </a>
-                    
-                    <a href="/tags/Java-Web/" target="_blank">
-                        <span class="chip bg-color">Java Web</span>
+                    <a href="/tags/喜欢的三观/" target="_blank">
+                        <span class="chip bg-color">喜欢的三观</span>
                     </a>
                     
                 </div>
@@ -852,13 +779,13 @@ Servlet 的请求流程
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/03/14/chu-xue-java-web-2-da-jian-java-web-kai-fa-huan-jing/">
+                <a href="/2019/11/22/ying-jie-bi-ye-sheng-gong-zuo-7-ge-yue-xiao-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="初学Java Web(2)——搭建Java Web开发环境">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="应届毕业生工作7个月小结">
                         
-                        <span class="card-title">初学Java Web(2)——搭建Java Web开发环境</span>
+                        <span class="card-title">应届毕业生工作7个月小结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -866,17 +793,24 @@ Servlet 的请求流程
                         
                             
 
-虽然说 html 和 css 等前端技术，是对于 Web 来说不可或缺的技术，但是毕竟更为简单一些，所以就不详细介绍了，没有基础的同学可以去菜鸟教程或者W3school进行自主学习，最好的方式还是做一做简单的项目，相信你很快就可以上手啦
+前言： 不知不觉已经工作了快 7 个月了，去年这个时候还跻身在考研的大军中，不禁有些感慨… 结合这 7 个月发生的一些事情，简单做一下总结吧…
+
+一、那时候刚入职
+不同于其他同学忙于毕设的 4 月，提早安排趁寒假已经完成毕设的我，已经开
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-03-14
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-22
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            我没有三颗心脏
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/生活/" class="post-category" target="_blank">
+                                    生活
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -888,8 +822,8 @@ Servlet 的请求流程
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/Java-Web/" target="_blank">
-                        <span class="chip bg-color">Java Web</span>
+                    <a href="/tags/总结/" target="_blank">
+                        <span class="chip bg-color">总结</span>
                     </a>
                     
                 </div>
