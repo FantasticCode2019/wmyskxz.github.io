@@ -457,10 +457,10 @@ public cla">
 <p>我们使用了循环来模拟过程，因为播放音乐和打游戏都是连续的，但是结果却不尽人意，因为函数体总是要执行完之后才能返回。那么到底怎么解决这个问题？</p>
 <h2 id="并行与并发"><a href="#并行与并发" class="headerlink" title="并行与并发"></a>并行与并发</h2><p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20191126222913.png" alt></p>
 <p>并行性和并发性是既相似又有区别的两个概念。</p>
-<p><strong>并行性是指两个或多个事件在同一时刻发生。而并发性是指连个或多个事件在同一时间间隔内发生。</strong></p>
+<p><strong>并行性是指两个或多个事件在同一时刻发生。而并发性是指两个或多个事件在同一时间间隔内发生。</strong></p>
 <p>在多道程序环境下，并发性是指在一段时间内宏观上有多个程序在同时运行，但在单处理机环境下（一个处理器），每一时刻却仅能有一道程序执行，故微观上这些程序只能是分时地交替执行。例如，在 1 秒钟时间内，0 - 15 ms 程序 A 运行；15 - 30 ms 程序 B 运行；30 - 45 ms 程序 C 运行；45 - 60 ms 程序 D 运行，因此可以说，在 1 秒钟时间间隔内，宏观上有四道程序在同时运行，但微观上，程序 A、B、C、D 是分时地交替执行的。</p>
 <p>如果在计算机系统中有多个处理机，这些可以并发执行的程序就可以被分配到多个处理机上，实现并发执行，即利用每个处理机爱处理一个可并发执行的程序。这样，多个程序便可以同时执行。以此就能提高系统中的资源利用率，增加系统的吞吐量。</p>
-<h2 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h2><p><strong>进程是指一个内存中运行的应用程序</strong>。一个应用程序可以同时启动多个进程，那么上面的问题就有了解决的思路：<strong>我们启动两个进程，一个用来打游戏，一个用来播放音乐</strong>。这当然是一种解决方案，但是想象一下，如果一个应用程序需要执行的任务非常多，例如 LOL 游戏吧，光是需要播放的音乐就有非常多，人物本身的语音，技能的音效，游戏的背景音乐，塔攻击的声音等等等，还不用说游戏本身，就光播放音乐就需要创建许多许多的进程，而进程本身是一种非常消耗资源的东西，这样的设计显然是不合理的。更何况大多数的操作系统都不需要一个进程访问其他进程的内存空间，<strong>也就是说，进程之间的通信很不方便，此时我们就得引入“线程”这门技术，来解决这个问题。</strong></p>
+<h2 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h2><p><strong>进程是指一个内存中运行的应用程序</strong>。一个应用程序可以同时启动多个线程，那么上面的问题就有了解决的思路：<strong>我们启动两个进程，一个用来打游戏，一个用来播放音乐</strong>。这当然是一种解决方案，但是想象一下，如果一个应用程序需要执行的任务非常多，例如 LOL 游戏吧，光是需要播放的音乐就有非常多，人物本身的语音，技能的音效，游戏的背景音乐，塔攻击的声音等等等，还不用说游戏本身，就光播放音乐就需要创建许多许多的进程，而进程本身是一种非常消耗资源的东西，这样的设计显然是不合理的。更何况大多数的操作系统都不需要一个进程访问其他进程的内存空间，<strong>也就是说，进程之间的通信很不方便，此时我们就得引入“线程”这门技术，来解决这个问题。</strong></p>
 <p><strong>线程是指进程中的一个执行任务（控制单元），一个进程可以同时并发运行多个线程</strong>。我们可以打开任务管理器，观察到几乎所有的进程都拥有着许多的「线程」(在 WINDOWS 中线程是默认隐藏的，需要在「查看」里面点击「选择列」，有一个线程数的勾选项，找到并勾选就可以了)。</p>
 <p><img src="https://blog-1259634016.cos.ap-chengdu.myqcloud.com/img/20191126222922.png" alt></p>
 <h2 id="进程和线程的区别"><a href="#进程和线程的区别" class="headerlink" title="进程和线程的区别"></a>进程和线程的区别</h2><p><strong>进程</strong>：有独立的内存空间，进程中的数据存放空间（堆空间和栈空间）是独立的，至少有一个线程。</p>
@@ -949,58 +949,53 @@ public cla">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/11/26/gao-bing-fa-bian-cheng-xue-xi-1-bing-fa-ji-chu/">
+                <a href="/2019/11/27/gao-bing-fa-bian-cheng-xue-xi-2-xian-cheng-tong-xin-xiang-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="高并发编程学习(1)——并发基础">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="高并发编程学习(2)——线程通信详解">
                         
-                        <span class="card-title">高并发编程学习(1)——并发基础</span>
+                        <span class="card-title">高并发编程学习(2)——线程通信详解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-一、前言
-当我们使用计算机时，可以同时做许多事情，例如一边打游戏一边听音乐。这是因为操作系统支持并发任务，从而使得这些工作得以同时进行。
 
-那么提出一个问题：如果我们要实现一个程序能一边听音乐一边玩游戏怎么实现呢？
+前序文章
 
-public cla
+高并发编程学习(1)——并发基础 - https://www.wmyskxz.com/2019/11/26/gao-bing-fa-bian-cheng-xue-xi-1-bing-fa-ji-chu/
+
+
+一、经典的生产者
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-26
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-27
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Java基础/" class="post-category" target="_blank">
-                                    Java基础
-                                </a>
-                            
-                            <a href="/categories/Java基础/并发编程/" class="post-category" target="_blank">
-                                    并发编程
-                                </a>
-                            
+                            <i class="fa fa-user fa-fw"></i>
+                            我没有三颗心脏
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/原创/" target="_blank">
                         <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/Java基础/" target="_blank">
+                        <span class="chip bg-color">Java基础</span>
                     </a>
                     
                     <a href="/tags/并发编程/" target="_blank">
@@ -1217,7 +1212,7 @@ public cla
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">455.3k</span>
+                <span class="white-color">464.6k</span>
             
 
             
